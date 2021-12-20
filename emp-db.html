@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>AI DevOps</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- stylesheet For icon -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+	<link rel="stylesheet" href="css/emp-db-style.css">
+	<link rel="stylesheet" href="css/navbar-style.css">
+<!--===============================================================================================-->
+<!--	<link rel="icon" type="image/png" href="emp-db-images/icons/favicon.ico"/> -->
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="emp-db-vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="emp-db-fonts/font-awesome-4.7.0/css/-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="emp-db-vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="emp-db-vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="emp-db-vendor/perfect-scrollbar/perfect-scrollbar.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/emp-db-style/util.css">
+	<link rel="stylesheet" type="text/css" href="css/emp-db-style/main.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/side-nav.css">
+	<link rel="stylesheet" type="text/css" href="css/emp-db-style.css">
+</head>
+<body>
+	
+		<div class="area" style="height:2%;"></div>
+		<nav class="main-menu" style="width:60px;" style="z-index:1; position:sticky;">
+            <ul style="margin:30px 3px;">
+                <li>
+                    <a href="AICentral-index.html">
+                        <i class="fa fa-home fa-2x"></i>
+                        <span class="nav-text">
+                            Home
+                        </span>
+                    </a>
+                  
+                </li>
+                <li class="has-subnav">
+                    <a href="#">
+                        <a href="emp-db.html"><i class="fa fa-users fa-2x"></i>
+                        <span class="nav-text">
+                            AI Team
+                        </span></a>
+                    </a>
+                    
+                </li>
+                <li class="has-subnav">
+                    <a href="#">
+                       <i class="fa fa-list fa-2x"></i>
+                        <span class="nav-text">
+                            Utilization Dashboard
+                        </span>
+                    </a>
+                    
+                </li>
+                <li class="has-subnav">
+                    <a href="#">
+                       <i class="fa fa-money fa-2x"></i>
+                        <span class="nav-text">
+                            Sales Management
+                        </span>
+                    </a>
+                   
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-bar-chart-o fa-2x"></i>
+                        <span class="nav-text">
+                            Resource Management
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-folder-open fa-2x"></i>
+                        <span class="nav-text">
+                           Document Managemnet
+                        </span>
+                    </a>
+                </li>
+                <li>
+                   <a href="#">
+                       <i class="fa fa-line-chart fa-2x"></i>
+                        <span class="nav-text">
+                            Project Dashboard
+                        </span>
+                    </a>
+                </li>
+                <li>
+                   <a href="emp-profile-card.html">
+                        <i class="fa fa-table fa-2x"></i>
+                        <span class="nav-text">
+                            IT Asset Management
+                        </span>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="logout">
+                <li>
+                   <a href="#">
+                         <a href="login.html"><i class="fa fa-power-off fa-2x"></i></a>
+                        <span class="nav-text" style="color:rgba(110, 110, 110, 0.8);">
+                        </span>
+                    </a>
+                </li>  
+            </ul>
+        </nav>
+
+
+	<!-- Search input -->
+	<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Enter any name..." title="Type in a name">
+
+	<!-- Employee table-->
+	<div class="limiter">
+		<div class="container-table100" <!--style="z-index:-1; position:absolute; padding-left:150px;"-->>
+			<div class="wrap-table100">
+				<div class="table100 ver1">
+					<div class="table100-firstcol">
+						<table id="myTable">
+						 <thead>
+							 <tr class="row100 head">
+								 <th class="cell100 column1">Position Name</th>
+								 <!--<th class="cell100 column1-1">Position Numbers</th>-->
+							 </tr>
+						 </thead>
+						 <tbody>
+							 <tr class="row100 body">
+								 <td class="cell100 column1">Rose Adzreen binti Adnan</td>
+							 </tr>
+
+							 <tr class="row100 body">
+								 <td class="cell100 column1"><a href="employee_details.html" id="name-to-profile">Fatin Afifah binti Azman</a></td>
+							 </tr>
+
+							 <tr class="row100 body">
+								 <td class="cell100 column1">Norman Sara binti Othman</td>
+							 </tr>
+
+							 <tr class="row100 body">
+								 <td class="cell100 column1">Qistina Batrisyia binti Azman Shah</td>
+							 </tr>
+
+							 <tr class="row100 body">
+								 <td class="cell100 column1">Shamniza Azreen binti Shahudin</td>
+							 </tr>
+
+							 <tr class="row100 body">
+								 <td class="cell100 column1">Norhidayah binti Omar</td>
+							 </tr>
+
+							 <tr class="row100 body">
+								 <td class="cell100 column1">Ainil Husna binti Azmi</td>
+							 </tr>
+
+							 <tr class="row100 body">
+								 <td class="cell100 column1">Wan Muhammad Haziq Azhari Wan Nawi</td>
+							 </tr>
+
+							 <tr class="row100 body">
+								 <td class="cell100 column1">Agileswari a/p K Maruthamuthu</td>
+							 </tr>
+
+							 <tr class="row100 body">
+								 <td class="cell100 column1">Suzila binti Mohamad</td>
+							 </tr>
+
+							 <tr class="row100 body">
+								 <td class="cell100 column1">Saradiana binti Ya'acob</td>
+							 </tr>
+
+							 <tr class="row100 body">
+								 <td class="cell100 column1">Asfazillahwati binti Ajak</td>
+							 </tr>
+
+							 <tr class="row100 body">
+								 <td class="cell100 column1">Long Ahmad Zulrushdi bin Long Hassan</td>
+							 </tr>
+						 </tbody>
+					 </table>
+					</div>
+
+					<div class="wrap-table100-nextcols js-pscroll">
+						<div class="table100-nextcols">
+							<table id="myTable2">
+								<thead>
+									<tr class="row100 head">
+										<th class="cell100 column2">Position</th>
+										<th class="cell100 column4">Permanent/Leasing</th>
+										<th class="cell100 column5">Section</th>
+										<th class="cell100 column6">Status</th>
+										<th class="cell100 column10">Reporting</th>
+										<th class="cell100 column8">Onboard Date</th>
+										<th class="cell100 column9">Start Date</th>
+										<th class="cell100 column10">End Date</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="row100 body">
+										<td class="cell100 column2">Head AI DevOps</td>
+										<td class="cell100 column3">16 Nov 2012</td>
+										<td class="cell100 column4">16 Nov 2017</td>
+										<td class="cell100 column5">brandon94@example.com</td>
+										<td class="cell100 column6">30</td>
+										<td class="cell100 column7">New York City, NY</td>
+										<td class="cell100 column8">424242xxxxxx6262</td>
+									</tr>
+
+									<tr class="row100 body">
+										<td class="cell100 column2">Asst. Mgr Data Analyst</td>
+										<td class="cell100 column3">16 Nov 2015</td>
+										<td class="cell100 column4">30 Nov 2017</td>
+										<td class="cell100 column5">kathy_82@example.com</td>
+										<td class="cell100 column6">26</td>
+										<td class="cell100 column7">New York City, NY</td>
+										<td class="cell100 column8">424242xxxxxx1616</td>
+									</tr>
+
+									<tr class="row100 body">
+										<td class="cell100 column2">Asst. Mgr Data ML/Engineer</td>
+										<td class="cell100 column3">16 Nov 2012</td>
+										<td class="cell100 column4">16 Nov 2017</td>
+										<td class="cell100 column5">brandon94@example.com</td>
+										<td class="cell100 column6">30</td>
+										<td class="cell100 column7">New York City, NY</td>
+										<td class="cell100 column8">424242xxxxxx6262</td>
+									</tr>
+
+									<tr class="row100 body">
+										<td class="cell100 column2">Asst. Mgr Data Engineer</td>
+										<td class="cell100 column3">16 Nov 2012</td>
+										<td class="cell100 column4">16 Nov 2017</td>
+										<td class="cell100 column5">brandon94@example.com</td>
+										<td class="cell100 column6">30</td>
+										<td class="cell100 column7">New York City, NY</td>
+										<td class="cell100 column8">424242xxxxxx6262</td>
+									</tr>
+
+									<tr class="row100 body">
+										<td class="cell100 column2">CMO</td>
+										<td class="cell100 column3">16 Nov 2012</td>
+										<td class="cell100 column4">16 Nov 2017</td>
+										<td class="cell100 column5">brandon94@example.com</td>
+										<td class="cell100 column6">30</td>
+										<td class="cell100 column7">New York City, NY</td>
+										<td class="cell100 column8">424242xxxxxx6262</td>
+									</tr>
+
+									<tr class="row100 body">
+										<td class="cell100 column2">CMO</td>
+										<td class="cell100 column3">16 Nov 2012</td>
+										<td class="cell100 column4">16 Nov 2017</td>
+										<td class="cell100 column5">brandon94@example.com</td>
+										<td class="cell100 column6">30</td>
+										<td class="cell100 column7">New York City, NY</td>
+										<td class="cell100 column8">424242xxxxxx6262</td>
+									</tr>
+
+									<tr class="row100 body">
+										<td class="cell100 column2">CMO</td>
+										<td class="cell100 column3">16 Nov 2012</td>
+										<td class="cell100 column4">16 Nov 2017</td>
+										<td class="cell100 column5">brandon94@example.com</td>
+										<td class="cell100 column6">30</td>
+										<td class="cell100 column7">New York City, NY</td>
+										<td class="cell100 column8">424242xxxxxx6262</td>
+									</tr>
+
+									<tr class="row100 body">
+										<td class="cell100 column2">CMO</td>
+										<td class="cell100 column3">16 Nov 2012</td>
+										<td class="cell100 column4">16 Nov 2017</td>
+										<td class="cell100 column5">brandon94@example.com</td>
+										<td class="cell100 column6">30</td>
+										<td class="cell100 column7">New York City, NY</td>
+										<td class="cell100 column8">424242xxxxxx6262</td>
+									</tr>
+
+									<tr class="row100 body">
+										<td class="cell100 column2">CFO</td>
+										<td class="cell100 column3">16 Nov 2013</td>
+										<td class="cell100 column4">30 Nov 2017</td>
+										<td class="cell100 column5">elizabeth82@example.com</td>
+										<td class="cell100 column6">32</td>
+										<td class="cell100 column7">New York City, NY</td>
+										<td class="cell100 column8">424242xxxxxx5326</td>
+									</tr>
+
+									<tr class="row100 body">
+										<td class="cell100 column2">Designer</td>
+										<td class="cell100 column3">16 Nov 2013</td>
+										<td class="cell100 column4">30 Nov 2017</td>
+										<td class="cell100 column5">michael94@example.com</td>
+										<td class="cell100 column6">22</td>
+										<td class="cell100 column7">New York City, NY</td>
+										<td class="cell100 column8">424242xxxxxx6328</td>
+									</tr>
+
+									<tr class="row100 body">
+										<td class="cell100 column2">Developer</td>
+										<td class="cell100 column3">16 Nov 2017</td>
+										<td class="cell100 column4">30 Nov 2017</td>
+										<td class="cell100 column5">jasoncox@example.com</td>
+										<td class="cell100 column6">25</td>
+										<td class="cell100 column7">New York City, NY</td>
+										<td class="cell100 column8">424242xxxxxx7648</td>
+									</tr>
+
+									<tr class="row100 body">
+										<td class="cell100 column2">Sale</td>
+										<td class="cell100 column3">16 Nov 2016</td>
+										<td class="cell100 column4">30 Nov 2017</td>
+										<td class="cell100 column5">christian_83@example.com</td>
+										<td class="cell100 column6">28</td>
+										<td class="cell100 column7">New York City, NY</td>
+										<td class="cell100 column8">424242xxxxxx4152</td>
+									</tr>
+
+									<tr class="row100 body">
+										<td class="cell100 column2">Support</td>
+										<td class="cell100 column3">16 Nov 2013</td>
+										<td class="cell100 column4">30 Nov 2017</td>
+										<td class="cell100 column5">emily90@example.com</td>
+										<td class="cell100 column6">24</td>
+										<td class="cell100 column7">Melbourne, Victoria</td>
+										<td class="cell100 column8">424242xxxxxx6668</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+<!-- Java Script -->
+<!--===============================================================================================-->
+	<script src="emp-db-vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="emp-db-vendor/bootstrap/js/popper.js"></script>
+	<script src="emp-db-vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="emp-db-vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="emp-db-vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+	<script>
+			$('.js-pscroll').each(function(){
+				var ps = new PerfectScrollbar(this);
+
+				$(window).on('resize', function(){
+					ps.update();
+				})
+
+				$(this).on('ps-x-reach-start', function(){
+					$(this).parent().find('.table100-firstcol').removeClass('shadow-table100-firstcol');
+				});
+
+				$(this).on('ps-scroll-x', function(){
+					$(this).parent().find('.table100-firstcol').addClass('shadow-table100-firstcol');
+				});
+
+			});
+	</script>
+
+	<!-- to search name -->
+	<script>
+		function myFunction() {
+		  var input, filter, table1, table2, tr, td, i, txtValue;
+		  input = document.getElementById("myInput");
+		  filter = input.value.toUpperCase();
+		  table1 = document.getElementById("myTable");
+			table2 = document.getElementById("myTable2");
+		  tr = table1.getElementsByTagName("tr");
+			tr2 = table2.getElementsByTagName("tr");
+		  for (i = 0; i < tr.length; i++) {
+		    td = tr[i].getElementsByTagName("td")[0];
+		    if (td) {
+		      	txtValue = td.textContent || td.innerText;
+		      	if (txtValue.toUpperCase().indexOf(filter) > -1) {
+		        		tr[i].style.display = "";
+								tr2[i].style.display = "";
+		      	} else {
+		        	 tr[i].style.display = "none";
+							 tr2[i].style.display = "none";
+		      	}
+		    }
+		  }
+		}
+</script>
+<!--===============================================================================================-->
+	<script src="emp-db-js/main.js"></script>
+
+</body>
+</html>

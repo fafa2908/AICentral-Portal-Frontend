@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" type="text/css" href="css/side-nav.css">
+
+<style>
+.card-container{
+	margin-left:250px;
+}
+
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+  float:left;
+  margin-right: 100px;
+  margin-bottom:100px;
+}
+
+.title {
+  color: grey;
+  font-size: 17px;
+}
+
+.emp-name {
+  color: black;
+  font-size: 24px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #00Aede;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 15px;
+}
+
+a.card-social-icon {
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+
+#emp-deets{
+	text-decoration: none; 
+	font-size:24px;
+}
+
+#emp-deets:hover{
+	color:#009ac4;
+}
+
+a.dropdown-a-style{
+	font-size: 13px;
+}
+</style>
+</head>
+<body>
+
+
+	<!-- <div class="area" style="height:2%;"></div> -->
+	<div class="area"></div>
+	<nav class="main-menu">
+		<ul>
+			<li>
+				<a href="AICentral-index.html">
+					<i class="fa fa-home fa-2x"></i>
+					<span class="nav-text">
+						Home
+					</span>
+				</a>
+			</li>
+			<!-- Nav option that has drop-down -->
+			<span class="dropdown-nav">
+				<li class="has-subnav">
+					<a>
+						<a><i class="fa fa-users fa-2x"></i>
+						<span class="nav-text">
+							AI Team
+						</span></a>
+					</a> 
+					<div class="dropdown-container">
+						<a href="emp-profile-card.html" class="dropdown-a-style" id="dropdown-a">Employees</a>
+						<a href="#" class="dropdown-a-style" id="dropdown-a">Team Calendar</a>
+						<a href="#" class="dropdown-a-style" id="dropdown-a">Training % Certifications</a>
+				  </div>
+				</li>
+			</span>
+			
+			
+			<li class="has-subnav">
+				<a href="#">
+				   <i class="fa fa-list fa-2x"></i>
+					<span class="nav-text">
+						Utilization Dashboard
+					</span>
+				</a>
+				
+			</li>
+			<!-- Nav option that has drop-down -->
+			<span class="dropdown-nav">
+				<li class="has-subnav">
+					<a>
+						<a><i class="fa fa-money fa-2x"></i>
+						<span class="nav-text">
+							Demand Management
+						</span></a>
+					</a> 
+					<div class="dropdown-container">
+						<a href="emp-profile-card.html" class="dropdown-a-style" id="dropdown-a">Pre-sales</a>
+						<a href="#" class="dropdown-a-style" id="dropdown-a">Proposal</a> <!-- should be sub-menu to pre sales -->
+						<a href="#" class="dropdown-a-style"id="dropdown-a">Man Day Calculator</a> <!-- should be sub-menu to pre sales -->
+						<a href="#" class="dropdown-a-style"id="dropdown-a">Resource Management</a>
+				  </div>
+				</li>
+			</span>	
+			<li>
+				<a href="#">
+					<i class="fa fa-folder-open fa-2x"></i>
+					<span class="nav-text">
+					   Document Managemnet
+					</span>
+				</a>
+			</li>
+			<li>
+			   <a href="#">
+				   <i class="fa fa-line-chart fa-2x"></i>
+					<span class="nav-text">
+						Project Dashboard
+					</span>
+				</a>
+			</li>
+			<li>
+			   <a href="emp-profile-card.html">
+					<i class="fa fa-table fa-2x"></i>
+					<span class="nav-text">
+						IT Asset Management
+					</span>
+				</a>
+			</li>
+		</ul>
+
+		<!-- for profile and logout icon -->
+		<ul class="logout">
+			<li>
+			   <a href="#">
+					 <a href="user-profile.html" id="logout-profile-icon"><i class="fa fa-user-circle-o fa-2x"></i><span style="padding-left:3px;"> My Profile</span></a>
+					<span class="nav-text" style="color:rgba(110, 110, 110, 0.8);">
+					</span>
+				</a>
+			</li> 
+			<li>
+			   <a href="#">
+					 <a href="login.html" id="logout-profile-icon"><i class="fa fa-sign-out fa-2x"></i><span style="padding-left:3px;">Logout</span></a>
+					<span class="nav-text" style="color:rgba(110, 110, 110, 0.8);">
+					</span>
+				</a>
+			</li>  
+		</ul>
+	</nav>
+	<!-- end of side navigation bar section -->
+
+
+
+	<h2 class="w3-center w3-animate-top" style="color: black; font-size:50px;">AI DevOps Team Profile</h2>
+	 <hr style="margin:auto;width:20%;border-width:4px; border-color:#00aede; margin-bottom:100px;"> 
+	<div class="card-container">
+		<div class="card">
+		  <img src="https://image.shutterstock.com/image-photo/young-business-woman-on-gray-600w-1046054563.jpg" alt="John" style="width:100%">
+		  <h1 class="emp-name">Rose Adzreen bt Adnan</h1>
+		  <p class="title">Head AI DevOps</p>
+		  <p>V01180</p>
+		  <div style="margin: 24px 0;">
+			<a href="#" class="card-social-icon"><i class="fa fa-dribbble"></i></a> 
+			<a href="#" class="card-social-icon"><i class="fa fa-twitter"></i></a>  
+			<a href="#" class="card-social-icon"><i class="fa fa-linkedin"></i></a>  
+			<a href="#" class="card-social-icon"><i class="fa fa-facebook"></i></a> 
+		  </div>
+		  <p><button>Contact</button></p>
+		</div>
+
+		<div class="card">
+		  <img src="https://image.shutterstock.com/image-photo/headshot-portrait-beautiful-african-american-600w-1437938126.jpg" alt="John" style="width:100%">
+		  <h1 class="emp-name">Norhidayah bt Omar</h1>
+		  <p class="title">Mgr Analytics Consultant</p>
+		  <p>Harvard University</p>
+		  <div style="margin: 24px 0;">
+			<a href="#" class="card-social-icon"><i class="fa fa-dribbble"></i></a> 
+			<a href="#" class="card-social-icon"><i class="fa fa-twitter"></i></a>  
+			<a href="#"class="card-social-icon"><i class="fa fa-linkedin"></i></a>  
+			<a href="#" class="card-social-icon"><i class="fa fa-facebook"></i></a> 
+		  </div>
+		  <p><button>Contact</button></p>
+		</div>
+		
+		<div class="card">
+		  <img src="https://image.shutterstock.com/image-photo/cheerful-surprised-woman-hands-raised-600w-1473042914.jpg" alt="John" style="width:100%">
+		  <h1 class="emp-name"><a href="emp-details.html" id="emp-deets">Norman Sara bt Othman</a></h1>
+		  <p class="title">Asst. Mgr Data ML/Engineer</p>
+		  <p>Harvard University</p>
+		  <div style="margin: 24px 0;">
+			<a href="#"class="card-social-icon"><i class="fa fa-dribbble"></i></a> 
+			<a href="#" class="card-social-icon"><i class="fa fa-twitter"></i></a>  
+			<a href="#" class="card-social-icon"><i class="fa fa-linkedin"></i></a>  
+			<a href="#" class="card-social-icon"><i class="fa fa-facebook"></i></a> 
+		  </div>
+		  <p><button>Contact</button></p>
+		</div>
+		
+		<div class="card">
+		  <img src="https://image.shutterstock.com/image-photo/woman-short-hair-blue-clothes-600w-1125154613.jpg" alt="John" style="width:100%">
+		  <h1 class="emp-name">Fatin Afifah bt Adnan</h1>
+		  <p class="title">Asst. Mgr Data Analyst</p>
+		  <p>Harvard University</p>
+		  <div style="margin: 24px 0;">
+			<a href="#" class="card-social-icon"><i class="fa fa-dribbble"></i></a> 
+			<a href="#" class="card-social-icon"><i class="fa fa-twitter"></i></a>  
+			<a href="#"class="card-social-icon"><i class="fa fa-linkedin"></i></a>  
+			<a href="#" class="card-social-icon"><i class="fa fa-facebook"></i></a> 
+		  </div>
+		  <p><button>Contact</button></p>
+		</div>
+		
+		<div class="card">
+		  <img src="https://image.shutterstock.com/image-photo/closeup-happy-young-asian-manager-600w-1215797716.jpg" alt="John" style="width:100%">
+		  <h1 class="emp-name">Qistina Batrisyia</h1>
+		  <p class="title">Asst. Mgr Data Engineer</p>
+		  <p>Harvard University</p>
+		  <div style="margin: 24px 0;">
+			<a href="#" class="card-social-icon"><i class="fa fa-dribbble"></i></a> 
+			<a href="#" class="card-social-icon"><i class="fa fa-twitter"></i></a>  
+			<a href="#"class="card-social-icon"><i class="fa fa-linkedin"></i></a>  
+			<a href="#" class="card-social-icon"><i class="fa fa-facebook"></i></a> 
+		  </div>
+		  <p><button>Contact</button></p>
+		</div>
+		
+		<div class="card">
+		  <img src="https://image.shutterstock.com/image-photo/young-confident-successful-beautiful-business-600w-421160059.jpg" alt="John" style="width:100%">
+		  <h1 class="emp-name">Shamniza Azreen</h1>
+		  <p class="title">Asst. Mgr Data Analyst</p>
+		  <p>Harvard University</p>
+		  <div style="margin: 24px 0;">
+			<a href="#" class="card-social-icon"><i class="fa fa-dribbble"></i></a> 
+			<a href="#" class="card-social-icon"><i class="fa fa-twitter"></i></a>  
+			<a href="#"class="card-social-icon"><i class="fa fa-linkedin"></i></a>  
+			<a href="#" class="card-social-icon"><i class="fa fa-facebook"></i></a> 
+		  </div>
+		  <p><button>Contact</button></p>
+		</div>
+		
+		<div class="card">
+		  <img src="https://image.shutterstock.com/image-photo/portrait-businessman-serious-face-isolated-600w-562235227.jpg" alt="John" style="width:100%">
+		  <h1 class="emp-name">Wan Muhd Haziq Azhari</h1>
+		  <p class="title">Asst. Mgr Data Analyst</p>
+		  <p>Harvard University</p>
+		  <div style="margin: 24px 0;">
+			<a href="#" class="card-social-icon"><i class="fa fa-dribbble"></i></a> 
+			<a href="#" class="card-social-icon"><i class="fa fa-twitter"></i></a>  
+			<a href="#"class="card-social-icon"><i class="fa fa-linkedin"></i></a>  
+			<a href="#" class="card-social-icon"><i class="fa fa-facebook"></i></a> 
+		  </div>
+		  <p><button>Contact</button></p>
+		</div>
+		
+
+
+		 <div class="card">
+		  <img src="https://image.shutterstock.com/image-photo/portrait-young-beautiful-girl-glasses-600w-442533265.jpg" alt="John" style="width:100%">
+		  <h1 class="emp-name">Agileswari</h1>
+		  <p class="title">Asst. Mgr Data Analyst</p>
+		  <p>Harvard University</p>
+		  <div style="margin: 24px 0;">
+			<a href="#" class="card-social-icon"><i class="fa fa-dribbble"></i></a> 
+			<a href="#" class="card-social-icon"><i class="fa fa-twitter"></i></a>  
+			<a href="#" class="card-social-icon"><i class="fa fa-linkedin"></i></a>  
+			<a href="#" class="card-social-icon"><i class="fa fa-facebook"></i></a> 
+		 </div>
+		 <p><button>Contact</button></p>
+		</div>
+ 
+	    <div class="card">
+		  <img src="https://image.shutterstock.com/image-photo/close-studio-portrait-shy-awkward-600w-1861548139.jpg" alt="John" style="width:100%">
+		  <h1 class="emp-name">Suzila bt Mohamad</h1>
+		  <p class="title">Asst. Mgr Data Analyst</p>
+		  <p>Harvard University</p>
+		  <div style="margin: 24px 0;">
+			<a href="#" class="card-social-icon"><i class="fa fa-dribbble"></i></a> 
+			<a href="#" class="card-social-icon"><i class="fa fa-twitter"></i></a>  
+			<a href="#" class="card-social-icon"><i class="fa fa-linkedin"></i></a>  
+			<a href="#" class="card-social-icon"><i class="fa fa-facebook"></i></a> 
+		 </div>
+		 <p><button>Contact</button></p>
+		</div>
+		
+		
+		 <div class="card">
+		  <img src="https://image.shutterstock.com/image-photo/close-portrait-beautiful-smiling-young-600w-705450886.jpg" alt="John" style="width:100%">
+		  <h1 class="emp-name">Saradiana bt Ya'acob</h1>
+		  <p class="title">Reporting Analyst</p>
+		  <p>Harvard University</p>
+		  <div style="margin: 24px 0;">
+			<a href="#" class="card-social-icon"><i class="fa fa-dribbble"></i></a> 
+			<a href="#" class="card-social-icon"><i class="fa fa-twitter"></i></a>  
+			<a href="#" class="card-social-icon"><i class="fa fa-linkedin"></i></a>  
+			<a href="#" class="card-social-icon"><i class="fa fa-facebook"></i></a> 
+		 </div>
+		 <p><button>Contact</button></p>
+		</div>
+ 
+		 <div class="card">
+			  <img src="https://image.shutterstock.com/image-photo/young-bearded-man-portrait-blue-600w-1164933391.jpg" alt="John" style="width:100%">
+			  <h1 class="emp-name">Long Ahmad</h1>
+			  <p class="title">Mgr Visualisation Specialist</p>
+			  <p>Harvard University</p>
+			  <div style="margin: 24px 0;">
+				<a href="#" class="card-social-icon"><i class="fa fa-dribbble"></i></a> 
+				<a href="#" class="card-social-icon"><i class="fa fa-twitter"></i></a>  
+				<a href="#" class="card-social-icon"><i class="fa fa-linkedin"></i></a>  
+				<a href="#" class="card-social-icon"><i class="fa fa-facebook"></i></a> 
+			 </div>
+			 <p><button>Contact</button></p>
+		</div>
+		
+		
+		<div class="card">
+		  <img src="https://image.shutterstock.com/image-photo/portrait-young-female-wearing-glasses-600w-1904897965.jpg" alt="John" style="width:100%">
+		  <h1 class="emp-name">Ainil Husna bt Azmi</h1>
+		  <p class="title">Asst. Mgr Data Analyst</p>
+		  <p>Harvard University</p>
+		  <div style="margin: 24px 0;">
+			<a href="#"class="card-social-icon"><i class="fa fa-dribbble"></i></a> 
+			<a href="#"class="card-social-icon"><i class="fa fa-twitter"></i></a>  
+			<a href="#" class="card-social-icon"><i class="fa fa-linkedin"></i></a>  
+			<a href="#" class="card-social-icon"><i class="fa fa-facebook"></i></a> 
+			</div>
+		  <p><button>Contact</button></p>
+		</div>
+		
+		<div class="card">
+		  <img src="https://image.shutterstock.com/image-photo/young-woman-glasses-looks-camera-600w-699437764.jpg" alt="John" style="width:100%">
+		  <h1 class="emp-name">Nurhusnani</h1>
+		  <p class="title">TM Elite</p>
+		  <p>Harvard University</p>
+		  <div style="margin: 24px 0;">
+			<a href="#"class="card-social-icon"><i class="fa fa-dribbble"></i></a> 
+			<a href="#"class="card-social-icon"><i class="fa fa-twitter"></i></a>  
+			<a href="#" class="card-social-icon"><i class="fa fa-linkedin"></i></a>  
+			<a href="#" class="card-social-icon"><i class="fa fa-facebook"></i></a> 
+			</div>
+		  <p><button>Contact</button></p>
+		</div>
+
+		 <div class="card">
+		  <img src="https://image.shutterstock.com/image-photo/woman-glasses-600w-1014532018.jpg" alt="John" style="width:100%">
+		  <h1 class="emp-name">Fakhirah Shamsul</h1>
+		  <p class="title" style="font-size:15px; margin-bottom:20px;">Asst. Mgr Data Platform Frontend Analyst</p>
+		  <p>Harvard University</p>
+		  <div style="margin: 24px 0;">
+			<a href="#" class="card-social-icon"><i class="fa fa-dribbble"></i></a> 
+			<a href="#" class="card-social-icon"><i class="fa fa-twitter"></i></a>  
+			<a href="#" class="card-social-icon"><i class="fa fa-linkedin"></i></a>  
+			<a href="#" class="card-social-icon"><i class="fa fa-facebook"></i></a> 
+		 </div>
+		 <p><button>Contact</button></p>
+		</div>
+		
+		<div class="card">
+			  <img src="https://image.shutterstock.com/image-photo/portrait-young-attractive-guy-glasses-600w-1115101304.jpg" alt="John" style="width:100%">
+			  <h1 class="emp-name">Teo Sheng Pu</h1>
+			  <p class="title">TM Elite</p>
+			  <p>Harvard University</p>
+			  <div style="margin: 24px 0;">
+				<a href="#" class="card-social-icon"><i class="fa fa-dribbble"></i></a> 
+				<a href="#" class="card-social-icon"><i class="fa fa-twitter"></i></a>  
+				<a href="#" class="card-social-icon"><i class="fa fa-linkedin"></i></a>  
+				<a href="#" class="card-social-icon"><i class="fa fa-facebook"></i></a> 
+			 </div>
+			 <p><button>Contact</button></p>
+		</div>
+		
+		
+		 <div class="card">
+		  <img src="https://image.shutterstock.com/image-photo/cute-flirty-woman-glasses-winking-600w-1831181134.jpg" alt="John" style="width:100%">
+		  <h1 class="emp-name">Hanna bt Dahlan</h1>
+		  <p class="title">TM Elite</p>
+		  <p>Harvard University</p>
+		  <div style="margin: 24px 0;">
+			<a href="#" class="card-social-icon"><i class="fa fa-dribbble"></i></a> 
+			<a href="#" class="card-social-icon"><i class="fa fa-twitter"></i></a>  
+			<a href="#" class="card-social-icon"><i class="fa fa-linkedin"></i></a>  
+			<a href="#" class="card-social-icon"><i class="fa fa-facebook"></i></a> 
+		 </div>
+		 <p><button>Contact</button></p>
+		</div>
+	</div>
+ 
+</body>
+</html>
