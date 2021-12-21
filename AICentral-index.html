@@ -3,136 +3,134 @@
 <title>AI Central</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- stylesheet For icon -->
+<!-- stylesheets-->
+<!-- for icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 <!-- stylesheet for most of the w3 class -->
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!-- for font -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<!-- style for the side navigation bar -->
 <link rel="stylesheet" href="css/side-nav.css">
-<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-
 <style>
     body,h1 {font-family: "Raleway", sans-serif}
     body, html {height: 100%; overflow:hidden;}
     .bgimg {
-		  background-image: url('images/index-neural-network.png');
-		  height: 100%;
-		  background-position: center;
-		  background-size: cover;
+	  background-image: url('images/index-neural-network.png');
+	  height: 100%;
+	  background-position: center;
+	  background-size: cover;
     }
 </style>
 
 
 <body>
-
-		<div class="area"></div>
-		<nav class="main-menu">
-            <ul>
-                <li>
-                    <a>
-                        <i class="fa fa-home fa-2x"></i>
-                        <span class="nav-text">
-                            Home
-                        </span>
-                    </a>
-                </li>
-				<!-- Nav option that has drop-down -->
-				<span class="dropdown-nav">
-					<li class="has-subnav">
-						<a>
-							<a><i class="fa fa-users fa-2x"></i>
-							<span class="nav-text">
-								AI Team
-							</span></a>
-						</a> 
-						<div class="dropdown-container">
-							<a href="emp-profile-card.html" id="dropdown-a">Employees</a>
-							<a href="#" id="dropdown-a">Team Calendar</a>
-							<a href="#" id="dropdown-a">Training % Certifications</a>
-					  </div>
-					</li>
-				</span>
-				
-				
-                <li class="has-subnav">
-                    <a href="#">
-                       <i class="fa fa-list fa-2x"></i>
-                        <span class="nav-text">
-                            Utilization Dashboard
-                        </span>
-                    </a>
-                    
-                </li>
-				<!-- Nav option that has drop-down -->
-				<span class="dropdown-nav">
-					<li class="has-subnav">
-						<a>
-							<a><i class="fa fa-money fa-2x"></i>
-							<span class="nav-text">
-								Demand Management
-							</span></a>
-						</a> 
-						<div class="dropdown-container">
-							<a href="emp-profile-card.html" id="dropdown-a">Pre-sales</a>
-							<a href="#" id="dropdown-a">Proposal</a> <!-- should be sub-menu to pre sales -->
-							<a href="#" id="dropdown-a">Man Day Calculator</a> <!-- should be sub-menu to pre sales -->
-							<a href="#" id="dropdown-a">Resource Management</a>
-					  </div>
-					</li>
-				</span>	
-                <li>
-                    <a href="#">
-                        <i class="fa fa-folder-open fa-2x"></i>
-                        <span class="nav-text">
-                           Document Managemnet
-                        </span>
-                    </a>
-                </li>
-                <li>
-                   <a href="#">
-                       <i class="fa fa-line-chart fa-2x"></i>
-                        <span class="nav-text">
-                            Project Dashboard
-                        </span>
-                    </a>
-                </li>
-                <li>
-                   <a href="emp-profile-card.html">
-                        <i class="fa fa-table fa-2x"></i>
-                        <span class="nav-text">
-                            IT Asset Management
-                        </span>
-                    </a>
-                </li>
-            </ul>
-			<!-- for profile and logout icon -->
-			<ul class="logout">
-				<li>
-                   <a href="#">
-                         <a href="user-profile.html" id="logout-profile-icon"><i  class="fa fa-user-circle-o fa-2x"></i> My Profile</a>
-                        <span class="nav-text" style="color:rgba(110, 110, 110, 0.8);">
-                        </span>
-                    </a>
-                </li> 
-                <li>
-                   <a href="#">
-                         <a href="login.html" id="logout-profile-icon"><i class="fa fa-sign-out fa-2x"></i> Logout </a>
-                        <span class="nav-text" style="color:rgba(110, 110, 110, 0.8);">
-                        </span>
-                    </a>
-                </li>  
-            </ul>
-        </nav>
+	<!-- Start of side navigation bar section -->
+	<nav class="main-menu">
+		<ul>
+		<li>
+			<a>
+			<i class="fa fa-home fa-2x"></i>
+			<span class="nav-text">
+				Home
+			</span>
+			</a>
+		</li>
+		<!-- Nav option that has drop-down -->
+		<span class="dropdown-nav">
+			<li class="has-subnav">
+				<a>
+				<a><i class="fa fa-users fa-2x"></i>
+				<span class="nav-text">
+					AI Team
+				</span></a>
+				</a> 
+				<!-- dropdown content -->
+				<div class="dropdown-container">
+				<a href="emp-profile-card.html" id="dropdown-a">Employees</a>
+				<a href="#" id="dropdown-a">Team Calendar</a>
+				<a href="#" id="dropdown-a">Training % Certifications</a>
+			  </div>
+			</li>
+		</span>
+		<li class="has-subnav">
+			<a href="#">
+		   <i class="fa fa-list fa-2x"></i>
+			<span class="nav-text">
+				Utilization Dashboard
+			</span>
+			</a>	
+		</li>
+		<!-- Nav option that has drop-down -->
+		<span class="dropdown-nav">
+			<li class="has-subnav">
+				<a>
+				<a><i class="fa fa-money fa-2x"></i>
+				<span class="nav-text">
+					Demand Management
+				</span></a>
+				</a> 
+				<!-- dropdown content -->
+				<div class="dropdown-container">
+				<a href="emp-profile-card.html" id="dropdown-a">Pre-sales</a>
+				<a href="#" id="dropdown-a">Proposal</a> <!-- should be sub-menu to pre sales -->
+				<a href="#" id="dropdown-a">Man Day Calculator</a> <!-- should be sub-menu to pre sales -->
+				<a href="#" id="dropdown-a">Resource Management</a>
+			  </div>
+			</li>
+		</span>	
+		<li>
+			<a href="#">
+			<i class="fa fa-folder-open fa-2x"></i>
+			<span class="nav-text">
+			   Document Managemnet
+			</span>
+			</a>
+		</li>
+		<li>
+		   <a href="#">
+		   <i class="fa fa-line-chart fa-2x"></i>
+			<span class="nav-text">
+				Project Dashboard
+			</span>
+			</a>
+		</li>
+		<li>
+		   <a href="emp-profile-card.html">
+			<i class="fa fa-table fa-2x"></i>
+			<span class="nav-text">
+				IT Asset Management
+			</span>
+			</a>
+		</li>
+		</ul>
+		<!-- for profile and logout icon -->
+		<ul class="logout"> <!-- create new list -->
+		<li>
+		   <a href="#">
+			<a href="user-profile.html" id="logout-profile-icon"><i  class="fa fa-user-circle-o fa-2x"></i> My Profile</a>
+			<span class="nav-text" style="color:rgba(110, 110, 110, 0.8);"></span>
+			</a>
+		</li> 
+		<li>
+		   <a href="#">
+			 <a href="login.html" id="logout-profile-icon"><i class="fa fa-sign-out fa-2x"></i> Logout </a>
+			<span class="nav-text" style="color:rgba(110, 110, 110, 0.8);"></span>
+			</a>
+		</li>  
+		</ul>
+	</nav>
 	<!-- end of side navigation bar section -->
   
+  
   <!-- Displaying the text (title) -->
-  <!--<div class="bgimg w3-display-container w3-animate-opacity w3-text-white">--> <!-- THIS THING CAUSES THE DROPDOWN TO BE OVERLAPPED -->
-  <div class="bgimg">
-    <div class="w3-display-middle">
-      <h1 class="w3-jumbo w3-animate-top" style="color: black;">TM ONE AI DevOps</h1>
-      <hr style="margin:auto;width:70%;border-width:4px; border-color:#00aede"> <!-- Border below the text  (orange color code: #ffb11f)-->
-    </div>
-  </div>
+	<div class="bgimg"> <!-- background image for the page -->
+		<div class="w3-display-middle">
+		  <h1 class="w3-jumbo w3-animate-top" style="color: black;">TM ONE AI DevOps</h1>
+		  <hr style="margin:auto;width:70%;border-width:4px; border-color:#00aede"> <!-- Border below the text  (orange color code: #ffb11f)-->
+		</div>
+	</div>
 	
 </body>
 </html>
