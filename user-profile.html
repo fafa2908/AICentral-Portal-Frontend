@@ -1,24 +1,21 @@
-
 <!DOCTYPE html>
 <html>
 <title> AI Central </title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <head>
-    <meta charset="utf-8">
-    <!--  This file has been downloaded from bootdey.com @bootdey on twitter -->
-    <!--  All snippets are MIT license http://bootdey.com/license -->
-    <title>profile with data and skills - Bootdey.com</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="css/user-profile-style.css">
-	<link rel="stylesheet" href="css/side-nav.css">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
+<!--  This file has been downloaded from bootdey.com @bootdey on twitter -->
+<!--  All snippets are MIT license http://bootdey.com/license -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- stylesheet for side nav bar and user profile page-->
+<link rel="stylesheet" href="css/side-nav.css">
+<link rel="stylesheet" href="css/user-profile-style.css">
+<!-- link to external bootstrap script -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
-
 <style>
-	
 	.avatar-cont {
 		position:relative;
 	}
@@ -27,7 +24,7 @@
 		backface-visibility: hidden;
 		height: auto;
 	}
-	
+
 	.middle {
 	  transition: .5s ease;
 	  opacity: 0;
@@ -54,7 +51,7 @@
 	  font-size: 15px;
 	  padding: 8px 10px;
 	}
-	
+
 	#edit-button {
 		font-size: 15px;
 		padding: 3px 15px;
@@ -67,26 +64,21 @@
 
 <body>
 
-	<!-- Start of side navigation bar -->
-	<div class="area"></div>
+	<!-- the start of side navigation bar -->
 	<nav class="main-menu">
 		<ul>
 			<li>
 				<a href="AICentral-index.html">
-					<i class="fa fa-home fa-2x"></i>
-					<span class="nav-text">
-						Home
-					</span>
+				<i class="fa fa-home fa-2x"></i>
+				<span class="nav-text"> Home </span>
 				</a>
 			</li>
 			<!-- Nav option that has drop-down -->
 			<span class="dropdown-nav">
 				<li class="has-subnav">
 					<a>
-						<a><i class="fa fa-users fa-2x"></i>
-						<span class="nav-text">
-							AI Team
-						</span></a>
+					<a><i class="fa fa-users fa-2x"></i>
+					<span class="nav-text"> AI Team </span></a>
 					</a> 
 					<div class="dropdown-container">
 						<a href="emp-profile-card.html" class="dropdown-a-style" id="dropdown-a">Employees</a>
@@ -95,25 +87,18 @@
 				  </div>
 				</li>
 			</span>
-			
-			
 			<li class="has-subnav">
 				<a href="#">
-				   <i class="fa fa-list fa-2x"></i>
-					<span class="nav-text">
-						Utilization Dashboard
-					</span>
+					<i class="fa fa-list fa-2x"></i>
+					<span class="nav-text"> Utilization Dashboard </span>
 				</a>
-				
 			</li>
 			<!-- Nav option that has drop-down -->
 			<span class="dropdown-nav">
 				<li class="has-subnav">
 					<a>
 						<a><i class="fa fa-money fa-2x"></i>
-						<span class="nav-text">
-							Demand Management
-						</span></a>
+						<span class="nav-text"> Demand Management </span></a>
 					</a> 
 					<div class="dropdown-container">
 						<a href="emp-profile-card.html" class="dropdown-a-style" id="dropdown-a">Pre-sales</a>
@@ -125,55 +110,45 @@
 			</span>	
 			<li>
 				<a href="#">
-					<i class="fa fa-folder-open fa-2x"></i>
-					<span class="nav-text">
-					   Document Managemnet
-					</span>
+				<i class="fa fa-folder-open fa-2x"></i>
+				<span class="nav-text"> Document Managemnet </span>
 				</a>
 			</li>
 			<li>
 			   <a href="#">
-				   <i class="fa fa-line-chart fa-2x"></i>
-					<span class="nav-text">
-						Project Dashboard
-					</span>
+			    <i class="fa fa-line-chart fa-2x"></i>
+				<span class="nav-text"> Project Dashboard </span>
 				</a>
 			</li>
 			<li>
 			   <a href="emp-profile-card.html">
-					<i class="fa fa-table fa-2x"></i>
-					<span class="nav-text">
-						IT Asset Management
-					</span>
+				<i class="fa fa-table fa-2x"></i>
+				<span class="nav-text"> IT Asset Management </span>
 				</a>
 			</li>
 		</ul>
-
 		<!-- for profile and logout icon -->
 		<ul class="logout">
 			<li>
 			   <a href="#">
-					 <a href="login.html" id="logout-profile-icon"><i class="fa fa-user-circle-o fa-2x"></i><span style="padding-left:3px;"> My Profile</span></a>
-					<span class="nav-text" style="color:rgba(110, 110, 110, 0.8);">
-					</span>
+					<a href="user-profile.html" id="logout-profile-icon"><i class="fa fa-user-circle-o fa-2x"></i><span style="padding-left:3px;"> My Profile</span></a>
+					<span class="nav-text" style="color:rgba(110, 110, 110, 0.8);"></span>
 				</a>
 			</li> 
 			<li>
 			   <a href="#">
-					 <a href="login.html" id="logout-profile-icon"><i class="fa fa-sign-out fa-2x"></i><span style="padding-left:3px;">Logout</span></a>
-					<span class="nav-text" style="color:rgba(110, 110, 110, 0.8);">
-					</span>
+					<a href="login.html" id="logout-profile-icon"><i class="fa fa-sign-out fa-2x"></i><span style="padding-left:3px;">Logout</span></a>
+					<span class="nav-text" style="color:rgba(110, 110, 110, 0.8);"></span>
 				</a>
 			</li>  
 		</ul>
 	</nav>
 	<!-- end of side navigation bar section -->
-	
+
+	<!-- the start of user profile page section -->
 	<div class="container">
 		<div class="main-body">
-		
-
-		
+	
 			  <div class="row gutters-sm">
 				<div class="col-md-4 mb-3">
 				  <div class="card">
@@ -329,13 +304,9 @@
 					  </div>
 					</div>
 				  </div>
-
-
-
 				</div>
 			  </div>
-
-			</div>
+		</div>
 	</div>
 </body>
 </html>
