@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+<title>AI Central</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- stylesheets-->
+<!-- for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+<!-- stylesheet for most of the w3 class -->
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!-- for font -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<!-- style for the side navigation bar -->
+<link rel="stylesheet" href="css/side-nav.css">
+<style>
+    body,h1 {font-family: "Raleway", sans-serif}
+    body, html {height: 100%;}
+    .bgimg {
+	  background-image: url('images/index-neural-network.png');
+	  height: 100%;
+	  background-position: center;
+	  background-size: cover;
+    }
+	
+	
+	/* source: https://codepen.io/florantara/pen/dROvdb */
+	*{
+		box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+	}
+
+	/* Table Styles */
+	.table-wrapper{
+		margin: 10px 70px 70px 0px;
+	}
+
+	.fl-table {
+		border-radius: 5px;
+		font-size: 12px;
+		font-weight: normal;
+		border: none;
+		border-collapse: collapse;
+		width: 100%;
+		max-width: 100%;
+		white-space: nowrap;
+		background-color: white;
+	}
+
+	.fl-table td, .fl-table th {
+		padding: 3px;
+	}
+
+	.fl-table td {
+		border-right: 1px solid #f8f8f8;
+		font-size: 12px;
+	}
+
+	.fl-table thead th {
+		color: #ffffff;
+		background: #00aede;
+	}
+
+
+	.fl-table thead th:nth-child(odd) {
+		color: #ffffff;
+		background: #324960;
+	}
+
+	.fl-table tr:nth-child(even) {
+		background: #F8F8F8;
+	}
+	
+	#t-details{
+	text-align: right;
+	padding-right:10px;
+	}
+	
+	.add-icon {
+		font-size:14px; 
+		float:right; 
+		padding-right:70px; 
+		text-decoration:none;
+	}
+	
+	.add-icon:hover {
+		color: #00aede;
+	}
+
+</style>
+
+
+<body>
+	<!-- Start of side navigation bar section -->
+	<nav class="main-menu">
+		<ul>
+		<li>
+			<a>
+			<i class="fa fa-home fa-2x"></i>
+			<span class="nav-text">
+				Home
+			</span>
+			</a>
+		</li>
+		<!-- Nav option that has drop-down -->
+		<span class="dropdown-nav">
+			<li class="has-subnav">
+				<a>
+				<a><i class="fa fa-users fa-2x"></i>
+				<span class="nav-text">
+					AI Team
+				</span></a>
+				</a> 
+				<!-- dropdown content -->
+				<div class="dropdown-container">
+					<a href="emp-profile-card.html" id="dropdown-a">Employees</a>
+					<a href="team-calendar.html" id="dropdown-a">Team Calendar</a>
+					<a href="training-cert.html" id="dropdown-a">Skillset</a>
+				</div>
+			</li>
+		</span>
+		<li class="has-subnav">
+			<a href="#">
+		   <i class="fa fa-list fa-2x"></i>
+			<span class="nav-text">
+				Utilization Dashboard
+			</span>
+			</a>	
+		</li>
+		<!-- Nav option that has drop-down -->
+		<span class="dropdown-nav">
+			<li class="has-subnav">
+				<a>
+				<a><i class="fa fa-money fa-2x"></i>
+				<span class="nav-text">
+					Demand Management
+				</span></a>
+				</a> 
+				<!-- dropdown content -->
+				<div class="dropdown-container">
+					<a href="emp-profile-card.html" id="dropdown-a">Pre-sales</a>
+					<a href="#" id="dropdown-a">Proposal</a> <!-- should be sub-menu to pre sales -->
+					<a href="#" id="dropdown-a">Man Day Calculator</a> <!-- should be sub-menu to pre sales -->
+					<a href="#" id="dropdown-a">Resource Management</a>
+			  </div>
+			</li>
+		</span>	
+		<li>
+			<a href="doc-management.html">
+			<i class="fa fa-folder-open fa-2x"></i>
+			<span class="nav-text">
+			   Document Managemnet
+			</span>
+			</a>
+		</li>
+		<li>
+		   <a href="#">
+		   <i class="fa fa-line-chart fa-2x"></i>
+			<span class="nav-text">
+				Project Dashboard
+			</span>
+			</a>
+		</li>
+		<li>
+		   <a href="emp-profile-card.html">
+			<i class="fa fa-table fa-2x"></i>
+			<span class="nav-text">
+				IT Asset Management
+			</span>
+			</a>
+		</li>
+		</ul>
+		<!-- for profile and logout icon -->
+		<ul class="logout"> <!-- create new list -->
+		<li>
+			<a href="user-profile.html">
+			<i class="fa fa-user fa-2x"></i>
+			<span class="nav-text">
+				My Profile
+			</span>
+			</a>
+		</li> 
+		<li>
+			<a href="login.html">
+			<i class="fa fa-sign-out fa-2x"></i>
+			<span class="nav-text">
+				Logout
+			</span>
+			</a>
+		</li>
+		</ul>
+	</nav>
+	<!-- end of side navigation bar section -->
+  
+  
+  <!-- Displaying the text (title) -->
+	<h2 class="w3-center w3-animate-top" style="color: black; font-size:35px;padding-bottom:2px;"> Automation & Machine Learning </h2>
+	 <hr style="margin:auto;width:20%;border-width:4px; border-color:#00aede; margin-bottom:100px;"> 
+	
+	<div style=" padding-left:100px;">
+		<h3 style="color: black; font-size:25px; float:left;"> Python ML </h3>
+		<a class="add-icon" href="#"><i class="fa fa-plus"></i></a>
+		<div class="table-wrapper">
+			<table class="fl-table">
+				<thead>
+				<tr>
+					<th style="background-color: #fefefe;">Name</th>
+					<th style="background-color: #fefefe; padding-right:130px;">Level</th>
+					<th id="t-details">Training Title</th>
+					<th id="t-details">Exam Name</th>
+					<th id="t-details">Status</th>
+					<th id="t-details">Year</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>Qistina Batrisyia</td>
+					<td style="padding-right:130px;">Level 1</td>
+					<td id="t-details">Python ML | Fundamental</td>
+					<td id="t-details">Python for Data Science</td>
+					<td id="t-details">Complete</td>
+					<td id="t-details">2020</td>
+				</tr>
+				<tr>
+					<td>Fatin Afifah</td>
+					<td style="padding-right:130px;">Level 1</td>
+					<td id="t-details">Python ML | Fundamental</td>
+					<td id="t-details">Python for Data Science</td>
+					<td id="t-details">Pending Exam</td>
+					<td id="t-details">2021</td>
+				</tr>
+				<tr>
+					<td>Ainil Husna</td>
+					<td style="padding-right:130px;">Level 1</td>
+					<td id="t-details">Python ML | Fundamental</td>
+					<td id="t-details">Python ML Associate</td>
+					<td id="t-details">Pending Exam</td>
+					<td id="t-details">2021</td>
+				</tr>
+				<tr>
+					<td>Teo Sheng Pu</td>
+					<td style="padding-right:130px;">Level 1</td>
+					<td id="t-details">Python ML | Fundamental</td>
+					<td id="t-details">Python for Data Science</td>
+					<td id="t-details">Ongoing</td>
+					<td id="t-details">2022</td>
+				</tr>
+				<tbody>
+			</table>
+		</div>
+	</div>
+	
+	<div style=" padding-left:100px;">
+		<h3 style="color: black; font-size:25px;"> Google ML Cloud </h3>
+		<div class="table-wrapper">
+			<table class="fl-table">
+				<thead>
+				<tr>
+					<th>Name</th>
+					<th>Level</th>
+					<th>Status</th>
+					<th>Certificate</th>
+					<th>Year</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>Qistina Batrisyia</td>
+					<td>Level 1</td>
+					<td>Complete</td>
+					<td>click here</td>
+					<td>2020</td>
+				</tr>
+				<tr>
+					<td>Norman Sara</td>
+					<td>Level 1</td>
+					<td>Complete</td>
+					<td>No certificate</td>
+					<td>2021</td>
+				</tr>
+				<tbody>
+			</table>
+		</div>
+	</div>
+	
+	<div style=" padding-left:100px;">
+		<h3 style="color: black; font-size:25px;"> Azure ML </h3>
+		<div class="table-wrapper">
+			<table class="fl-table">
+				<thead>
+				<tr>
+					<th>Name</th>
+					<th>Level</th>
+					<th>Status</th>
+					<th>Certificate</th>
+					<th>Year</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>Qistina Batrisyia</td>
+					<td>Level 1</td>
+					<td>Complete</td>
+					<td>click here</td>
+					<td>2020</td>
+				</tr>
+				<tbody>
+			</table>
+		</div>
+	</div>
+	
+	<div style=" padding-left:100px;">
+		<h3 style="color: black; font-size:25px;"> POWER AUTOMATE </h3>
+		<div class="table-wrapper">
+			<table class="fl-table">
+				<thead>
+				<tr>
+					<th>Name</th>
+					<th>Level</th>
+					<th>Status</th>
+					<th>Certificate</th>
+					<th>Year</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>Qistina Batrisyia</td>
+					<td>Level 1</td>
+					<td>Complete</td>
+					<td>click here</td>
+					<td>2020</td>
+				</tr>
+				<tbody>
+			</table>
+		</div>
+	</div>
+	
+		
+	<div style=" padding-left:100px;">
+		<h3 style="color: black; font-size:25px;"> Tensor Flow </h3>
+		<p> No Record </p>
+	</div>
+	<div style=" padding-left:100px;">
+		<h3 style="color: black; font-size:25px;"> Google ML Kit </h3>
+		<p> No Record </p>
+	</div>
+	
+	<br/>
+	<br/>
+	<br/>
+	
+	
+</body>
+</html>
