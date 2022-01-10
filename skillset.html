@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://kit.fontawesome.com/bdd89edb33.js"></script>
+    <link rel="stylesheet" href="css/style.css" />
+	<link rel="stylesheet" href="index3.css">
+	<!-- style for the side navigation bar -->
+	<link rel="stylesheet" type="text/css" href="css/side-nav.css">
+    <title>AI Central</title>
+  </head>
+  
+  <body>
+  
+  	<!-- the start of side navigation bar -->
+	<nav class="main-menu">
+		<ul>
+			<li>
+				<a href="AICentral-index.html">
+				<i class="fa fa-home fa-2x"></i>
+				<span class="nav-text"> Home </span>
+				</a>
+			</li>
+			<!-- Nav option that has drop-down -->
+			<span class="dropdown-nav">
+				<li class="has-subnav">
+					<a>
+					<a><i class="fa fa-users fa-2x"></i>
+					<span class="nav-text"> AI Team </span></a>
+					</a> 
+					<div class="dropdown-container">
+						<a href="emp-profile-card.html" class="dropdown-a-style" id="dropdown-a">Employees</a>
+						<a href="team-calendar.html" class="dropdown-a-style" id="dropdown-a">Team Calendar</a>
+						<a href="#" class="dropdown-a-style" id="dropdown-a">Training % Certifications</a>
+				  </div>
+				</li>
+			</span>
+			<li class="has-subnav">
+				<a href="#">
+					<i class="fa fa-list fa-2x"></i>
+					<span class="nav-text"> Utilization Dashboard </span>
+				</a>
+			</li>
+			<!-- Nav option that has drop-down -->
+			<span class="dropdown-nav">
+				<li class="has-subnav">
+					<a>
+						<a><i class="fa fa-money fa-2x"></i>
+						<span class="nav-text"> Demand Management </span></a>
+					</a> 
+					<div class="dropdown-container">
+						<a href="emp-profile-card.html" class="dropdown-a-style" id="dropdown-a">Pre-sales</a>
+						<a href="#" class="dropdown-a-style" id="dropdown-a">Proposal</a> <!-- should be sub-menu to pre sales -->
+						<a href="#" class="dropdown-a-style"id="dropdown-a">Man Day Calculator</a> <!-- should be sub-menu to pre sales -->
+						<a href="#" class="dropdown-a-style"id="dropdown-a">Resource Management</a>
+				  </div>
+				</li>
+			</span>	
+			<li>
+				<a href="doc-management.html">
+				<i class="fa fa-folder-open fa-2x"></i>
+				<span class="nav-text"> Document Managemnet </span>
+				</a>
+			</li>
+			<li>
+			   <a href="#">
+			    <i class="fa fa-line-chart fa-2x"></i>
+				<span class="nav-text"> Project Dashboard </span>
+				</a>
+			</li>
+			<li>
+			   <a href="emp-profile-card.html">
+				<i class="fa fa-table fa-2x"></i>
+				<span class="nav-text"> IT Asset Management </span>
+				</a>
+			</li>
+		</ul>
+		<!-- for profile and logout icon -->
+		<ul class="logout">
+			<li>
+			   <a href="#">
+					<a href="user-profile.html" id="logout-profile-icon"><i class="fa fa-user-circle-o fa-2x"></i><span style="padding-left:3px;"> My Profile</span></a>
+					<span class="nav-text" style="color:rgba(110, 110, 110, 0.8);"></span>
+				</a>
+			</li> 
+			<li>
+			   <a href="#">
+					<a href="login.html" id="logout-profile-icon"><i class="fa fa-sign-out fa-2x"></i><span style="padding-left:3px;">Logout</span></a>
+					<span class="nav-text" style="color:rgba(110, 110, 110, 0.8);"></span>
+				</a>
+			</li>  
+		</ul>
+	</nav>
+	<!-- end of side navigation bar section -->
+  
+  <!-- SOURCE: https://codepen.io/JeremyWink/pen/oNvybqX -->
+    <section class="section-plans" id="section-plans">
+      <div class="u-center-text u-margin-bottom-big">
+        <h2 class="heading-secondary">
+          Skill Sets
+        </h2>
+      </div>
+
+	  <!-- first row of skill sets -->
+      <div class="row">
+        <div class="col-1-of-3">
+          <div class="card">
+            <div class="card__side card__side--front-1">
+              <div class="card__title card__title--1">
+                <h4 class="card__heading">Automation & Machine Learning</h4>
+              </div>
+              <div class="card__details">
+                <ul>
+                  <li>Python ML</li>
+                  <li>TensorFlow</li>
+                  <li>Google ML Cloud</li>
+                  <li>Google ML Kit</li>
+                  <li>Azure ML</li>
+                  <li>POWER AUTOMATE</li>
+                </ul>
+              </div>
+            </div>
+			<div class="card__side card__side--back card__side--back-1">
+              <div class="card__cta">
+				<h3 class="backside-title"> Python ML</h3><hr>
+					<table class="listname">
+						<tr>
+						  <th style="display:none;"> Name </th>
+						  <th style="display:none;"> Level </th>
+						</tr>
+						<tr>
+						  <td class="listname1"> Qistina Batrisyia</td>
+						  <td class="listname2">Level 1</td>
+						</tr>
+						<tr>
+						  <td class="listname1"> Fatin Afifah </td>
+						  <td class="listname2">Level 1</td>
+						</tr>
+						<tr>
+						  <td class="listname1"> Ainil Husna </td>
+						  <td class="listname2">Level 1</td>
+						</tr>
+						<tr>
+						  <td class="listname1"> Teo Sheng Pu</td>
+						  <td class="listname2">Level 1</td>
+						</tr>
+					</table>
+				<h3 class="backside-title"> Google ML Cloud</h3><hr>
+					<table class="listname">
+						<tr>
+						  <th style="display:none;"> Name </th>
+						  <th style="display:none;"> Level </th>
+						</tr>
+						<tr>
+						  <td class="listname1"> Qistina Batrisyia</td>
+						  <td class="listname2">Level 1</td>
+						</tr>
+						<tr>
+						  <td class="listname1"> Norman Sara </td>
+						  <td class="listname2">Level 1</td>
+						</tr>
+					</table>
+				<h3 class="backside-title"> Azure ML</h3><hr>
+					<table class="listname">
+						<tr>
+						  <th style="display:none;"> Name </th>
+						  <th style="display:none;"> Level </th>
+						</tr>
+						<tr>
+						  <td class="listname1"> Qistina Batrisyia</td>
+						  <td class="listname2">Level 2</td>
+						</tr>
+					</table>
+				<h3 class="backside-title"> POWER AUTOMATE</h3><hr>
+					<table class="listname">
+						<tr>
+						  <th style="display:none;"> Name </th>
+						  <th style="display:none;"> Level </th>
+						</tr>
+						<tr>
+						  <td class="listname1"> Rose Adzreen</td>
+						  <td class="listname2">Level 1</td>
+						</tr>
+					</table><br><br>
+                <a href="skillset-detail1.html" class="btn btn--white">View More</a>
+              </div>
+            </div>
+            </div>
+		
+        </div>
+		
+        <div class="col-1-of-3">
+          <div class="card">
+            <div class="card__side card__side--front-2">
+              <div class="card__title card__title--2">
+                <h4 class="card__heading">API Tool / Middleware</h4>
+              </div>
+
+              <div class="card__details">
+                <ul>
+                  <li>Postman</li>
+                  <li>WebSphere</li>
+                  <li>Tomcat</li>
+                  <li>JSON</li>
+                  <li>RESTful</li>
+                  <li>Swagger</li>
+                </ul>
+              </div>
+            </div>
+            <div class="card__side card__side--back card__side--back-2">
+               <div class="card__cta">
+				<h3 class="backside-title"> Postman </h3><hr>
+					<table class="listname">
+						<tr>
+						  <th style="display:none;"> Name </th>
+						  <th style="display:none;"> Level </th>
+						</tr>
+						<tr>
+						  <td class="listname1"> Qistina Batrisyia</td>
+						  <td class="listname2">Level 1</td>
+						</tr>
+					</table>
+				<h3 class="backside-title"> WebSphere</h3><hr>
+					<table class="listname">
+						<tr>
+						  <th style="display:none;"> Name </th>
+						  <th style="display:none;"> Level </th>
+						</tr>
+						<tr>
+						  <td class="listname1"> Agileswari </td>
+						  <td class="listname2">Level 1</td>
+						</tr>
+					</table>
+				<h3 class="backside-title"> Tomcat </h3><hr>
+					<table class="listname">
+						<tr>
+						  <th style="display:none;"> Name </th>
+						  <th style="display:none;"> Level </th>
+						</tr>
+						<tr>
+						  <td class="listname1"> Agileswari </td>
+						  <td class="listname2">Level 1</td>
+						</tr>
+					</table>
+				<h3 class="backside-title"> JSON </h3><hr>
+					<table class="listname">
+						<tr>
+						  <th style="display:none;"> Name </th>
+						  <th style="display:none;"> Level </th>
+						</tr>
+						<tr>
+						  <td class="listname1"> Norman Sara </td>
+						  <td class="listname2">Level 2</td>
+						</tr>
+						<tr>
+						  <td class="listname1"> Agileswari </td>
+						  <td class="listname2">Level 1</td>
+						</tr>
+					</table><br><br>
+                <a href="#popup" class="btn btn--white">View More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+		
+		<!-- thrid skill card -->
+        <div class="col-1-of-3">
+          <div class="card">
+            <div class="card__side card__side--front-3">
+              <div class="card__title card__title--3">
+                <h4 class="card__heading">Application Server</h4>
+              </div>
+
+              <div class="card__details">
+                <ul>
+                  <li>Power BI</li>
+                  <li>Internet Information Service (IIS)</li>
+                  <li>Airflow</li>
+                  <li>Tableau</li>
+                  <li>Metabase</li>
+                  <li>DRUID</li>
+                </ul>
+              </div>
+            </div>
+            <div class="card__side card__side--back card__side--back-3">
+              <div class="card__cta">
+				<h3 class="backside-title"> Airflow</h3><hr>
+					<table class="listname">
+						<tr>
+						  <th style="display:none;"> Name </th>
+						  <th style="display:none;"> Level </th>
+						</tr>
+						<tr>
+						  <td class="listname1"> Agileswari</td>
+						  <td class="listname2">Level 1</td>
+						</tr>
+					</table>
+				<h3 class="backside-title"> Internet Information Service (IIS)</h3><hr>
+					<table class="listname">
+						<tr>
+						  <th style="display:none;"> Name </th>
+						  <th style="display:none;"> Level </th>
+						</tr>
+						<tr>
+						  <td class="listname1"> Agileswari </td>
+						  <td class="listname2">Level 1</td>
+						</tr>
+						<tr>
+						  <td class="listname1"> Qistina Batrisyia</td>
+						  <td class="listname2">Level 1</td>
+						</tr>
+					</table>
+				<h3 class="backside-title"> Tableau </h3><hr>
+					<table class="listname">
+						<tr>
+						  <th style="display:none;"> Name </th>
+						  <th style="display:none;"> Level </th>
+						</tr>
+						<tr>
+						  <td class="listname1"> Qistina Batrisyia</td>
+						  <td class="listname2">Level 2</td>
+						</tr>
+						<tr>
+						  <td class="listname1"> Agileswari </td>
+						  <td class="listname2">Level 1</td>
+						</tr>
+					</table>
+				<h3 class="backside-title"> Metabase </h3><hr>
+					<table class="listname">
+						<tr>
+						  <th style="display:none;"> Name </th>
+						  <th style="display:none;"> Level </th>
+						</tr>
+						<tr>
+						  <td class="listname1"> Suzila </td>
+						  <td class="listname2">Level 1</td>
+						</tr>
+						<tr>
+						  <td class="listname1"> Agileswari </td>
+						  <td class="listname2">Level 2</td>
+						</tr>
+					</table><br><br>
+                <a href="#popup" class="btn btn--white">View More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+	  
+	  <!-- second row of skill sets -->
+	  <div class="row">
+        <div class="col-1-of-3">
+          <div class="card">
+            <div class="card__side card__side--front-1">
+              <div class="card__title card__title--1">
+                <h4 class="card__heading">Web Server</h4>
+              </div>
+
+              <div class="card__details">
+                <ul>
+                  <li>Nginx</li>
+                </ul>
+              </div>
+            </div>
+            <div class="card__side card__side--back card__side--back-1">
+             <div class="card__cta">
+				<h3 class="backside-title"> Nginx </h3><hr>
+					<table class="listname">
+						<tr>
+						  <th style="display:none;"> Name </th>
+						  <th style="display:none;"> Level </th>
+						</tr>
+						<tr>
+						  <td class="listname1"> Agileswari </td>
+						  <td class="listname2">Level 1</td>
+						</tr>
+					</table><br><br><br>
+				 <a href="#popup" class="btn btn--white">View More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+		
+        <div class="col-1-of-3">
+          <div class="card">
+            <div class="card__side card__side--front-2">
+              <div class="card__title card__title--2">
+                <h4 class="card__heading">Data Storage</h4>
+              </div>
+
+              <div class="card__details">
+                <ul>
+                  <li>Hadoop</li>
+                </ul>
+              </div>
+            </div>
+            <div class="card__side card__side--back card__side--back-2">
+               <div class="card__cta">
+				<h3 class="backside-title"> Hadoop </h3><hr>
+					<table class="listname">
+						<tr>
+						  <th style="display:none;"> Name </th>
+						  <th style="display:none;"> Level </th>
+						</tr>
+						<tr>
+						  <td class="listname1"> Rose Adzreen </td>
+						  <td class="listname2">Level 1</td>
+						</tr>
+						<tr>
+						  <td class="listname1"> Agileswari </td>
+						  <td class="listname2">Level 1</td>
+						</tr>
+					</table><br><br><br><br><br><br>
+				<a href="#popup" class="btn btn--white">View More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+		
+        <div class="col-1-of-3">
+          <div class="card">
+            <div class="card__side card__side--front-3">
+              <div class="card__title card__title--3">
+                <h4 class="card__heading">Backend Platform</h4>
+              </div>
+
+              <div class="card__details">
+                <ul>
+                  <li>Elastic Stack</li>
+                  <li>Elastic</li>
+                  <li>Redis</li>
+
+                </ul>
+              </div>
+            </div>
+            <div class="card__side card__side--back card__side--back-3">
+              <div class="card__cta">
+                <div class="card__price-box">
+                  <p class="card__price-only">Only</p>
+                  <p class="card__price-value">$13.95/mo</p>
+                </div>
+                <a href="#popup" class="btn btn--white">Select</a>
+              </div>
+            </div>
+          </div>
+        </div>
+	</div>
+	
+	<!-- third row of skill sets -->
+	  <div class="row">
+        <div class="col-1-of-3">
+          <div class="card">
+            <div class="card__side card__side--front-1">
+              <div class="card__title card__title--1">
+                <h4 class="card__heading">Reporting / Analytic / Visualization</h4>
+              </div>
+
+              <div class="card__details">
+                <ul>
+                  <li>Metabase</li>
+                  <li>Grafana</li>
+                  <li>Tableau</li>
+                  <li>Qliksense</li>
+                  <li>Crystal Report</li>
+                  <li>JReport</li>
+                </ul>
+              </div>
+            </div>
+            <div class="card__side card__side--back card__side--back-1">
+              <div class="card__cta">
+                <div class="card__price-box">
+                  <p class="card__price-only">Only</p>
+                  <p class="card__price-value">$2.95/mo*</p>
+                </div>
+                <a href="#popup" class="btn btn--white">Select</a>
+              </div>
+            </div>
+          </div>
+        </div>
+		
+        <div class="col-1-of-3">
+          <div class="card">
+            <div class="card__side card__side--front-2">
+              <div class="card__title card__title--2">
+                <h4 class="card__heading">RDBMS & NoSQL</h4>
+              </div>
+
+              <div class="card__details">
+                <ul>
+                  <li>Oracle</li>
+                  <li>MSSQL</li>
+                  <li>MYSQL</li>
+                  <li>MongoDB</li>
+                  <li>PostgresSQL</li>
+                  <li>Goggle Cloud Data Store</li>
+                </ul>
+              </div>
+            </div>
+            <div class="card__side card__side--back card__side--back-2">
+              <div class="card__cta">
+                <div class="card__price-box">
+                  <p class="card__price-only">Only</p>
+                  <p class="card__price-value">$5.45/mo*</p>
+                </div>
+                <a href="#popup" class="btn btn--white">Select</a>
+              </div>
+            </div>
+          </div>
+        </div>
+		
+        <div class="col-1-of-3">
+          <div class="card">
+            <div class="card__side card__side--front-3">
+              <div class="card__title card__title--3">
+                <h4 class="card__heading">Framework</h4>
+              </div>
+
+              <div class="card__details">
+                <ul>
+                  <li>Flask - Python</li>
+                  <li>Django - Python</li>
+                  <li>Spark - Java</li>
+                  <li>Laravel - PHP</li>
+                  <li>.NET</li>
+                  <li>Node.js</li>
+                </ul>
+              </div>
+            </div>
+            <div class="card__side card__side--back card__side--back-3">
+              <div class="card__cta">
+                <div class="card__price-box">
+                  <p class="card__price-only">Only</p>
+                  <p class="card__price-value">$13.95/mo</p>
+                </div>
+                <a href="#popup" class="btn btn--white">Select</a>
+              </div>
+            </div>
+          </div>
+        </div>
+	</div>
+	
+	  <!-- forth row of skill sets -->
+	  <div class="row">
+        <div class="col-1-of-3">
+          <div class="card">
+            <div class="card__side card__side--front-1">
+              <div class="card__title card__title--1">
+                <h4 class="card__heading">Front End</h4>
+              </div>
+
+              <div class="card__details">
+                <ul>
+                  <li>Vue</li>
+                  <li>Angular</li>
+                  <li>jQuery</li>
+                  <li>ASP</li>
+                  <li>Typescript</li>
+                </ul>
+              </div>
+            </div>
+            <div class="card__side card__side--back card__side--back-1">
+              <div class="card__cta">
+                <div class="card__price-box">
+                  <p class="card__price-only">Only</p>
+                  <p class="card__price-value">$2.95/mo*</p>
+                </div>
+                <a href="#popup" class="btn btn--white">Select</a>
+              </div>
+            </div>
+          </div>
+        </div>
+		
+        <div class="col-1-of-3">
+          <div class="card">
+            <div class="card__side card__side--front-2">
+              <div class="card__title card__title--2">
+                <h4 class="card__heading">Graphic / Creative Work</h4>
+              </div>
+
+              <div class="card__details">
+                <ul>
+                  <li>Photography / Photo Editing</li>
+                  <li>Cascading Style Sheets (CSS)</li>
+                  <li>UI/UX Design</li>
+                  <li>Photoshop</li>
+                  <li>Illustrator</li>
+                  <li>Axure</li>
+                </ul>
+              </div>
+            </div>
+            <div class="card__side card__side--back card__side--back-2">
+              <div class="card__cta">
+                <div class="card__price-box">
+                  <p class="card__price-only">Only</p>
+                  <p class="card__price-value">$5.45/mo*</p>
+                </div>
+                <a href="#popup" class="btn btn--white">Select</a>
+              </div>
+            </div>
+          </div>
+        </div>
+		
+        <div class="col-1-of-3">
+          <div class="card">
+            <div class="card__side card__side--front-3">
+              <div class="card__title card__title--3">
+                <h4 class="card__heading">Cloud</h4>
+              </div>
+
+              <div class="card__details">
+                <ul>
+                  <li>Azure</li>
+                  <li>AWS</li>
+                  <li>tGRID</li>
+                  <li>VMware</li>
+                  <li>Kubernetes</li>
+                  <li>Docker</li>
+                </ul>
+              </div>
+            </div>
+            <div class="card__side card__side--back card__side--back-3">
+              <div class="card__cta">
+                <div class="card__price-box">
+                  <p class="card__price-only">Only</p>
+                  <p class="card__price-value">$13.95/mo</p>
+                </div>
+                <a href="#popup" class="btn btn--white">Select</a>
+              </div>
+            </div>
+          </div>
+        </div>
+	</div>
+	
+	<!-- fifth row of skill sets -->
+	 <div class="row">
+        <div class="col-1-of-3">
+          <div class="card">
+            <div class="card__side card__side--front-1">
+              <div class="card__title card__title--1">
+                <h4 class="card__heading">Ingestion / ETL</h4>
+              </div>
+
+              <div class="card__details">
+                <ul>
+                  <li>Kafka</li>
+                  <li>Air Flow</li>
+                  <li>NIFI</li>
+                  <li>CloverDX</li>
+                  <li>Advance ETL Processor</li>
+                  <li>SAP BODS</li>
+                </ul>
+              </div>
+            </div>
+            <div class="card__side card__side--back card__side--back-1">
+              <div class="card__cta">
+                <div class="card__price-box">
+                  <p class="card__price-only">Only</p>
+                  <p class="card__price-value">$2.95/mo*</p>
+                </div>
+                <a href="#popup" class="btn btn--white">Select</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-1-of-3">
+          <div class="card">
+            <div class="card__side card__side--front-2">
+              <div class="card__title card__title--2">
+                <h4 class="card__heading">Methodology</h4>
+              </div>
+
+              <div class="card__details">
+                <ul>
+                  <li>CRISP DM</li>
+                </ul>
+              </div>
+            </div>
+            <div class="card__side card__side--back card__side--back-2">
+              <div class="card__cta">
+                <div class="card__price-box">
+                  <p class="card__price-only">Only</p>
+                  <p class="card__price-value">$5.45/mo*</p>
+                </div>
+                <a href="#popup" class="btn btn--white">Select</a>
+              </div>
+            </div>
+          </div>
+        </div>
+		
+        <div class="col-1-of-3">
+          <div class="card">
+            <div class="card__side card__side--front-3">
+              <div class="card__title card__title--3">
+                <h4 class="card__heading">Operating System</h4>
+              </div>
+
+              <div class="card__details">
+                <ul>
+                  <li>CentOS</li>
+                  <li>Microsoft Windows Server</li>
+                  <li>Red Hat Enterprise Linux (RHEL)</li>
+                  <li>Ubuntu Server</li>
+                  <li>Domain Privacy</li>
+                  <li>Fedora Linux Server</li>
+                </ul>
+              </div>
+            </div>
+            <div class="card__side card__side--back card__side--back-3">
+              <div class="card__cta">
+                <div class="card__price-box">
+                  <p class="card__price-only">Only</p>
+                  <p class="card__price-value">$13.95/mo</p>
+                </div>
+                <a href="#popup" class="btn btn--white">Select</a>
+              </div>
+            </div>
+          </div>
+        </div>
+	</div>
+	
+	<!-- sixth row of skill sets -->
+	 <div class="row">
+        <div class="col-1-of-3">
+          <div class="card">
+            <div class="card__side card__side--front-1">
+              <div class="card__title card__title--1">
+                <h4 class="card__heading">Programming Language</h4>
+              </div>
+
+              <div class="card__details">
+                <ul>
+                  <li>ASP/li>
+                  <li>C</li>
+                  <li>C++</li>
+                  <li>JavaScript</li>
+                  <li>Python</li>
+                  <li>R for Data Science</li>
+                </ul>
+              </div>
+            </div>
+            <div class="card__side card__side--back card__side--back-1">
+              <div class="card__cta">
+                <div class="card__price-box">
+                  <p class="card__price-only">Only</p>
+                  <p class="card__price-value">$2.95/mo*</p>
+                </div>
+                <a href="#popup" class="btn btn--white">Select</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-1-of-3">
+          <div class="card">
+            <div class="card__side card__side--front-2">
+              <div class="card__title card__title--2">
+                <h4 class="card__heading">Software Project Management</h4>
+              </div>
+
+              <div class="card__details">
+                <ul>
+                  <li>SDLC</li>
+                  <li>Scrum</li>
+                  <li>Kanban</li>
+                  <li>Microsoft Project</li>
+                </ul>
+              </div>
+            </div>
+            <div class="card__side card__side--back card__side--back-2">
+              <div class="card__cta">
+                <div class="card__price-box">
+                  <p class="card__price-only">Only</p>
+                  <p class="card__price-value">$5.45/mo*</p>
+                </div>
+                <a href="#popup" class="btn btn--white">Select</a>
+              </div>
+            </div>
+          </div>
+        </div>
+		
+        <div class="col-1-of-3">
+          <div class="card">
+            <div class="card__side card__side--front-3">
+              <div class="card__title card__title--3">
+                <h4 class="card__heading">Test / Monitor / Track</h4>
+              </div>
+
+              <div class="card__details">
+                <ul>
+                  <li>Zabbix</li>
+                  <li>Checkmarx</li>
+                  <li>Dyna Trace</li>
+                  <li>IBM Rational Performance Tester</li>
+                  <li>Sentinel</li>
+                  <li>jmeter</li>
+                </ul>
+              </div>
+            </div>
+            <div class="card__side card__side--back card__side--back-3">
+              <div class="card__cta">
+                <div class="card__price-box">
+                  <p class="card__price-only">Only</p>
+                  <p class="card__price-value">$13.95/mo</p>
+                </div>
+                <a href="#popup" class="btn btn--white">Select</a>
+              </div>
+            </div>
+          </div>
+        </div>
+	</div>
+	
+	<!-- seventh row of skill sets -->
+	<div class="row">
+	 <div class="col-1-of-3">
+          <div class="card">
+            <div class="card__side card__side--front-3">
+              <div class="card__title card__title--3">
+                <h4 class="card__heading">ERP</h4>
+              </div>
+
+              <div class="card__details">
+                <ul>
+                  <li>SAP Access Control & GRC</li>
+                  <li>SAP Business Warehouse</li>
+                  <li>SAP Enterprise Asset Management</li>
+                  <li>SAP HCM</li>
+                  <li>SAP SCM</li>
+                  <li>Cisco Firewall</li>
+                </ul>
+              </div>
+            </div>
+            <div class="card__side card__side--back card__side--back-3">
+              <div class="card__cta">
+                <div class="card__price-box">
+                  <p class="card__price-only">Only</p>
+                  <p class="card__price-value">$13.95/mo</p>
+                </div>
+                <a href="#popup" class="btn btn--white">Select</a>
+              </div>
+            </div>
+          </div>
+        </div>
+	</div>
+
+
+    </section>
+  </body>
+</html>
