@@ -1,0 +1,104 @@
+{% extends 'layout.html.twig' %}
+
+{# BLOCK 3: Style #}
+{%block extend_style %}
+    <style>
+        .card {
+    	  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    	  max-width: 300px;
+    	  margin: auto;
+    	  text-align: center;
+    	  font-family: arial;
+    	  float:left;
+    	  margin-right: 100px;
+    	  margin-bottom:80px;
+    	}
+    	
+    	.emp-name {
+    	  color: black;
+    	  font-size: 20px;
+    	  min-height: 60px;
+    	  margin-top: 19px;
+    	  text-align: center;
+    	  vertical-align:middle; /*middle centred*/
+    	}
+    	
+    	.emp-position {
+    	  color: grey;
+    	  font-size: 17px;
+    	  min-height: 50px;
+    	  max-height: 50px;
+    	}
+    	
+    	.emp-email {
+    	  color: grey;
+    	  font-size: 15px;
+    	  min-height: 25px;
+    	  max-height: 25px;
+    	}
+    	
+    	a.card-social-icon {
+    	  text-decoration: none;
+    	  font-size: 20px;
+    	  margin-right: 8px;
+    	  color: black;
+    	}
+    
+        button {
+          border: none;
+          outline: 0;
+          display: inline-block;
+          padding: 8px;
+          color: white;
+          background-color: #00Aede;
+          text-align: center;
+          cursor: pointer;
+          width: 100%;
+          font-size: 15px;
+        }
+        
+        button:hover, a:hover {
+    	  opacity: 0.7;
+    	}
+    
+    </style>
+{% endblock %}
+
+{# BLOCK 2: Extend Library #}
+{%block extend_library %}
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+{% endblock %}
+
+
+{# BLOCK 4: Content #}
+{%block content %}
+
+    <h2 class="w3-center w3-animate-top" style="color: black;margin:auto;margin-top:25px;">
+        {{ pimcore_input("page_title", {'font-size':50}) }}
+    </h2>
+    
+    <hr style="margin:auto;width:20%;border-width:4px; border-color:#00aede; margin-bottom:50px;"> 
+    <div>
+        {%for employee in employeeList%}
+            <div style="margin-left:250px;">
+                <div class="card">
+                    <img src="{{employee.getProfile_Image().thumbnail('EmployeeImageResize')}}" alt="No image" style="width:100%">
+                    <h1 class="emp-name ">{{employee.getName()}}</h1>
+                    <p class="emp-position">{{employee.getPosition()}}</p>
+                    <p class="emp-email"> {{employee.getEmail()}} </p>
+                    <div style="margin: 24px 0;">
+                        <a href="{{employee.getGithub()}}" class="card-social-icon"><i class="fa fa-github"></i></a> 
+                        <a href="{{employee.getLinkedin()}}" class="card-social-icon"><i class="fa fa-linkedin"></i></a>  
+                        <a href="{{employee.getFacebook()}}" class="card-social-icon"><i class="fa fa-facebook"></i></a> 
+                    </div>
+                  <a href="./PersonalPage/{{employee.geto_Id()}}"><button>More Detail</button></a>
+                </div>
+            </div>
+        {%endfor%}
+    </div>
+  
+{% endblock %}
+
+
+

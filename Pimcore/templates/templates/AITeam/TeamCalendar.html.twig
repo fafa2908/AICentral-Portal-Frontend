@@ -1,0 +1,285 @@
+{% extends 'layout.html.twig' %}
+
+{# SOURCE: https://fullcalendar.io/docs/google-calendar #}
+
+{# Block 2: Extend Library #}
+{% block extend_library %}
+    <link href='/assets/demo-to-codepen.css' rel='stylesheet' />
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css' rel='stylesheet' />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js'></script>
+    <script src='/assets/demo-to-codepen.js'></script>
+    {#<link href='fullcalendar/main.css' rel='stylesheet' />#}
+    {#<script src='fullcalendar/main.js'></script>#}
+    
+    <!-- datetime picker -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    
+    <!-- Boostrap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+{% endblock %}
+ 
+{# Block 3: Style #} 
+{% block extend_style%}
+    <style>
+    
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+      font-size: 14px;
+    }
+    
+    #calendar {
+      max-width: 1100px;
+      margin: 40px auto;
+    }
+    
+    </style>
+{% endblock %}
+
+{# Block 4: Content #}
+{% block content %}
+    <!-- page title -->
+    <h2 class="w3-center w3-animate-top" style="color: black;margin:auto;margin-top:25px;">
+        {{ pimcore_input("page_title", {'font-size':50}) }}
+    </h2>
+    <hr style="margin:auto;width:20%;border-width:4px; border-color:#00aede; margin-bottom:50px;"> 
+    <br/>
+
+
+    <!-- Wont be using this. Just for trial run --> 
+    <!-- Will try to embed it with Google Calendar API and fullcalendar/google-calendar (still in progress) -->
+    <!-- <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&bgcolor=%2300aede&ctz=Asia%2FKuala_Lumpur&src=YWZkMGQ3cnJzMXFqZnYxZWt2dW5nZjI1cTRAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=ZzZsNzE2anJ1ZGk4cWxnOTE0cXBlZml0aWtAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&color=%23EF6C00&color=%23009688" style="border:solid 1px #777; margin-left:200px;" width="799" height="600" frameborder="0" scrolling="no"></iframe> -->
+   
+   
+   <script>
+   var allEventList = []; 
+   
+   {%for event in eventList%}
+       allEventList.push({
+           id: {{event.geto_Id()}},
+           title: '{{event.getEventName()}}',
+           start: '{{event.getStartDateTime()}}',
+           end: '{{event.getEndDateTime()}}',
+           allDay: ('{{event.getAllDayEvent()}}' ) ? true :false,
+           color: '{{event.getEventType()}}',
+       });
+   {% endfor %}
+   
+   var EventType_color = {
+       "brown" : "Trainings/Workshops",
+        "crimson" : "Company Event",
+        "green" : "Holiday",
+        "grey" : "Out Of Office",
+        "sapphire" : "Others"
+       }
+
+    var EventTypeList = ["Trainings/Workshops", "Company Event", "Holiday", "Out Of Office","Others" ]
+    
+    console.log(allEventList);
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+    
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'timeGridDay,timeGridWeek,dayGridMonth,listYear'
+            },
+            
+            displayEventTime: false, // don't show the time column in list view
+            timeZone: 'UTC+8',
+            selectable: true,
+            
+            //Note: Ive generated the key: 'AIzaSyD2LmHsqpdom77ZpRlIm67YKlUmU93dqYU' but hacent used it yet
+            googleCalendarApiKey: 'AIzaSyDcnW6WejpTOCffshGDDb4neIrXVUA1EAE',
+            
+            //my personal calendar ID: afd0d7rrs1qjfv1ekvungf25q4@group.calendar.google.com
+            // US Holidays (using the event holiday provided by the source as for now)
+            //   events: 'en.usa#holiday@group.v.calendar.google.com',
+            
+            events : allEventList, 
+                    
+            eventSources: [
+                {
+                    googleCalendarId: 'en.malaysia#holiday@group.v.calendar.google.com',
+                    color: '#2E8B57',    // an option!
+                },
+            ],
+            
+            eventClick: function(info) {
+                // prevents current tab from navigating
+                info.jsEvent.preventDefault();
+                
+                event = info.event ; 
+                console.log(event)
+                if (event.url != ""){
+                    // opens events in a popup window
+                    window.open(event.url, '_blank', 'width=700,height=600');
+                }
+                else{
+                    $('#eventFormModel').modal('show');
+					document.getElementById("eventFormHeader").innerHTML = "Edit Event";
+					document.getElementById("createButton").style.display = "none";
+                    document.getElementById("saveButton").style.display = "block";
+                    document.getElementById("deleteButton").style.display = "block";
+                    
+                    document.getElementById("inputEventID").value = info.event.id;
+                    document.getElementById("inputEventID").style.display = "none";
+                    
+					document.getElementById("inputEventName").value = event.title;
+					document.getElementById("EventType").selectedIndex = EventTypeList.indexOf(EventType_color[event.backgroundColor.trim()]);
+					document.getElementById("AllDayEvent").selectedIndex = (event.allDay) ? 0 : 1;
+					document.getElementById("EventStartDate").value = formatDate(event.start)
+					document.getElementById("EventEndDate").value = formatDate(event.end)
+                }
+            },
+            
+            // TOOLTIP
+            eventDidMount: function(info) {
+                var eventObj = info.event;
+                var startDate = new Date(eventObj.start).toUTCString();
+                var endDate = new Date(eventObj.end).toUTCString();
+                var allDay = eventObj.allDay? 'Yes' :'No'
+                // console.log(eventObj)
+                $(info.el).tooltip({
+                    title: eventObj.title + "<br><br>" + 
+                    'All Day: ' + allDay + "<br>" +
+                    'Start: ' + startDate.replace(":00 GMT","") + "<br>" +
+                    'End: ' + endDate.replace(":00 GMT","") + "<br>" ,
+                    placement: 'top',
+                    trigger: 'hover',
+                    container: 'body',
+                    html: true
+                });
+            },
+            
+            select: function (info) {
+                // CREATE NEW EVENT
+                $('#eventFormModel').modal('show');
+                
+                document.getElementById("eventFormHeader").innerHTML = "Create Event";
+                document.getElementById("inputEventID").value = info.id;
+                document.getElementById("inputEventID").style.display = "none";
+                
+                document.getElementById("createButton").style.display = "block";
+                document.getElementById("saveButton").style.display = "none";
+                document.getElementById("deleteButton").style.display = "none";
+                
+                document.getElementById("inputEventName").value = "";
+                document.getElementById("EventType").selectedIndex = -1;
+                document.getElementById("AllDayEvent").selectedIndex = (info.allDay) ? 0 : 1;
+                document.getElementById("EventStartDate").value = formatDate(info.start)
+                document.getElementById("EventEndDate").value = formatDate(info.end)
+            },
+        });
+        calendar.render();
+    });
+
+    function formatDate(inputDate) {
+        var date = inputDate.getUTCDate().toString().length == 2 ? inputDate.getUTCDate().toString() : '0' + inputDate.getUTCDate().toString()
+        var month = (inputDate.getUTCMonth() + 1).toString().length == 2 ? (inputDate.getUTCMonth() + 1).toString() : '0' + (inputDate.getUTCMonth() + 1).toString()
+        var year = inputDate.getUTCFullYear().toString()
+        
+        var hour = inputDate.getUTCHours().toString().length == 2 ? inputDate.getUTCHours().toString() : '0' + inputDate.getUTCHours().toString()
+        var minutes = inputDate.getUTCMinutes().toString().length == 2 ? inputDate.getUTCMinutes().toString() : '0' + inputDate.getUTCMinutes().toString()
+        
+        return [date, month, year].join("-") + " " + [hour, minutes].join(":");
+    }
+
+    </script>
+    
+    </head>
+    <body>
+        <div id='calendar'></div>
+        <div class="modal fade eventForm" tabindex="-1" role="dialog" aria-labelledby="eventForm" id="eventFormModel" aria-hidden="true">
+    		<div class="modal-dialog modal-lg">
+    			<div class="modal-content">
+    			    
+    				<div class="modal-header">
+    					<h5 class="modal-title" id="eventFormHeader">Edit Event</h5>
+    					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    						<span aria-hidden="true">&times;</span>
+    					</button>
+    				</div>
+    				
+    				<div class="modal-body">
+    					<form method="post" action="./forms/Event">
+    						<div class="form-row">
+    							<div class="form-group col-md-4">
+    								<label for="inputEventName">Event Name*</label>
+    								<input type="text" class="form-control" id="inputEventName" name="EventName" placeholder="Event Name" value="" required>
+    								<input type="text" class="form-control" id="inputEventID" name="EventID" value ="" >
+    							</div>
+    
+    							<div class="form-group col-md-4">
+    								<label class="my-1 mr-2" for="EventType"> Event Type*</label>
+    								<select class="custom-select my-1 mr-sm-2" id="EventType" name="EventType" required>
+    									<option value="brown">Trainings/Workshops</option>
+    									<option value="crimson">Company Event</option>
+    									<option value="green">Holiday</option>
+    									<option value="grey">Out Of Office</option>
+    									<option value="sapphire">Others</option>
+    								</select>
+    							</div>
+    
+    							<div class="form-group col-md-4">
+    								<label class="my-1 mr-2" for="AllDayEvent"> All Day Event</label>
+    								<select class="custom-select my-1 mr-sm-2" id="AllDayEvent" name="AllDayEvent">
+    									<option value="yes">Yes</option>
+    									<option value="no">No</option>
+    								</select>
+    							</div>
+    						</div>
+    						
+    						<div class="form-row">
+    							<div class="form-group col-md-6">
+    								<label for="EventStartDate"> Start Date*</label>
+    								<input id="EventStartDate" name="EventStartDate" width="276" />
+    							</div>
+    							<div class="form-group col-md-6">
+    								<label for="EventEndDate"> End Date*</label>
+    								<input id="EventEndDate" name="EventEndDate" width="276" />
+    							</div>
+    						</div>
+    
+    						<script>
+    
+    							$('#EventStartDate').datetimepicker({
+    								uiLibrary: 'materialdesign',
+    								format: 'dd-mm-yyyy HH:MM',
+    								model: true
+    							});
+    							$('#EventEndDate').datetimepicker({
+    								uiLibrary: 'materialdesign',
+    								format: 'dd-mm-yyyy HH:MM',
+    								model: true
+    							});
+    						</script>
+    
+    						<hr>
+    
+                                <div class="btn-group" role="group" aria-label="Basic">
+                                    <button class="btn btn-primary m-2" type="submit" name="buttonAction" id="createButton" value="Create">Create Event</button>
+                                </div>
+                                
+    							<div class="btn-group" role="group" aria-label="Basic example">
+            						<button class="btn btn-danger m-2" type="submit" name="buttonAction" id="deleteButton" value="Delete">Delete
+            							Event</button>
+            						<button class="btn btn-primary m-2" type="submit" name="buttonAction" id="saveButton" value="Save">Save 
+            							Event</button>
+    							</div>
+    					</form>
+    				</div>
+    			</div>
+    		</div>
+	    </div>
+
+    </body>
+    
+{% endblock %}

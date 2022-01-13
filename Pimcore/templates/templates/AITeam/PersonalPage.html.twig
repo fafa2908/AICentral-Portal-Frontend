@@ -1,0 +1,690 @@
+{% extends 'layout.html.twig' %}
+
+{% block extend_library %}
+    <!-- datepicker -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+{%endblock%}
+
+{% block extend_style %}
+    <style>
+    /*.main-color{*/
+    /*  color:white!important;*/
+    /*  background-color:#0aa6d1!important*/
+    /*}*/
+    .fa {
+        position: relative;
+        display: table-cell;
+        width: 60px;
+        height: 36px;
+        text-align: center;
+        vertical-align: middle;
+        font-size:20px;
+    }
+
+    #emp-icon {
+        display: inline;
+        text-align: left;
+        padding-right: 11px;
+    }
+
+    </style>
+{%endblock%}
+
+
+{%block content %}
+
+
+<!-- Page Container -->
+<div class="w3-content w3-margin-top" style="max-width:3400px; padding:0.01em 5px 0.01em 50px">
+
+    <!-- The Grid -->
+    <div class="w3-row-padding">
+        <!--______________________________________LEFT COLUMN!!___________________________________-->
+        <!-- Left Column -->
+        <div class="w3-third" style="width:20%;margin-left:50px;"> <!-- this one just to let the container float left with 100% -->
+            <div class="w3-white w3-text-grey w3-card-4"> <!-- w3-card-4 is for the box-shadow size and colour-->
+                <div class="w3-display-container">
+                    <img src="{{employee.getProfile_Image().thumbnail('EmployeeImageResize')}}" style="width:100%" alt="Avatar">
+                    <div class="w3-display-bottomleft w3-container w3-text-black"></div>
+                </div>
+                <div class="w3-container">
+                    <h2 style="font-size: 20px; text-align: center;">{{employee.getName()}}</h2>
+                    <p><i class="fa fa-id-card fa-fw" style="color:#0aa6d1;" id="emp-icon"></i>{{employee.getStaff_ID()}}</p>
+                    <p><i class="fa fa-briefcase " style="color:#0aa6d1;" id="emp-icon"></i>{{employee.getPosition()}}</p>
+                    <p><i class="fa fa-phone fa-fw" style="color:#0aa6d1;" id="emp-icon"></i>{{employee.getPhone()}}</p>
+                    <p><i class="fa fa-envelope fa-fw" style="color:#0aa6d1;" id="emp-icon"></i>{{employee.getEmail()}}</p>
+                    <p><i class="fa fa-birthday-cake fa-fw" style="color:#0aa6d1;" id="emp-icon"></i>{{employee.getBirthday().format('d-m-Y')}}</p>
+
+                </div>
+                
+            </div>
+            <br>
+        </div>
+        <!-- End Left Column -->
+        
+        
+        <!-- Right Column -->
+            <div class="w3-twothird" style="width:75%">
+                
+                <!-- Work Experience -->
+                <div class="w3-container w3-card w3-white w3-margin-bottom">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-xxlarge" style="color:#0aa6d1;" id="emp-icon"></i>Company</h2>
+                        </div>
+                        
+                        <!-- EDIT FOR Company -->
+                        <div class="col-md-3">
+                            <button type="button" class="btn btn-primary w3-margin-top" data-toggle="modal" data-target=".Company"> <i class="fa fa-edit fa-fw" id="emp-icon"></i>Company</button>
+                            
+                            <div class="modal fade Company" tabindex="-1" role="dialog" aria-labelledby="CompanyLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <!-- Company Header -->
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Company</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        
+                                        <!-- Company FORM -->
+                                        <div class="modal-body">
+                                            <form method="post" action="./forms/Company/{{employee.geto_Id()}}">
+                                                <!-- Available Company List -->
+                                                <div class="form-group">
+                                                    <label class="my-1 mr-2" for="CompanyObjectList"> Available Institution List</label>
+                                                    <select class="custom-select my-1 mr-sm-2" id="CompanyObjectList" name="CompanyObjectList" onclick="companyFormResponsive(this)">
+                                                        <option selected>Create New Company Object</option>
+
+                                                        {% for company in companyAllList  %}
+                                                            <option value={{company.geto_Id()}}>{{company.getKey()}}</option>
+                                                        {% endfor %}
+                                                        
+                                                    </select>
+                                                </div>
+                                                <hr>
+                                                {% set companyAll = [] %}
+                                                {% for company in companyAllList  %}
+                                                    {% set companyAll = companyAll|merge([{ 
+                                                        id : company.geto_Id(),
+                                                        title: company.getKey(),
+                                                        company: company.getCompany(),
+                                                        address: company.getAddress(),
+                                                        companyPhone: company.getPhone(),
+                                                        companyDescription: company.getDescription(),
+                                                        }]) %}
+                                                {% endfor %}
+                                                
+
+                                                <script>
+                                                
+                                                    function companyFormResponsive(selectObject){
+                                                        var current = selectObject.value;
+                                                        var companyAll = {{companyAll|json_encode|raw }}; 
+                                                        var result = companyAll.find(o => o.id == current);
+                                                        // console.log(result);
+                                                        if (result){
+                                                            document.getElementById("inputCompanyName").value = result.company;
+                                                            document.getElementById("inputCompanyAddress").value = result.address;
+                                                            document.getElementById("inputCompanyPhone").value = result.companyPhone;
+                                                            document.getElementById("inputCompanyDescription").value = result.companyDescription;
+                                                        }
+                                                        else{
+                                                            document.getElementById("inputCompanyName").value = "";
+                                                            document.getElementById("inputCompanyAddress").value = "";
+                                                            document.getElementById("inputCompanyPhone").value = "";
+                                                            document.getElementById("inputCompanyDescription").value = "";
+                                                        }
+                                                    }
+                                                </script>
+                                                
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="inputCompanyName">Company Name*</label>
+                                                        <input type="text" class="form-control" id="inputCompanyName" name="CompanyName" placeholder="Company Name" value="" required>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="inputCompanyAddress">Company Address</label>
+                                                        <input type="text" class="form-control" id="inputCompanyAddress"  name="CompanyAddress" placeholder="Company Address" value="" >
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="inputCompanyPhone">Company Phone</label>
+                                                        <input type="text" class="form-control" id="inputCompanyPhone"  name="CompanyPhone" placeholder="Company Phone" value="" >
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="inputCompanyDescription">Company Description</label>
+                                                        <input type="text" class="form-control" id="inputCompanyDescription"  name="CompanyDescription" placeholder="Company Description" value="" >
+                                                    </div>
+                                                </div>
+                                                
+                                                <hr>
+                                                <button class="btn btn-danger" type="submit" name="buttonAction" value="Delete">Delete Company</button>
+                                                <button class="btn btn-primary" type="submit" name="buttonAction" value="Save">Save Company</button>
+                                            </form>
+                                        </div>
+                                        
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- EDIT FOR Work Experience -->
+                        <div class="col-md-3">
+                            <button type="button" class="btn btn-primary w3-margin-top" data-toggle="modal" data-target=".Work">
+                                <i class="fa fa-edit fa-fw" id="emp-icon"></i>
+                                Work Experience
+                            </button>
+                            <div class="modal fade Work" tabindex="-1" role="dialog" aria-labelledby="WorkLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Work Experience</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                    
+                                        <div class="modal-body">
+                                            <form method="post" action="./forms/WorkExperience/{{employee.geto_Id()}}">
+                                                <!-- Work Experience List  -->
+                                                <div class="form-group">
+                                                    <label class="my-1 mr-2" for="WorkObjectList"> Available Work Experience List</label>
+                                                    <select class="custom-select my-1 mr-sm-2" id="WorkObjectList" name="WorkObjectList" onclick="workFormResponsive(this)">
+                                                        <option selected>Create New Work Experience Object</option>
+
+                                                        {% for work in workExpList  %}
+                                                            <option value={{work.geto_Id()}}>{{work.getKey()}}</option>
+                                                        {% endfor %}
+                                                        
+                                                    </select>
+                                                </div>
+                                                <hr>
+                                                
+                                                {% set workAll = [] %}
+                                                {% for work in workExpList  %}
+                                                    {% set workAll = workAll|merge([{ 
+                                                        id : work.geto_Id(),
+                                                        title: work.getKey(),
+                                                        workTitle: work.getTitle(),
+                                                        workType: work.getEmploymentType(),
+                                                        startDate: work.getWorkStartDate().format("d-m-Y"),
+                                                        endDate: work.getWorkEndDate().format("d-m-Y"),
+                                                        workDesc: work.getWorkDesc(),
+                                                        workCompany: work.getCompanyWork(),
+                                                        workEmp: work.getEmpWork(),
+                                                        }]) %}
+                                                {% endfor %}
+                                                {% set workTypeList = ["Self-employed","Seasonal","Part-time","Internship","Full-time","Freelance","Contract","Apprenticeship"]%}
+                                                
+                                                <script>
+                                                
+                                                    function workFormResponsive(selectObject){
+                                                        var current = selectObject.value;
+                                                        var workAll = {{workAll|json_encode|raw }}; 
+                                                        var companyAll = {{companyAll|json_encode|raw }}; 
+                                                        var currentWork = workAll.find(o => o.id == current);
+                                                        var workList = {{workTypeList|json_encode|raw}};
+                                                        
+                                                        if(currentWork){
+                                                            var companyID = currentWork.workCompany.____pimcore_cache_item__.split("_")[1]
+                                                            var index = companyAll.findIndex(function(company, i){
+                                                                return company.id == companyID
+                                                            });
+                                                        }
+                                                        else{
+                                                            var index = -1;
+                                                        }
+                                                        
+                                                        // console.log(workList)
+                                                        // console.log(currentWork)
+                                                        // console.log(workList.indexOf(currentWork.workType))
+                                                        
+                                                        if (currentWork){
+                                                            document.getElementById("inputWorkTitle").value = currentWork.workTitle;
+                                                            document.getElementById("workTypeList").selectedIndex = workList.indexOf(currentWork.workType);
+                                                            document.getElementById("workStartDate").value = currentWork.startDate;
+                                                            document.getElementById("workEndDate").value = currentWork.endDate;
+                                                            document.getElementById("WorkDesc").value = currentWork.workDesc;
+                                                            // console.log(eduLevel.indexOf(result.educationLevel));
+                                                            document.getElementById("Work_CompanyObjectList").selectedIndex = index;
+                                                        }
+                                                        else{
+                                                            document.getElementById("inputWorkTitle").value = "";
+                                                            document.getElementById("workTypeList").selectedIndex = -1;
+                                                            document.getElementById("workStartDate").value = "";
+                                                            document.getElementById("workEndDate").value = "";
+                                                            document.getElementById("WorkDesc").value = "";
+                                                            document.getElementById("Work_CompanyObjectList").selectedIndex = -1;
+                                                        }
+                                                    }
+                                                </script>
+                                                
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="inputWorkTitle">Work Title*</label>
+                                                        <input type="text" class="form-control" id="inputWorkTitle" name="workTitle" placeholder="Work Title" value="" required>
+                                                    </div>
+                                                    
+                                                    <div class="form-group col-md-6">
+                                                        <label for="workTypeList"> Work Type*</label>
+                                                        <select class="custom-select" id="workTypeList" name="workTypeList" required>
+                                                            {% for workType in workTypeList%}
+                                                                <option value={{workType|raw}}>{{workType}}</option>
+                                                            {% endfor%}
+                                                            
+                                                        </select>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="workStartDate"> Start Date*</label>
+                                                        <input id="workStartDate" width="276" name="workStartDate" required/>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="workEndDate"> End Date*</label>
+                                                        <input id="workEndDate" width="276" name="workEndDate" required/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                        <label for="WorkDesc">Work Description*</label>
+                                                        <input type="text" class="form-control" id="WorkDesc"  name="WorkDesc" placeholder="Work Descriptions" value="" required>
+                                                </div>
+                                                
+                                                <div class="form-group">
+                                                    <label class="my-1 mr-2" for="Work_CompanyObjectList"> Company Object List*</label>
+                                                    <select class="custom-select my-1 mr-sm-2" id="Work_CompanyObjectList" name="Work_CompanyObjectList" required>
+                                                        {% for company in companyAllList  %}
+                                                            <option value={{company.geto_Id()}}>{{company.getKey()}}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+
+    
+                                                <hr>
+                                                <button class="btn btn-danger" type="submit" name="buttonAction" value="Delete">Delete Work Experience</button>
+                                                <button class="btn btn-primary" type="submit" name="buttonAction" value="Save">Save Work Experience</button>
+                                            </form>
+
+                                            <!-- Datetime script -->
+                                            <script>
+                                                $('#workStartDate').datepicker({
+                                                    uiLibrary: 'bootstrap4',
+                                                    format: 'dd-mm-yyyy',
+
+                                                });
+                                                $('#workEndDate').datepicker({
+                                                    uiLibrary: 'bootstrap4',
+                                                    format: 'dd-mm-yyyy',
+
+                                                });
+                                            </script>
+                                        </div>
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+      
+      
+                    <!-- Work Experience : BODY-->
+                    {%if workExpList.count()%}
+                        {% for workExp in workExpList%}
+                            <div class="w3-container">
+                                <h4 style="color:#0aa6d1;">
+                                        <i class="fa fa-briefcase" id="emp-icon"></i>
+                                        <b>{{workExp.getTitle()}}</b>
+                                </h4>
+                                <h5 style="color:#0aa6d1;">
+                                    <i class="fa fa-calendar"  id="emp-icon"></i>
+                                    {{workExp.WorkStartDate().format('m-Y')}}
+                                     - 
+                                    {% if workExp.WorkEndDate() > date() %}
+                                        <span class="w3-tag main-color w3-round">Present</span>
+                                    {% else %}
+                                        {{workExp.WorkEndDate().format('m-Y')}}
+                                    {% endif %}
+                                </h5>
+                                <div>
+                                        <i class="fa fa-align-justify"  style="color:#0aa6d1;" id="emp-icon" ></i>
+                                        {{workExp.WorkDesc()}}
+                                </div>
+                              <hr>
+                          </div>
+                        {%endfor%}
+                    {% else %}
+                        <div>
+                            <i class="fa fa-exclamation-circle"  style="color:#0aa6d1;" id="emp-icon" ></i>
+                            No Workplace Records
+                        </div>
+                        <hr>
+                    {%endif%}
+                </div>
+                
+
+                
+                <!-- Education -->
+                <div class="w3-container w3-card w3-white">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-xxlarge" style="color:#0aa6d1;" id="emp-icon"></i>Education</h2>
+                        </div>
+                        
+                        <!-- EDIT FOR Education/Institution -->
+                        <div class="col-md-3">
+                            <button type="button" class="btn btn-primary w3-margin-top" data-toggle="modal" data-target=".Education"> <i class="fa fa-edit fa-fw" id="emp-icon"></i>Institution</button>
+                            
+                            <div class="modal fade Education" tabindex="-1" role="dialog" aria-labelledby="EducationLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <!-- EDUCATION Header -->
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Institution</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        
+                                        <!-- EDUCATION FORM -->
+                                        <div class="modal-body">
+                                            <form method="post" action="./forms/Education/{{employee.geto_Id()}}">
+                                                <!-- Available Education List -->
+                                                <div class="form-group">
+                                                    <label class="my-1 mr-2" for="EducationObjectList"> Available Institution List</label>
+                                                    <select class="custom-select my-1 mr-sm-2" id="EducationObjectList" name="EducationObjectList" onclick="educationFormResponsive(this)">
+                                                        <option selected>Create New Institution Object</option>
+
+                                                        {% for education in educationAllList  %}
+                                                            <option value={{education.geto_Id()}}>{{education.getKey()}}</option>
+                                                        {% endfor %}
+                                                        
+                                                    </select>
+                                                </div>
+                                                <hr>
+                                                {% set educationAll = [] %}
+                                                {% for education in educationAllList  %}
+                                                    {% set educationAll = educationAll|merge([{ 
+                                                        id : education.geto_Id(),
+                                                        title: education.getKey(),
+                                                        institution: education.getInstitution(),
+                                                        studyField: education.getCourseName(),
+                                                        educationLevel: education.getEducationLevel(),
+                                                        educationDesc: education.getEducationDesc(),
+                                                        }]) %}
+                                                {% endfor %}
+                                                
+                                                {% set eduLevel = ["Foundation", "Pre-University", "STPM", "Diploma", "Associate's Degree", "Bachelor's Degree", "Master", "PhD"]%}
+                                                <script>
+                                                
+                                                    function educationFormResponsive(selectObject){
+                                                        var current = selectObject.value;
+                                                        var educationAll = {{educationAll|json_encode|raw }}; 
+                                                        var result = educationAll.find(o => o.id == current);
+                                                        // console.log(result);
+                                                        var eduLevel = {{eduLevel|json_encode|raw}}
+                                                        if (result){
+                                                            document.getElementById("inputInstitutionName").value = result.institution;
+                                                            document.getElementById("inputStudyFieldName").value = result.studyField;
+                                                            document.getElementById("inputEducationDescription").value = result.educationDesc;
+                                                            console.log(eduLevel.indexOf(result.educationLevel));
+                                                            document.getElementById("EducationLevelList").selectedIndex = eduLevel.indexOf(result.educationLevel);
+                                                            
+                                                        }
+                                                        else{
+                                                            document.getElementById("inputInstitutionName").value = "";
+                                                            document.getElementById("inputStudyFieldName").value = "";
+                                                            document.getElementById("inputEducationDescription").value = "";
+                                                            document.getElementById("EducationLevelList").selectedIndex = -1;
+                                                        }
+                                                    }
+                                                </script>
+                                                
+                                                
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="inputInstitutionName">Institution Name*</label>
+                                                        <input type="text" class="form-control" id="inputInstitutionName" name="InstitutionName" placeholder="Institution Name" value="" required>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="inputStudyFieldName">Field of Study*</label>
+                                                        <input type="text" class="form-control" id="inputStudyFieldName"  name="StudyFieldName" placeholder="Field of Study" value="" required>
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="EducationLevelList"> Education Level*</label>
+                                                        <select class="custom-select" id="EducationLevelList" name="EducationLevelList" required>
+                                                            {%for education in eduLevel%}
+                                                                <option value={{education}}>{{education}}</option>
+                                                            {%endfor%}
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="inputEducationDescription">Education Description</label>
+                                                        <input type="text" class="form-control" id="inputEducationDescription" name ="EducationDescription" placeholder="Education Description" value="">
+                                                    </div>
+                                                </div>
+                                                
+                                                <hr>
+                                                <button class="btn btn-danger" type="submit" name="buttonAction" value="Delete">Delete Institution</button>
+                                                <button class="btn btn-primary" type="submit" name="buttonAction" value="Save">Save Institution</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- EDIT FOR Enrollment -->
+                        <div class="col-md-3">
+                            <button type="button" class="btn btn-primary w3-margin-top" data-toggle="modal" data-target=".Enrollment">
+                                <i class="fa fa-edit fa-fw" id="emp-icon"></i>
+                                Enrollment
+                            </button>
+                            <div class="modal fade Enrollment" tabindex="-1" role="dialog" aria-labelledby="EnrollmentLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Enrollment</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                    
+                                        <div class="modal-body">
+                                            <form method="post" action="./forms/Enrollment/{{employee.geto_Id()}}">
+                                                <!-- Enrollment List  -->
+                                                <div class="form-group">
+                                                    <label class="my-1 mr-2" for="EnrollmentObjectList"> Available Enrollment List</label>
+                                                    <select class="custom-select my-1 mr-sm-2" id="EnrollmentObjectList" name="EnrollmentObjectList" onclick="enrollmentFormResponsive(this)">
+                                                        <option selected>Create New Enrollment Object</option>
+
+                                                        {% for enrollment in enrollList  %}
+                                                            <option value={{enrollment.geto_Id()}}>{{enrollment.getKey()}}</option>
+                                                        {% endfor %}
+                                                        
+                                                    </select>
+                                                </div>
+                                                <hr>
+                                                
+                                                {% set enrollmentAll = [] %}
+                                                {% for enrollment in enrollList  %}
+                                                    {% set enrollmentAll = enrollmentAll|merge([{ 
+                                                        id : enrollment.geto_Id(),
+                                                        title: enrollment.getKey(),
+                                                        startDate: enrollment.getEnrolStartDate().format("d-m-Y"),
+                                                        endDate: enrollment.getEnrolEndDate().format("d-m-Y"),
+                                                        Employee: enrollment.getEmpEnroll(),
+                                                        Education: enrollment.getEduEnroll(),
+                                                        }]) %}
+                                                {% endfor %}
+                                                
+                                                
+                                                <script>
+                                                
+                                                    function enrollmentFormResponsive(selectObject){
+                                                        var current = selectObject.value;
+                                                        var enrollmentAll = {{enrollmentAll|json_encode|raw }}; 
+                                                        var educationAll = {{educationAll|json_encode|raw }}; 
+                                                        var currentEnrollment = enrollmentAll.find(o => o.id == current);
+                                                        
+                                                        
+                                                        if(currentEnrollment){
+                                                            var educationID = currentEnrollment.Education.____pimcore_cache_item__.split("_")[1];
+                                                            var index = educationAll.findIndex(function(education, i){
+                                                                return education.id == educationID
+                                                            });
+                                                        }
+                                                        else{
+                                                            var index = -1;
+                                                        }
+                                                        
+                                                        if (currentEnrollment){
+                                                            document.getElementById("EnrollmentStartDate").value = currentEnrollment.startDate;
+                                                            document.getElementById("EnrollmentEndDate").value = currentEnrollment.endDate;
+                                                            // console.log(eduLevel.indexOf(result.educationLevel));
+                                                            document.getElementById("Enroll_EducationObjectList").selectedIndex = index;
+                                                        }
+                                                        else{
+                                                            document.getElementById("EnrollmentStartDate").value = "";
+                                                            document.getElementById("EnrollmentEndDate").value = "";
+                                                            document.getElementById("Enroll_EducationObjectList").selectedIndex = -1;
+                                                        }
+                                                    }
+                                                </script>
+                                                
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="EnrollmentStartDate"> Start Date*</label>
+                                                        <input id="EnrollmentStartDate" width="276" name="startDate" required/>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="EnrollmentEndDate"> End Date*</label>
+                                                        <input id="EnrollmentEndDate" width="276" name="endDate" required/>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="my-1 mr-2" for="Enroll_EducationObjectList"> Institution Object List*</label>
+                                                    <select class="custom-select my-1 mr-sm-2" id="Enroll_EducationObjectList" name="enroll_educationList" required>
+                                                        {% for education in educationAllList  %}
+                                                            <option value={{education.geto_Id()}}>{{education.getKey()}}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+
+    
+                                                <hr>
+                                                <button class="btn btn-danger" type="submit" name="buttonAction" value="Delete">Delete Enrollment</button>
+                                                <button class="btn btn-primary" type="submit" name="buttonAction" value="Save">Save Enrollment</button>
+                                            </form>
+
+                                            <!-- Datetime script -->
+                                            <script>
+                                                $('#EnrollmentStartDate').datepicker({
+                                                    uiLibrary: 'bootstrap4',
+                                                    format: 'dd-mm-yyyy',
+                                                });
+                                                $('#EnrollmentEndDate').datepicker({
+                                                    uiLibrary: 'bootstrap4',
+                                                    format: 'dd-mm-yyyy',
+                                                });
+                                            </script>
+                                        </div>
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+              
+                        
+                    <!-- Education : BODY-->
+                    {%if enrollList.count()%}
+                        {% for enroll in enrollList%}
+                            <div class="w3-container">
+                                <h4 style="color:#0aa6d1;">
+                                    <i class="fa fa-university" id="emp-icon"></i>
+                                    <b>{{enroll.getEduEnroll().getInstitution()}}: {{enroll.getEduEnroll().getEducationLevel()}}</b>
+                                </h4>
+                                
+                                <h5 style="color:#0aa6d1;">
+                                    <i class="fa fa-calendar" id="emp-icon"></i>
+                                    {{enroll.getEnrolStartDate().format('m-Y')}} 
+                                    - 
+                                    {% if enroll.getEnrolEndDate() > date() %}
+                                        <span class="w3-tag main-color w3-round">Present</span>
+                                    {% else %}
+                                        {{enroll.getEnrolEndDate().format('m-Y')}}
+                                    {% endif %}
+                                </h5>
+                                
+                                <div>
+                                    <i class="fa fa-graduation-cap"  style="color:#0aa6d1;" id="emp-icon" ></i>
+                                    {{enroll.getEduEnroll().getCourseName()}}
+                                </div>
+                                <hr>
+                            </div>
+                        {% endfor%}
+                    {% else %}
+                        <div>
+                            <i class="fa fa-exclamation-circle"  style="color:#0aa6d1;" id="emp-icon" ></i>
+                            No Education Records
+                        </div>
+                        <hr>
+                    {%endif%}
+                        
+                </div>
+                
+                <!-- Employee Skills List (Skill Proficiency) -->
+                <hr>
+                <div class="w3-container w3-card w3-white w3-margin-bottom">
+                    <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-cogs fa-fw w3-xxlarge" style="color:#0aa6d1;" id="emp-icon"></i>Skills</h2>
+              
+              
+                    <!-- Employee Skills List : BODY-->
+                    {%if skillProfList.count()%}
+                        {% for skillProf in skillProfList%}
+                            <div class="w3-container">
+                                <h4 style="color:#0aa6d1;">
+                                    <i class="fa fa-cogs" id="emp-icon"></i>
+                                    <b>{{skillProf.getSkillDetails().getSkillName()}}</b>
+                                </h4>
+                                <p>{{skillProf.getSkillDetails().getSkillDesc()}}</p>
+                                
+                                <h5 style="color:#0aa6d1;">
+                                    <i class="fa fa-bars" id="emp-icon"></i>
+                                    {{skillProf.getSkillLevel()}}
+                                </h5>
+                                <hr>
+                            </div>
+                        {% endfor%}
+                    {% else %}
+                        <div>
+                            <i class="fa fa-exclamation-circle"  style="color:#0aa6d1;" id="emp-icon" ></i>
+                            No Skills Records
+                        </div>
+                        <hr>
+                    {%endif%}
+                </div>
+                
+            </div>
+        
+        <!-- End Left Column -->
+        
+    <!-- End Grid -->
+    </div>
+</div>
+
+
+{% endblock %}
+

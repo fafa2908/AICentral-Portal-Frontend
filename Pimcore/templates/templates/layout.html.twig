@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <!--
+    BLOCK 1: page_title             -> for HTML head title
+    BLOCK 2: extend_library         -> for additional library
+    BLOCK 3: extend_style           -> for additional style
+    BLOCK 4: content                -> for HTML body content
+    BLOCK 5: footer                 -> FOR HTML footer
+    -->
+
+    <!--BLOCK 1: page_title -->
+    {% block page_title %}
+        <title>AI Central</title>
+    {% endblock %}
+    
+    <!-- stylesheet For icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    
+    <!-- stylesheet for most of the w3 class -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+     <style>
+        body,h1 {font-family: "Raleway", sans-serif}
+        body, html {height: 100%; overflow: auto; }
+        .bgimg {
+    		  background-image: url('{{asset('frontend_assets/index-neural-network.png')}}');
+    		  height: 100%;
+    		  background-position: center;
+    		  background-size: cover;
+        }
+        @import url(https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+        }
+        @import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
+        .fa-2x {
+        font-size: 1.5em;
+        }
+        .fa {
+        display: table-cell;
+        width: 60px;
+        height: 36px;
+        text-align: center;
+        vertical-align: middle;
+        font-size: 24px;
+        }
+        
+        #emp-icon {
+        	display: inline;
+        	text-align: left;
+        	padding-right:11px;	
+        }
+        
+        .main-menu:hover,nav.main-menu.expanded {
+        width:280px;
+        overflow:visible;
+        }
+        
+        .main-menu {
+        background:rgba(110, 110, 110, 0.8);
+        border-right:1px solid #e5e5e5;
+        position:fixed;
+        top:0;
+        bottom:0;
+        height:100%;
+        left:0;
+        width:75px;
+        overflow:hidden;
+        -webkit-transition:width .05s linear;
+        transition:width .05s linear;
+        -webkit-transform:translateZ(0) scale(1,1);
+        z-index:1000;
+        }
+        
+        .main-menu>ul {
+        margin:30px 10px;
+        
+        }
+        
+        .main-menu li {
+        position:relative;
+        display:block;
+        width:350px;
+        margin-top:10px;
+        }
+        
+        .main-menu li>a {
+        position:relative;
+        display:table;
+        border-collapse:collapse;
+        border-spacing:0;
+        color:white;
+        font-family: arial;
+        font-size: 18px;
+        text-decoration:none;
+        -webkit-transform:translateZ(0) scale(1,1);
+        -webkit-transition:all .1s linear;
+        transition:all .1s linear;
+          
+        }
+        
+        .main-menu .nav-icon {
+        position:relative;
+        display:table-cell;
+        width:60px;
+        height:36px;
+        text-align:center;
+        vertical-align:middle;
+        font-size:30px;
+        padding-top: 10px;
+        }
+        
+        .main-menu .nav-text {
+        position:relative;
+        display:table-cell;
+        padding-left:6px;
+        vertical-align:middle;
+        width:190px;
+          font-family: 'Titillium Web', sans-serif;
+        }
+        
+        .main-menu>ul.logout {
+        position:absolute;
+        left:0;
+        bottom:0;
+        }
+        
+        
+        .no-touch .scrollable.hover {
+        overflow-y:hidden;
+        }
+        
+        .no-touch .scrollable.hover:hover {
+        overflow-y:auto;
+        overflow:visible;
+        }
+        
+        a:hover,a:focus {
+        text-decoration:none;
+        }
+        
+        nav {
+        -webkit-user-select:none;
+        -moz-user-select:none;
+        -ms-user-select:none;
+        -o-user-select:none;
+        user-select:none;
+        }
+        
+        nav ul,nav li {
+        outline:0;
+        margin:0;
+        padding:0;
+        }
+        .main-menu li:hover>a,nav.main-menu li.active>a,.dropdown-menu>li>a:hover,.dropdown-menu>li>a:focus,.dropdown-menu>.active>a,.dropdown-menu>.active>a:hover,.dropdown-menu>.active>a:focus,.no-touch .dashboard-page nav.dashboard-menu ul li:hover a,.dashboard-page nav.dashboard-menu ul li.active a {
+        color:#fff;
+        background-color:#00aede;
+        padding-top:10px;
+        width: 270px;
+        }
+
+        @font-face {
+          font-family: 'Titillium Web';
+          font-style: normal;
+          font-weight: 300;
+          src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(http://themes.googleusercontent.com/static/fonts/titilliumweb/v2/anMUvcNT0H1YN4FII8wpr24bNCNEoFTpS2BTjF6FB5E.woff) format('woff');
+        }
+        
+        
+        
+        /* Dropdown container (hidden by default). */
+        /* Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+        .dropdown-container {
+    	  display: none;
+    	  background-color: rgb(217, 217, 217);
+    	  padding-left: 8px;
+    	  max-width:270px;
+        }
+        
+        .dropdown-nav {
+        	color:white;
+        }
+        
+        .dropdown-container a {
+    	color: rgb(43, 43, 43);
+    	background-color: rgb(217, 217, 217);
+    	display:block;
+    	padding: 10px 0px;
+    	text-decoration: none;
+    	padding-left: 50px;
+    	font-size: 17px;
+        }
+        #dropdown-a:hover{
+    	color: #00aede;
+    	font-weight: bold;
+        }
+        
+        .dropdown-nav:hover .dropdown-container{
+        display:block;
+        }
+  
+                
+        /* for submenu within submenu */
+        #dropdown2-container {
+        	  display: none;
+        	  max-width:260px;
+        	  padding-left:0px;
+        	  margin-left:0px;
+        	  border-top: 0.5px solid #00aede;
+        }
+        .dropdown2-nav {
+        	color:white;
+        	 background-color: rgb(194, 194, 194);
+        }
+        
+        #dropdown2-container a {
+        	color: #5e5e5e;
+        	display:block;
+        	padding: 10px 0px;
+        	text-decoration: none;
+        	padding-left: 50px;
+        	font-size:13px;
+        	font-weight: 700;
+        }
+        #dropdown2-a:hover{
+        	color: #e87722;
+        	font-weight: bold;
+        	background-color: rgb(194, 194, 194);
+        }
+        
+        .dropdown2-nav:hover #dropdown2-container{
+        	display:block;
+        }
+        
+        
+        /* for profile and logout icon */
+        #logout-profile-icon:hover{
+        	background:rgba(110, 110, 110, 0);
+        	color: #6cdeff;
+        }
+
+    </style>
+        
+    {# BLOCK 2: extend_library #}
+    {% block extend_library %}
+    {% endblock %}
+    
+    {# BLOCK 3: style #}
+    {% block extend_style %}
+    {% endblock %}
+
+    </head>
+    
+    
+    <body>
+
+        <!--Navigation bar-->
+    
+        {% set navStartNode = document.getProperty('navigation_root') %}
+        {% if not navStartNode is instanceof('\\Pimcore\\Model\\Document\\Page')  %}
+            {% if pimcore_site_is_request() %}
+                {% set site = pimcore_site_current() %}
+                {% set navStartNode = site.getRootDocument() %}
+                
+            {% else %}
+                {% set navStartNode = pimcore_document(1) %}
+            {% endif %}
+        {% endif %}
+        
+        {% set mainNavigation = pimcore_build_nav({active: document, root: navStartNode}) %} 
+        
+        {% set menuRenderer = pimcore_nav_renderer('menu') %}
+        {% set mainpage = pimcore_document(1) %}
+        
+        {# Create hash for the icons #}
+        {% set nav_icon = 
+              { AITeam: 'users', 
+              UtilizationDashboard: 'list', 
+              DemandManagement: 'money',
+              DocumentManagement: 'folder-open',
+              ProjectDashboard: 'line-chart',
+              ITAssetManagement: 'table',
+              
+              APITest: 'table',
+              UserProfile: 'user',
+              layout2: 'github'
+              }
+        %}
+        
+        
+        <!-- Start of navigation bar front-end view-->
+        <nav class="main-menu">
+            <ul>
+              <li>
+               <a class="nav-link" href="{{mainpage.getHref()}}"> 
+                 <i class="fa fa-home fa-2x"></i> 
+                 <span class="nav-text"> Home </span>
+               </a>
+             </li>
+             {% for page in mainNavigation %}
+					{# here need to manually check for ACL conditions #}
+					{% if page.isVisible() and menuRenderer.accept(page) %}
+						{% set hasChildren = page.hasPages() %}
+						{% if not hasChildren %}
+					    	{# To retrieve the name of the tab and remove white space. For the icon usage #}
+						    {% set var_icon = page.getLabel()|trans %} {# Get the tab name #}
+						    {% set real_icon = var_icon|replace({' ': ''}) %} {# remove white space to match the nav_icon hash key #}
+								{% if real_icon != "UserProfile" %}
+									<li>
+										<a class="nav-link" href="{{ page.getHref() }}"> 
+											<i class="fa fa-{{ nav_icon[real_icon] }} fa-2x"></i>
+											<span class="nav-text"> {{ page.getLabel()|trans }} </span>
+										</a>
+									</li>
+								{% else %}
+									<br>
+								{% endif %}
+						{% else %}
+						<span class="dropdown-nav">
+							<li class="has-subnav"> {# if the navigation menu has sub-menu #}
+						    	{# To retrieve the name of the tab and remove white space. For the icon usage #}
+								{% set var_icon = page.getLabel()|trans %}  {# Get the tab name #}
+						        {% set real_icon = var_icon|replace({' ': ''}) %} {# remove white space to match the nav_icon hash key #}
+								<a class="nav-link" href="{{ page.getHref() }}"> 
+									<i class="fa fa-{{ nav_icon[real_icon] }} fa-2x"></i>
+									<span class="nav-text"> {{ page.getLabel()|trans }} </span>
+								</a>
+								<!-- dropdown content -->
+								<div class="dropdown-container">
+									{% for child in page.getPages() %}
+										{% if child.isVisible() and menuRenderer.accept(child) %}
+    										{% set hasChildren2 = child.hasPages() %} {# check if  submenu within submenu is present #}
+    										{% if not hasChildren2 %}
+    											<a id="dropdown-a" href="{{ child.getHref() }}">{{ child.getLabel()|trans }}</a>
+    										{% else %}
+    										    <span class="dropdown2-nav">
+    										        <a href="{{ child.getHref() }}" id="dropdown-a">{{ child.getLabel()|trans }}</a>
+    										        <!-- dropdown container for sub sub-menu -->
+                                					<div id="dropdown2-container" id="dropdown2-a">
+                                					    {% for child2 in child.getPages() %}
+    									                	{% if child2.isVisible() and menuRenderer.accept(child2) %} 
+    									                    	<a href="{{ child2.getHref() }}" id="dropdown2-a">{{ child2.getLabel()|trans }}</a> 
+									                        {% endif %}
+								                        {% endfor %}
+                                					</div>
+										{% endif %}
+										{% endif %}
+									{% endfor %}
+								</div>
+							</li>
+						</span>
+						{% endif %}
+					{% endif %}
+				{% endfor %}
+           </ul>
+           <!-- for profile and logout icon at the below part of the navigation bar -->
+    	   <ul class="logout">
+				{% for page in mainNavigation %}
+					{# here need to manually check for ACL conditions #}
+					{% if page.isVisible() and menuRenderer.accept(page)  %}
+						{# To retrieve the name of the tab and remove white space. For the icon usage #}
+						{% set var_icon = page.getLabel()|trans %} {# Get the tab name #}
+						{% set real_icon = var_icon|replace({' ': ''}) %} {# remove white space to match the nav_icon hash key #}
+							{% if real_icon == "UserProfile" %}
+								<li>
+									<a class="nav-link" href="{{ page.getHref() }}"> 
+										<i class="fa fa-{{ nav_icon[real_icon] }} fa-2x"></i>
+										<span class="nav-text"> {{ page.getLabel()|trans }} </span>
+									</a>
+								</li>
+							{% endif %}
+					{% endif %}
+				{% endfor %}
+			
+        		<li>
+        			<a href="login.html">
+        			<i class="fa fa-sign-out fa-2x"></i>
+        			<span class="nav-text">
+        				Logout
+        			</span>
+        			</a>
+        		</li>
+        	</ul>
+		</nav>
+    	<!-- end of side navigation bar section -->
+    	
+        
+        <!--BLOCK 4: content -->
+        {% block content %}
+         <!-- Displaying the text (title) -->
+            <div class="bgimg">
+                <div class="w3-display-middle">
+                    <!-- use pimcore_input so changes on the page title can be made from the fron-end -->
+                    <h1 class="w3-jumbo w3-animate-top" style="color: black;"> 
+                        {{ pimcore_input("page_title", {'width':750, 'placeholder' : "TM ONE AI DevOps"}) }}
+                        {% if pimcore_input("page_title").isEmpty() %}
+                            <h1 class="w3-jumbo w3-animate-top" style="color: black;">TM ONE AI DevOps</h1>
+                        {% endif%}
+                    </h1>
+                    <hr style="margin:auto;width:70%;border-width:4px; border-color:#00aede">
+                </div>
+            </div>
+        {% endblock %}
+    
+    
+    <!-- BLOCK 5: footer -->
+    {% block footer %}
+    {% endblock %}
+    
+    </body>
+</html>

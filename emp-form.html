@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <!-- datepicker -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <h3>
+        Education
+    </h3>
+    <form>
+        <!-- Available Education List -->
+        <div class="form-group">
+            <label class="my-1 mr-2" for="EducationObjectList"> Available Education List</label>
+            <select class="custom-select my-1 mr-sm-2" id="EducationObjectList">
+                <option selected>New Education Objects...</option>
+                <option value="1">Multimedia University - Bachelor of Computer Science</option>
+                <option value="2">Multimedia University - Foundation in Information Technology</option>
+                <option value="3">Sunway College - Monash University Foundation Year</option>
+                <option value="4">Swinburne University of Technology - Bachelor of Computer Science</option>
+            </select>
+        </div>
+
+        <!-- Education Field -->
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputInstitutionName">Institution Name*</label>
+                <input type="text" class="form-control" id="inputInstitutionName" placeholder="Institution Name"
+                    value="123" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputStudyFieldName">Field of Study*</label>
+                <input type="text" class="form-control" id="inputStudyFieldName" placeholder="Field of Study"
+                    value="123" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="EducationLevelList"> Education Level*</label>
+                <select class="custom-select" id="EducationLevelList" required>
+                    <option value="1">Foundation</option>
+                    <option value="2">Pre-University</option>
+                    <option value="3">STPM</option>
+                    <option value="4">Diploma</option>
+                    <option value="5">Associate's Degree</option>
+                    <option value="6">Bachelor's Degree</option>
+                    <option value="7">Master</option>
+                    <option value="8">PhD</option>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputEducationDescription">Education Description</label>
+                <input type="text" class="form-control" id="inputEducationDescription"
+                    placeholder="Education Description" value="">
+            </div>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Save Education</button>
+    </form>
+
+    <hr>
+
+    <h3>
+        Enrollment
+    </h3>
+    <form>
+        <!-- Add new  -->
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="EducationLevelList"> Start Date*</label>
+                <input id="datepickerStart" width="276" />
+            </div>
+            <div class="form-group col-md-6">
+                <label for="EducationLevelList"> End Date*</label>
+                <input id="datepickerEnd" width="276" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="my-1 mr-2" for="EducationObjectList"> Education List</label>
+            <select class="custom-select my-1 mr-sm-2" id="EducationObjectList">
+                <option value="1">Multimedia University - Bachelor of Computer Science</option>
+                <option value="2">Multimedia University - Foundation in Information Technology</option>
+                <option value="3">Sunway College - Monash University Foundation Year</option>
+                <option value="4">Swinburne University of Technology - Bachelor of Computer Science</option>
+            </select>
+        </div>
+
+
+
+        <hr>
+        <!-- Current Education (delete) -->
+
+
+        <button class="btn btn-primary" type="submit">Save Education</button>
+    </form>
+
+    <script>
+        $('#datepickerStart').datepicker({
+            uiLibrary: 'bootstrap4'
+        });
+        $('#datepickerEnd').datepicker({
+            uiLibrary: 'bootstrap4'
+        });
+    </script>
+
+</body>
+
+</html>
