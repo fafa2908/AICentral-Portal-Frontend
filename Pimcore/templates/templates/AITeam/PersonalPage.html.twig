@@ -645,11 +645,11 @@
                         
                 </div>
                 
+                
                 <!-- Employee Skills List (Skill Proficiency) -->
                 <hr>
                 <div class="w3-container w3-card w3-white w3-margin-bottom">
                     <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-cogs fa-fw w3-xxlarge" style="color:#0aa6d1;" id="emp-icon"></i>Skills</h2>
-              
               
                     <!-- Employee Skills List : BODY-->
                     {%if skillProfList.count()%}
@@ -659,9 +659,16 @@
                                     <i class="fa fa-cogs" id="emp-icon"></i>
                                     <b>{{skillProf.getSkillDetails().getSkillName()}}</b>
                                 </h4>
-                                <p>{{skillProf.getSkillDetails().getSkillDesc()}}</p>
-                                
-                                <h5 style="color:#0aa6d1;">
+                                <h5 style="color:black; font-weight:500;">
+                                    <b>{{skillProf.getSkillDetails().getTrainingTitle()}}</b>
+                                </h5>
+                                <h5 style="color:grey;">
+                                    <b>{{skillProf.getSkillDetails().getExamName()}}</b>
+                                </h5>
+                                   <h5 style="color:grey;">
+                                    <b>{{skillProf.getStatus()}}</b>
+                                </h5>
+                                <h5 style="color:black;">
                                     <i class="fa fa-bars" id="emp-icon"></i>
                                     {{skillProf.getSkillLevel()}}
                                 </h5>
