@@ -15,20 +15,22 @@ class TeamMemberController extends FrontendController
      * @Template()
      * @Route("/AITeam/TeamMember", name="TeamMemberPage")
      * @Route("/AITeam", name="AITeamPage")
-     */
-    public function defaultAction(Request $request)
-    {
+     */    
+    public function defaultAction(Request $request){
         $employeeList = new DataObject\Employee\Listing();
         $employeeList->setOrderKey('Position');
         // $employeeList 
-
-        foreach ($employeeList as $employee) {
-
-            $employee->setPosition(substr($employee->getPosition(), strpos($employee->getPosition(), "_") + 1));
+        
+        foreach($employeeList as $employee){
+            
+            $employee->setPosition(substr($employee->getPosition(), strpos($employee->getPosition(), "_") + 1));  
         }
-
+        
         return $this->render('AITeam/TeamMember.html.twig', [
             "employeeList" => $employeeList
         ]);
     }
+    
+    
+
 }

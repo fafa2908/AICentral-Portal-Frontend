@@ -2,12 +2,15 @@ security:
     providers:
         pimcore_admin:
             id: Pimcore\Bundle\AdminBundle\Security\User\UserProvider
-
+        
+        pimcore_user:
+            id: Pimcore\Bundle\AdminBundle\Security\User\UserProvider
+            
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-
+            
         # Pimcore WebDAV HTTP basic // DO NOT CHANGE!
         pimcore_admin_webdav:
             pattern: ^/admin/asset/webdav
@@ -39,6 +42,15 @@ security:
                 trusted_parameter_name: _trusted       # Name of the parameter for the trusted device option
                 multi_factor: false                    # If ALL active two-factor methods need to be fulfilled (multi-factor authentication)
 
+        main: 
+            anonymous: ~
+            provider: pimcore_user
+            http_basic: ~
+            form_login:
+                login_path: loginPage
+                check_path: loginPage
+            logout: 
+                path: logoutPage
 
     access_control:
         # Pimcore admin ACl  // DO NOT CHANGE!

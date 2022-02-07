@@ -284,18 +284,26 @@
         {% set mainpage = pimcore_document(1) %}
         
         {# Create hash for the icons #}
-        {% set nav_icon = 
-              { AITeam: 'users', 
-              UtilizationDashboard: 'list', 
-              DemandManagement: 'money',
-              DocumentManagement: 'folder-open',
-              ProjectDashboard: 'line-chart',
-              ITAssetManagement: 'table',
-              
-              APITest: 'table',
-              UserProfile: 'user',
-              layout2: 'github'
-              }
+        {% set nav_icon = { 
+                AITeam: 'users', 
+                UtilizationDashboard: 'list', 
+                DemandManagement: 'money',
+                DocumentManagement: 'folder-open',
+                ProjectDashboard: 'line-chart',
+                ITAssetManagement: 'table'
+            }
+        %}
+        
+        {# Create anon for the icons #}
+        {% set user_anon_icon = { 
+                Login: 'sign-in',
+            }
+        %}
+        
+        {# Create authenticated for the icons #}
+        {% set user_auth_icon = { 
+                UserProfile: 'user',
+            }
         %}
         
         
@@ -316,7 +324,8 @@
 					    	{# To retrieve the name of the tab and remove white space. For the icon usage #}
 						    {% set var_icon = page.getLabel()|trans %} {# Get the tab name #}
 						    {% set real_icon = var_icon|replace({' ': ''}) %} {# remove white space to match the nav_icon hash key #}
-								{% if real_icon != "UserProfile" %}
+						     
+								{% if real_icon in nav_icon|keys %}
 									<li>
 										<a class="nav-link" href="{{ page.getHref() }}"> 
 											<i class="fa fa-{{ nav_icon[real_icon] }} fa-2x"></i>
@@ -354,7 +363,8 @@
 									                        {% endif %}
 								                        {% endfor %}
                                 					</div>
-										{% endif %}
+                                				</span>
+										    {% endif %}
 										{% endif %}
 									{% endfor %}
 								</div>
@@ -364,38 +374,65 @@
 					{% endif %}
 				{% endfor %}
            </ul>
+           
+           
            <!-- for profile and logout icon at the below part of the navigation bar -->
     	   <ul class="logout">
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %} 
+            {# AUNTHENTICATED USER ONLY #}
 				{% for page in mainNavigation %}
 					{# here need to manually check for ACL conditions #}
 					{% if page.isVisible() and menuRenderer.accept(page)  %}
 						{# To retrieve the name of the tab and remove white space. For the icon usage #}
 						{% set var_icon = page.getLabel()|trans %} {# Get the tab name #}
 						{% set real_icon = var_icon|replace({' ': ''}) %} {# remove white space to match the nav_icon hash key #}
-							{% if real_icon == "UserProfile" %}
+							{% if real_icon in user_auth_icon|keys %}
 								<li>
 									<a class="nav-link" href="{{ page.getHref() }}"> 
-										<i class="fa fa-{{ nav_icon[real_icon] }} fa-2x"></i>
+										<i class="fa fa-{{ user_auth_icon[real_icon] }} fa-2x"></i>
 										<span class="nav-text"> {{ page.getLabel()|trans }} </span>
 									</a>
 								</li>
 							{% endif %}
 					{% endif %}
 				{% endfor %}
-			
         		<li>
-        			<a href="login.html">
+        			<a href="/logout">
         			<i class="fa fa-sign-out fa-2x"></i>
         			<span class="nav-text">
         				Logout
         			</span>
         			</a>
         		</li>
+			{% else %}
+			{# ANONYMOUS USER ONLY #}
+			    {% for page in mainNavigation %}
+					{# here need to manually check for ACL conditions #}
+					{% if page.isVisible() and menuRenderer.accept(page)  %}
+						{# To retrieve the name of the tab and remove white space. For the icon usage #}
+						{% set var_icon = page.getLabel()|trans %} {# Get the tab name #}
+						{% set real_icon = var_icon|replace({' ': ''}) %} {# remove white space to match the nav_icon hash key #}
+							{% if real_icon in user_anon_icon|keys %}
+								<li>
+									<a class="nav-link" href="{{ page.getHref() }}"> 
+										<i class="fa fa-{{ user_anon_icon[real_icon] }} fa-2x"></i>
+										<span class="nav-text"> {{ page.getLabel()|trans }} </span>
+									</a>
+								</li>
+							{% endif %}
+					{% endif %}
+				{% endfor %}
+            {% endif %}
+    
+    
+
         	</ul>
 		</nav>
     	<!-- end of side navigation bar section -->
     	
         
+
+              
         <!--BLOCK 4: content -->
         {% block content %}
          <!-- Displaying the text (title) -->

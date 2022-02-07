@@ -23,7 +23,7 @@
 			width: 70% !important;
 		}
 
-		button {
+		.button_deco {
 			border: none;
 			outline: 0;
 			display: inline-block;
@@ -37,7 +37,7 @@
 			margin: 5px;
 		}
 
-		button:hover,
+		.button_deco:hover,
 		a:hover {
 			opacity: 0.7;
 		}
@@ -46,12 +46,118 @@
 
 {% block content %}
 
-    <h2 class="w3-center w3-animate-top" style="color: black; font-size:50px;">AI DevOps Document Templates</h2>
+    <h2 class="w3-center w3-animate-top" style="color: black; font-size:50px;">AI DevOps Document Management</h2>
 	<hr style="margin:auto;width:20%;border-width:4px; border-color:#00aede; margin-bottom:50px;">
+	
+	
+    {#<form action="upload.php" method="post" enctype="multipart/form-data">#}
+    {#Select image to upload:#}
+    {#<input type="file" name="fileToUpload" id="fileToUpload">#}
+    {#<input type="submit" value="Upload Image" name="submit">#}
+    {#</form>#}
+	
+	{% if is_granted('IS_AUTHENTICATED_FULLY') %} 
+    {# AUNTHENTICATED USER ONLY #}
+    	<div class="container" style=" margin-bottom:20px;">
+            <div class="row row-cols-4">
+                <button type="button" class="btn btn-primary text-center button_deco" data-toggle="modal" data-target=".Folder"> 
+                    <i class="fa fa-edit fa-fw" id="emp-icon"></i>
+                    Manage Folder
+                </button>
+                
+                <button type="button" class="btn btn-primary text-center button_deco" data-toggle="modal" data-target=".Documents"> 
+                    <i class="fa fa-edit fa-fw" id="emp-icon"></i>
+                    Manage Document
+                </button>
+            </div>
+        </div>
+        
+        <div class="modal fade Folder" tabindex="-1" role="dialog" aria-labelledby="FolderLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <!-- Project Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="exampleModalLabel">Edit Folder</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    
+                    <!-- Project FORM -->
+                    <div class="modal-body">
+                        <form method="post" action="/DocumentManagement/{{currentFolderID}}/Folder/Edit" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="createFolder">Create a folder</label>
+                                <br>
+                                <input type="text" class="form-control" name="folderName" id="folderName" placeholder="Folder Name">
+                            </div>
+                            <input type="hidden" name="currentFolderID" value={{currentFolderID}}/>
+                            <hr>
+                            
+                            <div class="form-group">
+                                <label class="my-1 mr-2" for="FolderObjectList">Delete Folder</label>
+                                <select class="custom-select my-1 mr-sm-2" id="DeleteFolderList" name="DeleteFolderList" value =-1>
+                                    <option selected value> -- select an folder -- </option>
+                                    {% for folder in folderList %}
+                                        <option value={{folder.getId()}}>{{folder.getFilename()}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <hr>
+                            
+                            <button class="btn btn-primary" type="submit" name="buttonAction" value="Create">Create</button>
+                            <button class="btn btn-danger" type="submit" name="buttonAction" value="Delete">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal fade Documents" tabindex="-1" role="dialog" aria-labelledby="DocumentLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <!-- Project Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="exampleModalLabel">Edit Document</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    
+                    <!-- Project FORM -->
+                    <div class="modal-body">
+                        <form method="post" action="/DocumentManagement/{{currentFolderID}}/File/Upload" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="fileToUpload">Upload a file</label>
+                                <br>
+                                <input type="file" name="fileToUpload" id="fileToUpload">
+                            </div>
+                            <input type="hidden" name="currentFolderID" value={{currentFolderID}}/>
+                            <hr>
+                            
+                            <div class="form-group">
+                                <label class="my-1 mr-2" for="CompanyObjectList">Delete File</label>
+                                <select class="custom-select my-1 mr-sm-2" id="DeleteFileList" name="DeleteFileList" onclick="companyFormResponsive(this)">
+                                    <option selected value> -- select an folder -- </option>
+                                    {% for asset in assetList %}
+                                        <option value={{asset.getId()}}>{{asset.getFilename()}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <hr>
+                            
+                            <button class="btn btn-primary" type="submit" name="buttonAction" value="Upload">Upload</button>
+                            <button class="btn btn-danger" type="submit" name="buttonAction" value="Delete">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
 	
 	<!-- Folders Title-->
 	<h3 class="label">
-		Folders 
+		Folders : {{currentPath}}
 	</h3>
 	<!-- Folders Buttons-->
 	<div class="container" >
@@ -60,14 +166,14 @@
 		    
 		    {% if(currentFolderID != rootFolderID ) %}
 		        <a href={{PIMCORE_URL}}/DocumentManagement/{{parentId}}>
-    			    <button type="button" class="btn btn-primary">Back</button>
+    			    <button type="button" class="btn btn-primary button_deco">Back</button>
     			</a>
 		    {% endif %}
 			
 			{% for folder in folderList %}
 			
     			<a href={{PIMCORE_URL}}/DocumentManagement/{{folder.getId()}}>
-    			    <button type="button" class="btn btn-outline-primary">{{folder.getFilename()}}</button>
+    			    <button type="button" class="btn btn-outline-primary button_deco">{{folder.getFilename()}}</button>
     			</a>
 			{% endfor %}
 		</div>
@@ -98,8 +204,7 @@
     					<td>{{asset.getType()}}</td>
     					<td>{{asset.modifyDate.format("d-m-Y")}}</td>
     					<td>
-
-					    	<a href="{{asset.getRealFullPath()}}"><button>Get File</button></a>
+					    	<a href="{{asset.getRealFullPath()}}"><button class="button_deco">Get File</button></a>
     					</td>
 					</tr>
                 {% endfor %}
