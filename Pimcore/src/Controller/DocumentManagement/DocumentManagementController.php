@@ -23,7 +23,7 @@ class DocumentManagementController extends FrontendController
         $assetListAll = $currentAsset->getChildren();
         $parentId = $currentAsset->getparentId();
         
-        $currentPath = str_replace("/DocumentManagementAsset","root",$currentAsset->getFullPath());
+        $currentPath = str_replace("/DocumentManagementAsset","Doc",$currentAsset->getFullPath());
         
         // echo json_encode(Asset::$types);
         // echo json_encode($assetList);
