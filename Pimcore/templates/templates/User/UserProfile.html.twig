@@ -1,0 +1,768 @@
+{% extends 'layout.html.twig' %}
+
+{# Block 2: Extend Library #}
+{% block extend_library %}
+    {#<!--  This file has been downloaded from bootdey.com @bootdey on twitter -->#}
+    {#<!--  All snippets are MIT license http://bootdey.com/license -->#}
+    {#<meta name="viewport" content="width=device-width, initial-scale=1">#}
+    
+    {#<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">#}
+    {#<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">#}
+    {#<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">#}
+    {#<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">#}
+    {#<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">#}
+    {#<!-- stylesheet for side nav bar and user profile page-->#}
+    {#<link rel="stylesheet" href="css/side-nav.css">#}
+    {#<link rel="stylesheet" href="css/user-profile-style.css">#}
+    {#<!-- link to external bootstrap script -->#}
+    {#<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>#}
+    {#<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>#}
+	<!-- datepicker -->
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+	<link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{# Block 3: extend_style #} 
+{% block extend_style%}
+ <style>
+    .new-btn {
+        padding: 8px 10px;
+        border: 0px solid #000;
+        font-family: 'Lato', sans-serif;
+        font-weight: 500;
+        background-color: #e6e6e6;
+        color: #383838;
+        /*float:right;*/ }
+    .new-btn:hover {
+        background-color: #00aede;
+        color: white; }
+    .new-btn:hover .btn-icon{
+        color: white; }
+    .btn-icon {
+        color: #00aede;
+        font-size: 25px; }
+    #btn-del:hover {
+        background-color: #c73934;
+        color: white;}
+    .btn-del-icon{
+        color: #c73934;
+        font-size: 25px; }
+     
+ </style>
+
+{% endblock %}
+
+{# Block 4: Content #}
+{% block content %}
+	<!-- the start of user profile page section -->
+	<div class="container">
+		<div class="main-body">
+			  <div class="row gutters-sm">
+			     <!-- LEFT SIDE CONTAINER  -->
+				<div class="col-md-4 mb-3">
+				  <!-- PROFILE -->
+					<div class="card">
+						<div class="card-body">
+							<div class="d-flex flex-column align-items-center text-center">
+								<div class="avatar-cont">
+									<img src="{{employee.getProfile_Image().thumbnail('EmployeeImageResize')}}"
+										alt="Admin" width="100%" class="avatar">
+								</div>
+								<div class="mt-3">
+									<h4>{{employee.getName()}}</h4>
+									<h6>{{employee.getStaff_ID()}}</h6>
+									<p class="text-secondary mb-1">{{employee.getPosition()}}</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Links -->
+					<div class="card mt-3">
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+								<i class="fa fa-github-square mb-0" style="width: auto; height: auto;"></i>
+								<h6 class="mb-0">Github</h6>
+								<span class="text-secondary">
+									<a href="{{employee.getGithub()}}">My Github URL</a>
+								</span>
+							</li>
+							<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+								<i class="fa fa-linkedin-square mb-0" style="width: auto; height: auto;"></i>
+								<h6 class="mb-0">Linkedin</h6>
+								<span class="text-secondary">
+									<a href="{{employee.getLinkedin()}}">My Linkedin URL</a>
+								</span>
+							</li>
+							<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+								<i class="fa fa-facebook-square mb-0" style="width: auto; height: auto;"></i>
+								<h6 class="mb-0">Facebook</h6>
+								<span class="text-secondary">
+									<a href="{{employee.getFacebook()}}">My Facebook URL</a>
+								</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!-- RIGHT SIDE CONTAINER  -->
+				<div class="col-md-8">
+					<!-- USER DETAILS -->
+					<div class="card mb-3">
+						<div class="card-header">
+							<h4>User Information</h4>
+						</div>
+						<div class="card-body">
+						    <!-- Display User Information -->
+						    <div>
+    							<div class="row">
+    								<div class="col-sm-3">
+    									<h6 class="mb-0">Full Name</h6>
+    								</div>
+    								<div class="col-sm-9 text-secondary">
+    									{{employee.getName()}}
+    								</div>
+    							</div>
+    							<hr>
+    							<div class="row">
+    								<div class="col-sm-3">
+    									<h6 class="mb-0">Email</h6>
+    								</div>
+    								<div class="col-sm-9 text-secondary">
+    									{{employee.getemail()}}
+    								</div>
+    							</div>
+    							<hr>
+    							<div class="row">
+    								<div class="col-sm-3">
+    									<h6 class="mb-0">Phone</h6>
+    								</div>
+    								<div class="col-sm-9 text-secondary">
+    									{{employee.getPhone()}}
+    								</div>
+    							</div>
+    							<hr>
+    							<div class="row">
+    								<div class="col-sm-3">
+    									<h6 class="mb-0">Address</h6>
+    								</div>
+    								<div class="col-sm-9 text-secondary">
+    									{{employee.getAddress()}}
+    								</div>
+    							</div>
+    							<hr>
+    							<div class="row">
+    								<div class="col-sm-3">
+    									<h6 class="mb-0">Birthday</h6>
+    								</div>
+    								<div class="col-sm-9 text-secondary">
+    									{{employee.getBirthday().format("d-m-Y")}}
+    								</div>
+    							</div>
+							</div>
+							<hr>
+							<!-- User Info - Button and form -->
+							<div class="row">
+								<div class="col-sm-12">
+									<button type="button" class="new-btn btn-primary w3-margin-top" data-toggle="modal"
+										data-target=".Profile" style="float:right;"> <i class="btn-icon fa fa-edit fa-fw" id="emp-icon"></i>
+										Edit Profile
+									</button>
+							
+									<div class="modal fade Profile" tabindex="-1" role="dialog"
+										aria-labelledby="Profile" aria-hidden="true">
+										<div class="modal-dialog modal-lg">
+											<div class="modal-content">
+												<!-- Profile Header -->
+												<div class="modal-header">
+													<h5 class="modal-title" id="exampleModalLabel">Profile</h5>
+													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													</button>
+												</div>
+												
+												<!-- Profile FORM -->
+												<div class="modal-body">
+													<form method="post" action="./UpdateProfile/submit"
+														enctype="multipart/form-data" class="was-validated">
+														<h3>Basic Informations</h3>
+														<!-- First Name - required-->
+														<div class="form-group row">
+															<label for="inputFirstName"
+																class="col-sm-2 col-form-label">First Name*</label>
+															<div class="col-sm-10">
+																<input type="Name" class="form-control" id="inputFirstName" name="inputFirstName" placeholder="First Name (Capital letters)" value="{{OP_user.firstName}}" required>
+															</div>
+														</div>
+
+														<!-- Last Name - required-->
+														<div class="form-group row">
+															<label for="inputLastName"
+																class="col-sm-2 col-form-label">Last Name*</label>
+															<div class="col-sm-10">
+																<input type="Name" class="form-control" id="inputLastName" name="inputLastName" placeholder="Last Name (Capital letters)" value="{{OP_user.lastName}}" required>
+																<small id="staffIDhelp" class="form-text text-muted">
+																	Full name = First Name + Last Name
+																</small>
+															</div>
+														</div>
+
+														<!-- Gender - required-->
+														<div class="form-group row">
+															<label for="inputGender"
+																class="col-sm-2 col-form-label">Gender*</label>
+															<div class="col-sm-10">
+																<select class="custom-select my-1 mr-sm-2"
+																	id="inputGender" name="inputGender" required>
+																	<option value="male">Male</option>
+																	<option value="female">Female</option>
+																	<option value="Others">Others</option>
+																</select>
+																<div class="invalid-feedback">Invalid Gender</div>
+															</div>
+														</div>
+
+														<!-- Phone Number - required-->
+														<div class="form-group row">
+															<label for="inputPhone"
+																class="col-sm-2 col-form-label">Phone Number*</label>
+															<div class="col-sm-10">
+																<input type="Name" class="form-control" id="inputPhone"
+																	name="inputPhone"
+																	placeholder="Phone Number (Default: +60001112222)"
+																	value="{{employee.getPhone()}}" required>
+																<small id="staffIDhelp" class="form-text text-muted">
+																	Default: +60001112222
+																</small>
+															</div>
+														</div>
+
+														<!-- Address - required-->
+														<div class="form-group row">
+															<label for="inputAddress"
+																class="col-sm-2 col-form-label">Address*</label>
+															<div class="col-sm-10">
+																<input type="Name" class="form-control"
+																	id="inputAddress" name="inputAddress"
+																	placeholder="Full Address (Default: TM address)"
+																	value="{{employee.getAddress()}}"
+																	required>
+																<small id="staffIDhelp" class="form-text text-muted">
+																	Default: TM address (1, Jalan Damansara, Damansara
+																	Kim, 60000 Kuala Lumpur, Wilayah Persekutuan Kuala
+																	Lumpur)
+																</small>
+															</div>
+														</div>
+
+														<!-- Birthday - required -->
+														<div class="form-group row">
+															<label for="inputBirthday"
+																class="col-sm-2 col-form-label">Birthday*</label>
+															<div class="col-sm-10">
+																<input id="inputBirthday" name="inputBirthday" width="276" value="{{employee.getBirthday().format('d-m-Y')}}" required />
+															</div>
+														</div>
+														<hr>
+
+														<h3>Workplace Informations</h3>
+														<!-- Staff ID - required-->
+														<div class="form-group row">
+															<label for="inputStaffID"
+																class="col-sm-2 col-form-label">Staff ID*</label>
+															<div class="col-sm-10">
+																<input type="Name" class="form-control" id="inputStaffID" name="inputStaffID" onchange="updateUsername()" placeholder="Staff ID (TM Staff ID)" value="{{employee.getStaff_ID()}}" readonly required>
+																<small id="staffIDhelp" class="form-text text-muted">
+																	Staff ID will be used for Pimcore and OpenProject
+																	Username
+																</small>
+															</div>
+														</div>
+
+														<!-- Staff Email - required -->
+														<div class="form-group row">
+															<label for="inputEmail"
+																class="col-sm-2 col-form-label">Staff Email*</label>
+															<div class="col-sm-10">
+																<input type="email" class="form-control" id="inputEmail" name="inputEmail" placeholder="Staff Email" value="{{employee.getemail()}}" required>
+																<div class="invalid-feedback">Invalid Email</div>
+															</div>
+														</div>
+
+														<!-- Position - required-->
+														<div class="form-group row">
+															<label for="inputPosition"
+																class="col-sm-2 col-form-label">Position*</label>
+															<div class="col-sm-10">
+																<select class="custom-select my-1 mr-sm-2"
+																	id="inputPosition" name="inputPosition" required>
+																	<option value="1_Head AI DevOps">Head AI DevOps
+																	</option>
+																	<option value="2_Mgr. Analytics Consultant">Mgr.
+																		Analytics Consultant</option>
+																	<option value="2_Mgr. Visualization Specialist">Mgr.
+																		Visualization Specialist</option>
+																	<option value="3_Asst. Mgr. Data Analyst">Asst. Mgr.
+																		Data Analyst</option>
+																	<option value="3_Asst. Mgr. Data Engineer">Asst.
+																		Mgr. Data Engineer</option>
+																	<option value="3_Asst. Mgr. Data ML/Engineer">Asst.
+																		Mgr. Data ML/Engineer</option>
+																	<option
+																		value="3_Asst. Mgr. Data Platform Frontend Analyst">
+																		Asst. Mgr. Data Platform Frontend Analyst
+																	</option>
+																	<option value="4_Reporting Analyst">Reporting
+																		Analyst</option>
+																	<option value="5_TM Elite">TM Elite</option>
+																	<option value="6_Intern">Intern</option>
+																</select>
+															</div>
+															<div class="invalid-feedback">Invalid Position</div>
+														</div>
+
+														<!-- Join Date - required -->
+														<div class="form-group row">
+															<label for="inputJoin_date"
+																class="col-sm-2 col-form-label">Join Date*</label>
+															<div class="col-sm-10">
+																<input id="inputJoin_date" name="inputJoin_date" width="276" value="{{employee.getJoin_date().format('d-m-Y')}}" required />
+															</div>
+														</div>
+
+														<!-- Profile Picture  -->
+														<div class="form-group row">
+															<label for="fileToUpload"
+																class="col-sm-2 col-form-label">Profile Picture*</label>
+															<div class="col-sm-10">
+																<input type="file" class="form-control"
+																	name="fileToUpload" id="fileToUpload">
+																<small id="staffIDhelp" class="form-text text-muted">
+																	Default: default image will be assigned
+																</small>
+															</div>
+
+														</div>
+														<hr>
+														
+														<h3>Personal Links</h3>
+														<!-- Github -->
+														<div class="form-group row">
+															<label for="inputGithub"
+																class="col-sm-2 col-form-label">Github Link</label>
+															<div class="col-sm-10">
+																<input type="Name" class="form-control" id="inputGithub" name="inputGithub" placeholder="Github Link" value="{{employee.getGithub()}}">
+															</div>
+														</div>
+
+														<!-- Linkedin -->
+														<div class="form-group row">
+															<label for="inputLinkedin"
+																class="col-sm-2 col-form-label">Linkedin Link</label>
+															<div class="col-sm-10">
+																<input type="Name" class="form-control"
+																	id="inputLinkedin" name="inputLinkedin" placeholder="Linkedin Link" value="{{employee.getLinkedIn()}}">
+															</div>
+														</div>
+
+														<!-- Facebook-->
+														<div class="form-group row">
+															<label for="inputFacebook"
+																class="col-sm-2 col-form-label">Facebook Link</label>
+															<div class="col-sm-10">
+																<input type="Name" class="form-control" id="inputFacebook" name="inputFacebook" placeholder="Facebook Link" value="{{employee.getFacebook()}}">
+															</div>
+														</div>
+														<hr>
+
+														<h3>User Credentials</h3>
+														<!-- Username - required-->
+														<div class="form-group row">
+															<label for="inputUsername"
+																class="col-sm-2 col-form-label">Username*</label>
+															<div class="col-sm-10">
+																<input type="Name" class="form-control"
+																	id="inputUsername" name="inputUsername" placeholder="Staff ID (TM Staff ID)" value="{{employee.getStaff_ID()}}" readonly required>
+															</div>
+														</div>
+														<!-- Password - required-->
+														<div class="form-group row">
+															<label for="inputPassword"
+																class="col-sm-2 col-form-label">Update Password*</label>
+															<div class="col-sm-10">
+																<input type="password" class="form-control"
+																	id="inputPassword" name="inputPassword"
+																	pattern=".{10,}"
+																	placeholder="Password (Default: AI_c3ntr4l)"
+																	>
+																<div class="invalid-feedback">Must be at least 10
+																	characters long.</div>
+																<small id="staffIDhelp" class="form-text text-muted">
+																	Default: AI_c3ntr4l <br>
+																	The password change is only for AICentral (Pimcore). <br>
+																	Please manually change your password at OpenProject. <br>
+																	For OpenProject password reset, please contact the admin. 
+																</small>
+															</div>
+														</div>
+														<hr>
+														<button class="btn btn-primary" type="submit" name="buttonAction" value="Update">Update Information</button>
+														
+														<script>
+															$('#inputBirthday').datepicker({
+																uiLibrary: 'bootstrap4',
+																format: 'dd-mm-yyyy',
+															});
+															$('#inputJoin_date').datepicker({
+																uiLibrary: 'bootstrap4',
+																format: 'dd-mm-yyyy',
+															});
+															var currentGender = {{employee.getgender()|json_encode|raw }}; 
+															var currentPosition = {{employee.getPosition()|json_encode|raw }}; 
+															
+															var genderList = ['male','female','Others']; 
+															var positionList = ['Head AI DevOps','Mgr. Analytics Consultant','Mgr. Visualization Specialist','Asst. Mgr. Data Analyst','Asst. Mgr. Data Engineer','Asst. Mgr. Data ML/Engineer','Asst. Mgr. Data Platform Frontend Analyst','Reporting Analyst','TM Elite','Intern']
+															
+															console.log(positionList.indexOf(currentPosition))
+															
+                                                            document.getElementById("inputGender").selectedIndex = genderList.indexOf(currentGender);
+                                                            document.getElementById("inputPosition").selectedIndex = positionList.indexOf(currentPosition);
+														</script>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<!-- ADMIN FUNCTIONS  -->
+					{% if isAdmin %}
+					    <div class="card mb-3">
+						<div class="card-header">
+							<h4>Admin Interface</h4>
+						</div>
+						<div class="card-body">
+						    <div class="row">
+								<!-- Reset Pimcore Password -->
+								<div class="col-sm-6">
+									<button type="button" class="new-btn btn btn-primary w3-margin-top" data-toggle="modal"
+										data-target=".ResetPassword"> <i class="btn-icon fa fa-key fa-fw" id="emp-icon"></i>
+										Edit Pimcore Password
+									</button>
+
+									<div class="modal fade ResetPassword" tabindex="-1" role="dialog"
+										aria-labelledby="ResetPassword" aria-hidden="true">
+										<div class="modal-dialog modal-lg">
+											<div class="modal-content">
+												<!-- ResetPassword Header -->
+												<div class="modal-header">
+													<h5 class="modal-title" id="exampleModalLabel">Reset Password</h5>
+													<button type="button" class="close" data-dismiss="modal"
+														aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													</button>
+												</div>
+												<!-- ResetPasssword FORM -->
+												<div class="modal-body">
+                                                    <form method="post" action="./forms/ResetPassword">
+    													<!-- Available User List -->
+    													<div class="form-group">
+    														<label class="my-1 mr-2" for="employeeList"> Available User List</label>
+    														<select class="custom-select my-1 mr-sm-2" id="employeeList" name="employeeList">
+    														    <option selected>--Select User--</option>
+    															{% for employee in employeeList %}
+    															<option value={{employee.getStaff_ID()}}>{{employee.getKey()}} - {{employee.getName()}}
+    															</option>
+    															{% endfor %}
+    														</select>
+    													</div>
+    													
+    													<!-- Password - required-->
+    													<div class="form-group row">
+    														<label for="inputPassword" class="col-sm-2 col-form-label">New
+    															Password*</label>
+    														<div class="col-sm-10">
+    															<input type="password" class="form-control"
+    																id="inputPassword" name="inputPassword" pattern=".{10,}"
+    																placeholder="Password (Default: AI_c3ntr4l)" required>
+    															<div class="invalid-feedback">Must be at least 10 characters
+    																long.</div>
+    															<small id="staffIDhelp" class="form-text text-muted">
+    																Default: AI_c3ntr4l
+    															</small>
+    														</div>
+    													</div>
+    													<hr>
+    													<button class="btn btn-primary" type="submit" name="buttonAction"
+    														value="Reset">Reset Password</button>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								
+								<!-- Reset OpenProject Password -->
+					        	<div class="col-sm-6">
+									<a href='http://192.168.1.2:8081/users'>
+									    <button type="button" class="new-btn btn btn-primary w3-margin-top" ><i class="btn-icon fa fa-key fa-fw" id="emp-icon"></i>
+									        Edit OpenProject Password
+									    </button>
+								    </a>
+								</div>
+							</div>
+							<div class="row">
+								<!-- Manage Admin -->
+								<div class="col-sm-3">
+									<button type="button" class="new-btn btn btn-primary w3-margin-top" data-toggle="modal"
+										data-target=".ManageAdmin"> <i class="btn-icon fa fa-edit fa-fw" id="emp-icon"></i>
+										Manage Admin
+									</button>
+									<div class="modal fade ManageAdmin" tabindex="-1" role="dialog"
+										aria-labelledby="ManageAdmin" aria-hidden="true">
+										<div class="modal-dialog modal-lg">
+											<div class="modal-content">
+												<!-- ManageAdmin Header -->
+												<div class="modal-header">
+													<h5 class="modal-title" id="exampleModalLabel">Manage Admin</h5>
+													<button type="button" class="close" data-dismiss="modal"
+														aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													</button>
+												</div>
+												<!-- ManageAdmin FORM -->
+												<div class="modal-body">
+												    <form method="post" action="./forms/manageAdmin">
+    													<!-- Available User List -->
+    													<div class="form-group">
+        														<label class="my-1 mr-2" for="employeeList"> Available User List</label>
+        														<select class="custom-select my-1 mr-sm-2" id="employeeList" name="employeeList">
+        														    <option selected>--Select User--</option>
+        															{% for employee in employeeList %}
+        															<option value={{employee.getStaff_ID()}}>{{employee.getKey()}} - {{employee.getName()}}
+        															</option>
+        															{% endfor %}
+        														</select>
+        													</div>
+    
+    													<!-- Admin - required-->
+    													<div class="form-group row">
+    														<label for="inputAdmin"
+    															class="col-sm-2 col-form-label">Admin*</label>
+    														<div class="col-sm-10">
+    															<select class="custom-select my-1 mr-sm-2" id="inputAdmin"
+    																name="inputAdmin" required>
+    																<option value="no">no</option>
+    																<option value="yes">yes</option>
+    															</select>
+    															<small id="staffIDhelp" class="form-text text-muted">
+    																Admin privilege is applied for both Pimcore and OpenProject
+    															</small>
+    														</div>
+    													</div>
+    													<hr>
+    													<button class="btn btn-primary" type="submit" name="buttonAction"
+    														value="update">Update</button>
+													</form>
+													<hr>
+													<h3>Current Admins</h3>
+													<table class="table">
+														<thead>
+															<tr>
+																<th scope="col">#</th>
+																<th scope="col">Name</th>
+																<th scope="col">Staff ID</th>
+																<th scope="col">Contact</th>
+															</tr>
+														</thead>
+														<tbody>
+														    {% for admin in adminList %}
+    															<tr>
+    																<th scope="row">{{ loop.index }}</th>
+    																<td>{{admin.getName()}}</td>
+    																<td>{{admin.getStaff_Id()}}</td>
+    																<td>{{admin.getPhone()}}</td>
+    															</tr>
+														    {% endfor %}
+														</tbody>
+													</table>
+												</div>
+
+											</div>
+										</div>
+									</div>
+								</div>
+								
+								<!-- Create User -->
+								<div class="col-sm-3">
+									<a href="/CreateUser">
+										<button type="button" class="new-btn btn btn-primary w3-margin-top" data-toggle="modal"
+											data-target="#"> <i class="btn-icon fa fa-plus fa-fw" id="emp-icon"></i> 
+											Create User
+										</button>
+									</a>
+								</div>
+								
+							    <!-- User Activation -->
+								<div class="col-sm-3">
+									<button type="button" class="new-btn btn btn-primary w3-margin-top" data-toggle="modal"
+										data-target=".UserActivation"> <i class="btn-icon fa fa-edit fa-fw" id="emp-icon"></i>
+										User Activation
+									</button>
+									<div class="modal fade UserActivation" tabindex="-1" role="dialog"
+										aria-labelledby="UserActivation" aria-hidden="true">
+										<div class="modal-dialog modal-lg">
+											<div class="modal-content">
+												<!-- UserActivation Header -->
+												<div class="modal-header">
+													<h5 class="modal-title" id="exampleModalLabel">User Activation</h5>
+													<button type="button" class="close" data-dismiss="modal"
+														aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													</button>
+												</div>
+												<!-- UserActivation FORM -->
+												<div class="modal-body">
+												    <form method="post" action="./forms/userActivation">
+    													<!-- Available User List -->
+    													<div class="form-group">
+        														<label class="my-1 mr-2" for="employeeList"> Available User List</label>
+        														<select class="custom-select my-1 mr-sm-2" id="employeeList" name="employeeList">
+        														    <option selected>--Select User--</option>
+        															{% for employee in employeeList %}
+        															<option value={{employee.getStaff_ID()}}>{{employee.getKey()}} - {{employee.getName()}}
+        															</option>
+        															{% endfor %}
+        														</select>
+        													</div>
+    
+    													<!-- User Activation - required-->
+    													<div class="form-group row">
+    														<label for="inputAdmin"
+    															class="col-sm-2 col-form-label">User Activation*</label>
+    														<div class="col-sm-10">
+    															<select class="custom-select my-1 mr-sm-2" id="inputUserActivation"
+    																name="inputUserActivation" required>
+    																<option value="inactive">Inactive</option>
+    																<option value="active">Active</option>
+    															</select>
+    															<small id="staffIDhelp" class="form-text text-muted">
+    																User Activation is applied for both Pimcore and OpenProject.
+    																Only Inactive users can be deleted.
+    															</small>
+    														</div>
+    													</div>
+    													<hr>
+    													<button class="btn btn-primary" type="submit" name="buttonAction"
+    														value="update">Update</button>
+													</form>
+													<hr>
+													<h3>Inactive Users</h3>
+													<table class="table">
+														<thead>
+															<tr>
+																<th scope="col">#</th>
+																<th scope="col">Name</th>
+																<th scope="col">Staff ID</th>
+																<th scope="col">Contact</th>
+															</tr>
+														</thead>
+														<tbody>
+														    {% for user in inactiveList %}
+    															<tr>
+    																<th scope="row">{{ loop.index }}</th>
+    																<td>{{user.getName()}}</td>
+    																<td>{{user.getStaff_Id()}}</td>
+    																<td>{{user.getPhone()}}</td>
+    															</tr>
+														    {% endfor %}
+														</tbody>
+													</table>
+												</div>
+
+											</div>
+										</div>
+									</div>
+								</div>
+                            </div>
+                            <div class='row'>
+						        <!-- Delete User -->
+								<div class="col-sm-3">
+									<button type="button" id="btn-del" class="new-btn btn btn-danger w3-margin-top" data-toggle="modal"
+										data-target=".DeleteUser"> <i class="btn-del-icon fa fa-ban fa-fw" id="emp-icon"></i> 
+										Delete User
+									</button>
+									<div class="modal fade DeleteUser" tabindex="-1" role="dialog"
+										aria-labelledby="DeleteUser" aria-hidden="true">
+										<div class="modal-dialog modal-lg">
+											<div class="modal-content">
+												<!-- Delete User Header -->
+												<div class="modal-header">
+													<h5 class="modal-title" id="exampleModalLabel">Delete User</h5>
+													<button type="button" class="close" data-dismiss="modal"
+														aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													</button>
+												</div>
+												<!-- DeleteUser FORM -->
+												<div class="modal-body">
+												    <form method="post" action="./forms/deleteUser">
+    													<!-- Available User List -->
+    													<div class="form-group">
+    														<label class="my-1 mr-2" for="employeeList"> Available User List</label>
+    														<select class="custom-select my-1 mr-sm-2" id="employeeList" name="employeeList">
+    														    <option selected>--Select User--</option>
+    															{% for employee in inactiveList %}
+    															<option value={{employee.getStaff_ID()}}>{{employee.getKey()}} - {{employee.getName()}}
+    															</option>
+    															{% endfor %}
+    														</select>
+    													</div>
+    													
+    													<hr>
+    													<button class="btn btn-danger" type="submit" name="buttonAction"
+    														value="delete">Delete User</button>
+
+    													<hr>
+														<h3>Inactive Users</h3>
+    													<table class="table">
+    														<thead>
+    															<tr>
+    																<th scope="col">#</th>
+    																<th scope="col">Name</th>
+    																<th scope="col">Staff ID</th>
+    																<th scope="col">Contact</th>
+    															</tr>
+    														</thead>
+    														<tbody>
+    														    {% for user in inactiveList %}
+        															<tr>
+        																<th scope="row">{{ loop.index }}</th>
+        																<td>{{user.getName()}}</td>
+        																<td>{{user.getStaff_Id()}}</td>
+        																<td>{{user.getPhone()}}</td>
+        															</tr>
+    														    {% endfor %}
+    														</tbody>
+    													</table>
+													</form>
+												</div>
+
+											</div>
+										</div>
+									</div>
+								</div>
+                            </div>
+                        </div>
+					</div>
+					{% endif %}
+				</div>
+			  </div>
+		</div>
+	</div>
+{% endblock %}
+

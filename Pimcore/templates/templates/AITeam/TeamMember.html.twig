@@ -80,7 +80,7 @@
     
     <hr style="margin:auto;width:20%;border-width:4px; border-color:#00aede; margin-bottom:50px;"> 
     <div>
-        {%for employee in employeeList%}
+        {%for employee in activeEmployeeList%}
             <div style="margin-left:250px;">
                 <div class="card">
                     <img src="{{employee.getProfile_Image().thumbnail('EmployeeImageResize')}}" alt="No image" style="width:100%">

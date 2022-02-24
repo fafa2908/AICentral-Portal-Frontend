@@ -16,6 +16,7 @@ class PersonalPageController extends FrontendController
     /**
      * @Template()
      * @Route("/AITeam/PersonalPage/{obj_ID}", name="AITeamPersonalPage")
+     * @Route("/PersonalPage/{obj_ID}", name="AITeamPersonalPageRoot")
      */    
     public function defaultAction(Request $request, string $obj_ID = "106"){
         $currentUser = \Pimcore\Tool\Admin::getCurrentUser();
@@ -81,6 +82,7 @@ class PersonalPageController extends FrontendController
     
     /**
      * @Route("/AITeam/PersonalPage", name="PersonalPageFail")
+     * @Route("/PersonalPage", name="PersonalPageFailRoot")
      */    
      public function fallback(Request $request){
          return $this->render('default/default.html.twig');
@@ -94,9 +96,9 @@ class PersonalPageController extends FrontendController
     
     /**
      * @Route("/AITeam/PersonalPage/forms/Company/{obj_ID}", name="CompanyFormPost")
+     * @Route("/PersonalPage/forms/Company/{obj_ID}", name="CompanyFormPostRoot")
      */
      public function CompanyForm(Request $request, string $obj_ID = "106"){
-        
         $companyObj = DataObject\Company::getById($_POST['CompanyObjectList']);
         // echo $_POST['CompanyObjectList'];
         // echo $_POST['CompanyName'];
@@ -144,8 +146,9 @@ class PersonalPageController extends FrontendController
         return $this->redirectToRoute('AITeamPersonalPage',['obj_ID'=>$obj_ID],301);
      }
      
-       /**
+    /**
      * @Route("/AITeam/PersonalPage/forms/WorkExperience/{obj_ID}", name="WorkExperienceFormPost")
+     * @Route("/PersonalPage/forms/WorkExperience/{obj_ID}", name="WorkExperienceFormPostRoot")
      */
      public function WorkExperienceForm(Request $request, string $obj_ID = "106"){
          $employeeObj = DataObject\Employee::getById($obj_ID);
@@ -192,6 +195,7 @@ class PersonalPageController extends FrontendController
      
     /**
      * @Route("/AITeam/PersonalPage/forms/Education/{obj_ID}", name="EducationFormPost")
+     * @Route("/PersonalPage/forms/Education/{obj_ID}", name="EducationFormPostRoot")
      */    
      public function EducationForm(Request $request, string $obj_ID = "106"){
          $object = DataObject\Education::getById($_POST['EducationObjectList']); 
@@ -244,6 +248,7 @@ class PersonalPageController extends FrontendController
      
     /**
      * @Route("/AITeam/PersonalPage/forms/Enrollment/{obj_ID}", name="EnrollmentFormPost")
+     * @Route("/PersonalPage/forms/Enrollment/{obj_ID}", name="EnrollmentFormPostRoot")
      */
      public function EnrollmentForm(Request $request, string $obj_ID = "106"){
         // echo ("hello");
@@ -292,6 +297,7 @@ class PersonalPageController extends FrontendController
     
     /**
      * @Route("/AITeam/PersonalPage/forms/SkillCategory/{obj_ID}", name="SkillCategoryFormPost")
+     * @Route("/PersonalPage/forms/SkillCategory/{obj_ID}", name="SkillCategoryFormPostRoot")
      */
     public function SkillCategory(Request $request, string $obj_ID = "106"){
         // echo ("hello");
@@ -335,6 +341,7 @@ class PersonalPageController extends FrontendController
     
     /**
      * @Route("/AITeam/PersonalPage/forms/SkillSubCategory/{obj_ID}", name="SkillSubCategoryFormPost")
+     * @Route("/PersonalPage/forms/SkillSubCategory/{obj_ID}", name="SkillSubCategoryFormPostRoot")
      */
     public function SubSkillCategory(Request $request, string $obj_ID = "106"){
         // echo ("hello");
@@ -387,8 +394,9 @@ class PersonalPageController extends FrontendController
         return $this->redirectToRoute('AITeamPersonalPage',['obj_ID'=>$obj_ID],301);
     }
     
-        /**
+    /**
      * @Route("/AITeam/PersonalPage/forms/SkillProficiency/{obj_ID}", name="SkillProficiencyFormPost")
+     * @Route("/PersonalPage/forms/SkillProficiency/{obj_ID}", name="SkillProficiencyFormPostRoot")
      */
     public function SkillProficiency(Request $request, string $obj_ID = "106"){
         // echo ("hello");
