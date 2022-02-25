@@ -83,9 +83,10 @@ class CreateUserController extends FrontendController
         $Employee_image_path = 25;
         $Employee_object_path = 28;
         
-        if ($_FILES['fileToUpload']['size'] == 0 && $_FILES['fileToUpload']['error'] == 0){
+        if ($_FILES['fileToUpload']['size'] != 0 && $_FILES['fileToUpload']['error'] == 0){
             $filename = $_FILES["fileToUpload"]["name"];
             $tempname = $_FILES["fileToUpload"]["tmp_name"];    
+            $filename = str_replace(" ","_",$filename);
             $imageFileType = strtolower(pathinfo($filename,PATHINFO_EXTENSION));
             // CREATE NEW FILE
             $profile_Image = new Image();
@@ -100,6 +101,7 @@ class CreateUserController extends FrontendController
 
         $fullname = trim($_POST['inputFirstName'])." ".trim($_POST['inputLastName']);
         $fullname = strtoupper($fullname);
+        $positionObj = DataObject\EmployeePosition::getById($_POST['inputPosition'],1); 
         
         $newObject = new DataObject\Employee(); 
         $newObject->setKey(\Pimcore\Model\Element\Service::getValidKey($_POST['inputStaffID'], 'object'));
@@ -111,7 +113,7 @@ class CreateUserController extends FrontendController
         $newObject->setBirthday(Carbon::parse($_POST['inputBirthday']));
         $newObject->setStaff_ID($_POST['inputStaffID']);
         $newObject->setEmail($_POST['inputEmail']);
-        $newObject->setPosition($_POST['inputPosition']);
+        $newObject->setPosition($positionObj);
         $newObject->setJoin_date(Carbon::parse($_POST['inputJoin_date']));
         $newObject->setProfile_Image($profile_Image);
         $newObject->setGithub($_POST['inputGithub']);
@@ -196,7 +198,7 @@ class CreateUserController extends FrontendController
         $employeeList = new DataObject\Employee\Listing();
 
         foreach($employeeList as $employee){
-            echo $employee->getStaff_ID() . "<br>";
+            // echo $employee->getStaff_ID() . "<br>";
             if ($employee->getStaff_ID() == $_POST['inputStaffID']) {
                 return false;
             }
@@ -210,12 +212,13 @@ class CreateUserController extends FrontendController
      */
     public function defaultAction(Request $request){
         $currentUser = \Pimcore\Tool\Admin::getCurrentUser();
-
-            $isAdmin = $currentUser ? $currentUser->isAdmin() : false;
-
+        $isAdmin = $currentUser ? $currentUser->isAdmin() : false;
+        $EmployeePosition = new DataObject\EmployeePosition\Listing();
+        $EmployeePosition->setOrderKey('PositionRank');
         
         return $this->render('User/CreateUser.html.twig',[
-            "isAdmin" => $isAdmin
+            "isAdmin" => $isAdmin,
+            'EmployeePosition'=>$EmployeePosition,
             ]);
     }
     
@@ -230,6 +233,7 @@ class CreateUserController extends FrontendController
             $this->create_pimcore_employee();
             $this->create_pimcore_user();
             $this->create_openproject_user();
+            $this->alert("User Successfully Created!");
         }
         else{
             $this->alert("USER EXIST!");

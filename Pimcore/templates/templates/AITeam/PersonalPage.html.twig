@@ -54,7 +54,7 @@
                 <div class="w3-container">
                     <h2 style="font-size: 20px; text-align: center;">{{employee.getName()}}</h2>
                     <p><i class="fa fa-id-card fa-fw" style="color:#0aa6d1;" id="emp-icon"></i>{{employee.getStaff_ID()}}</p>
-                    <p><i class="fa fa-briefcase " style="color:#0aa6d1;" id="emp-icon"></i>{{employee.getPosition()}}</p>
+                    <p><i class="fa fa-briefcase " style="color:#0aa6d1;" id="emp-icon"></i>{{employee.getPosition().getPositionName()}}</p>
                     <p><i class="fa fa-phone fa-fw" style="color:#0aa6d1;" id="emp-icon"></i>{{employee.getPhone()}}</p>
                     <p><i class="fa fa-envelope fa-fw" style="color:#0aa6d1;" id="emp-icon"></i>{{employee.getEmail()}}</p>
                     <p><i class="fa fa-birthday-cake fa-fw" style="color:#0aa6d1;" id="emp-icon"></i>{{employee.getBirthday().format('d-m-Y')}}</p>
@@ -976,13 +976,16 @@
                                 <h5 style="color:black; font-weight:500;">
                                     <b>{{ skillProf.getSkillDetails().getSkillSubCategory() }}</b> 
                                 </h5>
-                                <h5 style="color:grey;">
-                                    &#8226; {{ skillProf.getSkillDetails().getExamName() }}   [ {{ skillProf.getStatus() }} ]
-                                    {#<span style="padding-left:930px;"> {{ skillProf.getStatus() }}</span>#}
-                                </h5>
-                                   <h5 style="color:grey;">
+                                <!-- Only will output status if there is exam/certification -->
+                                {%if skillProf.getSkillDetails().getExamName() != "" %}
+                                    <h5 style="color:grey;">
+                                        &#8226; {{ skillProf.getSkillDetails().getExamName() }}   [ {{ skillProf.getStatus() }} ]
+                                        {#<span style="padding-left:930px;"> {{ skillProf.getStatus() }}</span>#}
+                                    </h5>
+                                {% endif %}
+                                <!--<h5 style="color:grey;">
                                     <b>{#skillProf.getStatus()#}</b>
-                                </h5>
+                                </h5>-->
                                 <h5 style="color:black;">
                                     <!--<i class="fa fa-bars" id="emp-icon"></i>-->
                                     {#skillProf.getSkillLevel()#}

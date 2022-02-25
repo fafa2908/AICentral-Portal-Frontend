@@ -85,7 +85,7 @@
                 <div class="card">
                     <img src="{{employee.getProfile_Image().thumbnail('EmployeeImageResize')}}" alt="No image" style="width:100%">
                     <h1 class="emp-name ">{{employee.getName()}}</h1>
-                    <p class="emp-position">{{employee.getPosition()}}</p>
+                    <p class="emp-position">{{employee.getPosition().getPositionName()}}</p>
                     <p class="emp-email"> {{employee.getEmail()}} </p>
                     <div style="margin: 24px 0;">
                         <a href="{{employee.getGithub()}}" class="card-social-icon"><i class="fa fa-github"></i></a> 

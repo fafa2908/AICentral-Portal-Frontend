@@ -147,10 +147,6 @@ class UserProfileController extends FrontendController
         
         $userID =  $currentUser->getName();
         $employee = DataObject\Employee::getByStaff_ID($currentUser->getName(),1);
-        $employee->setPosition(substr($employee->getPosition(), strpos($employee->getPosition(), "_") + 1)); 
-        
-        // echo $userID; 
-        // echo $employee->getName();
         
         $OP_user = $this->API_get($this->get_OP_user($userID));
         $employeeList = new DataObject\Employee\Listing();
@@ -168,6 +164,9 @@ class UserProfileController extends FrontendController
             }
         }
         
+        $EmployeePosition = new DataObject\EmployeePosition\Listing();
+        $EmployeePosition->setOrderKey('PositionRank');
+        
         return $this->render('User/UserProfile.html.twig', [
             "isAdmin" => $isAdmin,
             "employee" => $employee,
@@ -175,6 +174,7 @@ class UserProfileController extends FrontendController
             "employeeList" => $employeeList,
             "adminList"=>$adminList,
             "inactiveList"=>$inactiveList,
+            "EmployeePosition"=>$EmployeePosition,
         ]);
     }
     
@@ -216,6 +216,7 @@ class UserProfileController extends FrontendController
         
         $fullname = trim($_POST['inputFirstName'])." ".trim($_POST['inputLastName']);
         $fullname = strtoupper($fullname);
+        $positionObj = DataObject\EmployeePosition::getById($_POST['inputPosition'],1); 
         
         $employee->setName($fullname);
         $employee->setGender($_POST['inputGender']);
@@ -224,7 +225,7 @@ class UserProfileController extends FrontendController
         $employee->setBirthday(Carbon::parse($_POST['inputBirthday']));
         $employee->setStaff_ID($_POST['inputStaffID']);
         $employee->setEmail($_POST['inputEmail']);
-        $employee->setPosition($_POST['inputPosition']);
+        $employee->setPosition($positionObj);
         $employee->setJoin_date(Carbon::parse($_POST['inputJoin_date']));
         $employee->setGithub($_POST['inputGithub']);
         $employee->setLinkedIn($_POST['inputLinkedin']);

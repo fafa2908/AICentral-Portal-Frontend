@@ -27,19 +27,26 @@ class TeamMemberController extends FrontendController
      * @Route("/AITeam", name="AITeamPage")
      */    
     public function defaultAction(Request $request){
-        $employeeList = new DataObject\Employee\Listing();
-        $employeeList->setOrderKey('Position');
-        // $employeeList 
+        $employeeListing = new DataObject\Employee\Listing();
+        // $employeeList->setOrderKey('Position');
         
         $activeEmployeeList = [];
-        
-        foreach($employeeList as $employee){
-            $employee->setPosition(substr($employee->getPosition(), strpos($employee->getPosition(), "_") + 1)); 
+        $employeeList=[];
+        foreach($employeeListing as $employee){
+            array_push($employeeList,$employee);
             $user = $this->getPimcoreUser($employee->getStaff_ID());
             if ($user->getActive()){
                 array_push($activeEmployeeList,$employee);
             }
         }
+        
+        usort($employeeList, function($a,$b){
+            return strcmp($a->getPosition()->getPositionRank(),$b->getPosition()->getPositionRank());
+        });
+        
+        usort($activeEmployeeList, function($a,$b){
+            return strcmp($a->getPosition()->getPositionRank(),$b->getPosition()->getPositionRank());
+        });
         
         return $this->render('AITeam/TeamMember.html.twig', [
             "employeeList" => $employeeList,

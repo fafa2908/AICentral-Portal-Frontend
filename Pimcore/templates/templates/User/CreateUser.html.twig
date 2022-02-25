@@ -138,17 +138,9 @@
                 <div class="col-sm-10">
                     <select class="custom-select my-1 mr-sm-2" id="inputPosition" name="inputPosition" required>
                         <option disabled selected value>Select your Position</option>
-                        <option value="1_Head AI DevOps">Head AI DevOps</option>
-                        <option value="2_Mgr. Analytics Consultant">Mgr. Analytics Consultant</option>
-                        <option value="2_Mgr. Visualization Specialist">Mgr. Visualization Specialist</option>
-                        <option value="3_Asst. Mgr. Data Analyst">Asst. Mgr. Data Analyst</option>
-                        <option value="3_Asst. Mgr. Data Engineer">Asst. Mgr. Data Engineer</option>
-                        <option value="3_Asst. Mgr. Data ML/Engineer">Asst. Mgr. Data ML/Engineer</option>
-                        <option value="3_Asst. Mgr. Data Platform Frontend Analyst">Asst. Mgr. Data Platform Frontend Analyst</option>
-                        <option value="4_Reporting Analyst">Reporting Analyst</option>
-                        <option value="5_TM Elite">TM Elite</option>
-                        <option value="6_Intern">Intern</option>
-                    </select>
+					    {% for position in EmployeePosition %}
+					        <option value="{{position.geto_Id()}}">{{position.getPositionName()}}</option>
+					    {% endfor %}
                 </div>
                 <div class="invalid-feedback">Invalid Position</div>
             </div>
@@ -217,10 +209,10 @@
                 <label for="inputPassword" class="col-sm-2 col-form-label">Password*</label>
                 <div class="col-sm-10">
                     <input type="password" class="form-control" id="inputPassword" name="inputPassword" pattern=".{10,}"
-                        placeholder="Password (Default: D4t40p$@TM1)" required>
+                        placeholder="Password (Default: AI_c3ntr4l)" required>
                         <div class="invalid-feedback">Must be at least 10 characters long.</div>
                     <small id="staffIDhelp" class="form-text text-muted">
-                        Default: D4t40p$@TM1
+                        Default: AI_c3ntr4l
                     </small>
                 </div>
             </div>

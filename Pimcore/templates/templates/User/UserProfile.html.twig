@@ -74,7 +74,7 @@
 								<div class="mt-3">
 									<h4>{{employee.getName()}}</h4>
 									<h6>{{employee.getStaff_ID()}}</h6>
-									<p class="text-secondary mb-1">{{employee.getPosition()}}</p>
+									<p class="text-secondary mb-1">{{employee.getPosition().getPositionName()}}</p>
 								</div>
 							</div>
 						</div>
@@ -297,26 +297,9 @@
 															<div class="col-sm-10">
 																<select class="custom-select my-1 mr-sm-2"
 																	id="inputPosition" name="inputPosition" required>
-																	<option value="1_Head AI DevOps">Head AI DevOps
-																	</option>
-																	<option value="2_Mgr. Analytics Consultant">Mgr.
-																		Analytics Consultant</option>
-																	<option value="2_Mgr. Visualization Specialist">Mgr.
-																		Visualization Specialist</option>
-																	<option value="3_Asst. Mgr. Data Analyst">Asst. Mgr.
-																		Data Analyst</option>
-																	<option value="3_Asst. Mgr. Data Engineer">Asst.
-																		Mgr. Data Engineer</option>
-																	<option value="3_Asst. Mgr. Data ML/Engineer">Asst.
-																		Mgr. Data ML/Engineer</option>
-																	<option
-																		value="3_Asst. Mgr. Data Platform Frontend Analyst">
-																		Asst. Mgr. Data Platform Frontend Analyst
-																	</option>
-																	<option value="4_Reporting Analyst">Reporting
-																		Analyst</option>
-																	<option value="5_TM Elite">TM Elite</option>
-																	<option value="6_Intern">Intern</option>
+																    {% for position in EmployeePosition %}
+																        <option value="{{position.geto_Id()}}">{{position.getPositionName()}}</option>
+																    {% endfor %}
 																</select>
 															</div>
 															<div class="invalid-feedback">Invalid Position</div>
@@ -409,6 +392,13 @@
 														<hr>
 														<button class="btn btn-primary" type="submit" name="buttonAction" value="Update">Update Information</button>
 														
+														{% set positionList = [] %}
+                                                        {% for position in EmployeePosition  %}
+                                                            {% set positionList = positionList|merge([position.getPositionName()]) %}
+                                                        {% endfor %}
+														
+														
+														
 														<script>
 															$('#inputBirthday').datepicker({
 																uiLibrary: 'bootstrap4',
@@ -419,12 +409,13 @@
 																format: 'dd-mm-yyyy',
 															});
 															var currentGender = {{employee.getgender()|json_encode|raw }}; 
-															var currentPosition = {{employee.getPosition()|json_encode|raw }}; 
+															var currentPosition = {{employee.getPosition().getPositionName()|json_encode|raw }}; 
 															
+															
+															var positionList = {{positionList|json_encode|raw }}; 
 															var genderList = ['male','female','Others']; 
-															var positionList = ['Head AI DevOps','Mgr. Analytics Consultant','Mgr. Visualization Specialist','Asst. Mgr. Data Analyst','Asst. Mgr. Data Engineer','Asst. Mgr. Data ML/Engineer','Asst. Mgr. Data Platform Frontend Analyst','Reporting Analyst','TM Elite','Intern']
-															
-															console.log(positionList.indexOf(currentPosition))
+												// 			console.log(positionList)
+												// 			console.log(positionList.indexOf(currentPosition))
 															
                                                             document.getElementById("inputGender").selectedIndex = genderList.indexOf(currentGender);
                                                             document.getElementById("inputPosition").selectedIndex = positionList.indexOf(currentPosition);

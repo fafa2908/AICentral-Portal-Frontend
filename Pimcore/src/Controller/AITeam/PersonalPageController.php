@@ -24,7 +24,6 @@ class PersonalPageController extends FrontendController
         
         // GET Employee Object 
         $employeeObj = DataObject\Employee::getById($obj_ID);
-        $employeeObj->setPosition(substr($employeeObj->getPosition(), strpos($employeeObj->getPosition(), "_") + 1));
 
         // GET Enrollment List for the Employee Object
         $enrollAllList = new DataObject\Enrollment\Listing();
