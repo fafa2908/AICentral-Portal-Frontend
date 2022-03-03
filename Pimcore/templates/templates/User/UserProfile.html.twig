@@ -84,23 +84,37 @@
 					<div class="card mt-3">
 						<ul class="list-group list-group-flush">
 							<li class="list-group-item d-flex align-items-center flex-wrap" id="socmed-link">
-								<i class="fa fa-github-square mb-0" style="width: auto; height: auto;"></i>
-								<span style="margin-left:1.2em;">
-								    <h6 class="mb-0"><a href="{{employee.getGithub()}}" target="_blank">Github</a></h6>
-								</span>
+								{% if employee.getGithub() == "" %}
+							         <i class="fa fa-github-square mb-0" style="width:auto; height:auto; color:rgb(110,110,110);"></i>
+							         <span style="margin-left:1.2em; color:rgb(110,110,110);"><h6 class="mb-0"> Github </h6></span>
+							    {% else %}
+								    <i class="fa fa-github-square mb-0" style="width: auto; height: auto;"></i>
+								    <span style="margin-left:1.2em;">
+								        <h6 class="mb-0"><a href="{{employee.getGithub()}}" target="_blank"> Github </a></h6>
+								    </span>
+								{% endif %}
 							</li>
 							<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap" id="socmed-link">
-								<i class="fa fa-linkedin-square mb-0" style="width: auto; height: auto;"></i>
-								<span style="margin-left:1.2em;">
-								    <h6 class="mb-0"><a href="{{employee.getLinkedin()}}" target="_blank">LinkedIn</a></h6>
-								</span>
+								{% if employee.getLinkedin() == "" %}
+							         <i class="fa fa-linkedin-square mb-0" style="width:auto; height:auto; color:rgb(110,110,110);"></i>
+							         <span style="margin-left:1.2em; color:rgb(110,110,110);"><h6 class="mb-0"> LinkedIn </h6></span>
+							    {% else %}
+								    <i class="fa fa-linkedin-square mb-0" style="width: auto; height: auto;"></i>
+								    <span style="margin-left:1.2em;">
+								        <h6 class="mb-0"><a href="{{employee.getLinkedin()}}" target="_blank"> LinkedIn </a></h6>
+								    </span>
+								{% endif %}
 							</li>
 							<li class="list-group-item d-flex align-items-center flex-wrap" id="socmed-link">
-								<i class="fa fa-facebook-square mb-0" style="width: auto; height: auto;"></i>
-								<span style="margin-left:1.2em;">
-								    {% if %}
-								    <h6 class="mb-0"><a href="{{employee.getFacebook()}}" target="_blank">Facebook</a></h6>
-								</span>
+							     {% if employee.getFacebook() == "" %}
+							         <i class="fa fa-facebook-square mb-0" style="width:auto; height:auto; color:rgb(110,110,110);"></i>
+							         <span style="margin-left:1.2em; color:rgb(110,110,110);"><h6 class="mb-0"> Facebook </h6></span>
+							    {% else %}
+								    <i class="fa fa-facebook-square mb-0" style="width: auto; height: auto;"></i>
+								    <span style="margin-left:1.2em;">
+								        <h6 class="mb-0"><a href="{{employee.getFacebook()}}" target="_blank"> Facebook </a></h6>
+							        </span>
+								{% endif %}
 							</li>
 						</ul>
 					</div>
