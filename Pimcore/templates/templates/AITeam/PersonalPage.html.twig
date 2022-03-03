@@ -30,6 +30,22 @@
         text-align: left;
         padding-right: 11px;
     }
+    
+    .new-btn {
+        padding: 8px 10px;
+        border: 0px solid #000;
+        font-family: 'Lato', sans-serif;
+        font-weight: 500;
+        background-color: #e6e6e6;
+        color: #383838;}
+    .new-btn:hover {
+        background-color: #00aede;
+        color: white; }
+    .new-btn:hover .btn-icon{
+        color: white; }
+    .btn-icon {
+        color: #00aede;
+        font-size: 25px; }
 
     </style>
 {%endblock%}
@@ -71,18 +87,24 @@
             <div class="w3-twothird" style="width:75%">
                 
                 <!-- Work Experience -->
-                <div class="w3-container w3-card w3-white w3-margin-bottom">
+                <div class="w3-container w3-card w3-white w3-margin-bottom" style="padding-bottom:50px;">
 
                     <div class="row">
                         <div class="col-md-6">
-                            <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-xxlarge" style="color:#0aa6d1;" id="emp-icon"></i>Company</h2>
+                            <h2 class="w3-padding-16" style="color:#0aa6d1; font-weight:700;">
+                                <i class="fa fa-briefcase fa-fw w3-xxlarge" style="color:#0aa6d1;" id="emp-icon"></i>Experience
+                            </h2>
                         </div>
                         
                         {% if (is_granted('IS_AUTHENTICATED_FULLY') and currentUser.getName() == employee.getStaff_ID()) or isadmin %} 
                         {# AUNTHENTICATED USER ONLY #}
                             <!-- EDIT FOR Company -->
                             <div class="col-md-3">
-                                <button type="button" class="btn btn-primary w3-margin-top" data-toggle="modal" data-target=".Company"> <i class="fa fa-edit fa-fw" id="emp-icon"></i>Company</button>
+                                <!-- button to add company --> 
+                            	<button type="button" class="new-btn btn-primary w3-margin-top" data-toggle="modal"
+									data-target=".Company" style="float:right;"> <i class="btn-icon fa fa-edit fa-fw" id="emp-icon"></i>
+									Company
+								</button>
                                 
                                 <div class="modal fade Company" tabindex="-1" role="dialog" aria-labelledby="CompanyLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-lg">
@@ -181,10 +203,12 @@
                             
                             <!-- EDIT FOR Work Experience -->
                             <div class="col-md-3">
-                                <button type="button" class="btn btn-primary w3-margin-top" data-toggle="modal" data-target=".Work">
-                                    <i class="fa fa-edit fa-fw" id="emp-icon"></i>
-                                    Work Experience
-                                </button>
+                                <!-- button to add work experience -->
+                                <button type="button" class="new-btn btn-primary w3-margin-top" data-toggle="modal"
+									data-target=".Work" style="float:right;"> <i class="btn-icon fa fa-edit fa-fw" id="emp-icon"></i>
+									Work Experience
+								</button>
+                                
                                 <div class="modal fade Work" tabindex="-1" role="dialog" aria-labelledby="WorkLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
@@ -343,23 +367,22 @@
                     {%if workExpList.count()%}
                         {% for workExp in workExpList%}
                             <div class="w3-container">
-                                <h4 style="color:#0aa6d1;">
-                                        <i class="fa fa-briefcase" id="emp-icon"></i>
+                                <h4 style="color:rgb(100,100,100);">
+                                        <!--<i class="fa fa-briefcase" id="emp-icon"></i>-->
                                         <b>{{workExp.getTitle()}}</b>
                                 </h4>
-                                <h5 style="color:#0aa6d1;">
-                                    <i class="fa fa-calendar"  id="emp-icon"></i>
+                                <h5 style="color:rgb(150,150,150); font-weight:500;">
+                                    <!--<i class="fa fa-calendar"  id="emp-icon"></i-->
                                     {{workExp.WorkStartDate().format('m-Y')}}
                                      - 
                                     {% if workExp.WorkEndDate() > date() %}
-                                        <span class="w3-tag main-color w3-round">Present</span>
+                                        <span style="color:rgb(150,150,150); font-weight:600;">Present</span>
                                     {% else %}
                                         {{workExp.WorkEndDate().format('m-Y')}}
                                     {% endif %}
                                 </h5>
-                                <div>
-                                        <i class="fa fa-align-justify"  style="color:#0aa6d1;" id="emp-icon" ></i>
-                                        {{workExp.WorkDesc()}}
+                                <div style="color:rgb(120,120,120); font-weight:500; font-size:1.1em;">
+                                    {{workExp.WorkDesc()}}
                                 </div>
                               <hr>
                           </div>
@@ -379,15 +402,20 @@
                 <div class="w3-container w3-card w3-white">
                     <div class="row">
                         <div class="col-md-6">
-                            <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-xxlarge" style="color:#0aa6d1;" id="emp-icon"></i>Education</h2>
+                            <h2 class="w3-padding-16" style="color:#0aa6d1; font-weight:700;">
+                                <i class="fa fa-book fa-fw w3-xxlarge" style="color:#0aa6d1;" id="emp-icon"></i>Education
+                            </h2>
                         </div>
                         
                         {% if (is_granted('IS_AUTHENTICATED_FULLY') and currentUser.getName() == employee.getStaff_ID()) or isadmin %} 
                         {# AUNTHENTICATED USER ONLY #}
                             <!-- EDIT FOR Education/Institution -->
                             <div class="col-md-3">
-                                <button type="button" class="btn btn-primary w3-margin-top" data-toggle="modal" data-target=".Education"> <i class="fa fa-edit fa-fw" id="emp-icon"></i>Institution</button>
-                                
+                                <button type="button" class="new-btn btn-primary w3-margin-top" data-toggle="modal"
+									data-target=".Education" style="float:right;"> <i class="btn-icon fa fa-edit fa-fw" id="emp-icon"></i>
+									Institution
+								</button>
+
                                 <div class="modal fade Education" tabindex="-1" role="dialog" aria-labelledby="EducationLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
@@ -494,10 +522,11 @@
                             
                             <!-- EDIT FOR Enrollment -->
                             <div class="col-md-3">
-                                <button type="button" class="btn btn-primary w3-margin-top" data-toggle="modal" data-target=".Enrollment">
-                                    <i class="fa fa-edit fa-fw" id="emp-icon"></i>
-                                    Enrollment
-                                </button>
+                                <button type="button" class="new-btn btn-primary w3-margin-top" data-toggle="modal"
+									data-target=".Enrollment" style="float:right;"> <i class="btn-icon fa fa-edit fa-fw" id="emp-icon"></i>
+									Enrollment
+								</button>
+                                
                                 <div class="modal fade Enrollment" tabindex="-1" role="dialog" aria-labelledby="EnrollmentLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
@@ -620,13 +649,11 @@
                     {%if enrollList.count()%}
                         {% for enroll in enrollList%}
                             <div class="w3-container">
-                                <h4 style="color:#0aa6d1;">
-                                    <i class="fa fa-university" id="emp-icon"></i>
+                                <h4 style="color:rgb(100,100,100);">
                                     <b>{{enroll.getEduEnroll().getInstitution()}}: {{enroll.getEduEnroll().getEducationLevel()}}</b>
                                 </h4>
                                 
-                                <h5 style="color:#0aa6d1;">
-                                    <i class="fa fa-calendar" id="emp-icon"></i>
+                                <h5 style="color:rgb(150,150,150); font-weight:500;">
                                     {{enroll.getEnrolStartDate().format('m-Y')}} 
                                     - 
                                     {% if enroll.getEnrolEndDate() > date() %}
@@ -636,16 +663,14 @@
                                     {% endif %}
                                 </h5>
                                 
-                                <div>
-                                    <i class="fa fa-graduation-cap"  style="color:#0aa6d1;" id="emp-icon" ></i>
+                                <div style="color:rgb(120,120,120); font-weight:500; font-size:1.1em;">
                                     {{enroll.getEduEnroll().getCourseName()}}
                                 </div>
                                 <hr>
                             </div>
                         {% endfor%}
                     {% else %}
-                        <div>
-                            <i class="fa fa-exclamation-circle"  style="color:#0aa6d1;" id="emp-icon" ></i>
+                        <div style="color:rgb(120,120,120); font-weight:500; font-size:1.1em;">
                             No Education Records
                         </div>
                         <hr>
@@ -665,8 +690,11 @@
                         {% if (is_granted('IS_AUTHENTICATED_FULLY') and currentUser.getName() == employee.getStaff_ID()) or isadmin %} 
                         {# AUNTHENTICATED USER ONLY #}
                             <div class="col-md-3">
-                                 <button type="button" class="btn btn-primary w3-margin-top" data-toggle="modal" data-target=".SkillCategory"> <i class="fa fa-edit fa-fw" id="emp-icon">
-                                 </i>Skill Category</button>
+                                <button type="button" class="new-btn btn-primary w3-margin-top" data-toggle="modal"
+									data-target=".SkillCategory" style="float:right;"> <i class="btn-icon fa fa-edit fa-fw" id="emp-icon"></i>
+									Skill Category
+								</button>
+                                
                                   <div class="modal fade SkillCategory" tabindex="-1" role="dialog" aria-labelledby="SkillCategoryLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
@@ -730,8 +758,12 @@
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                 <button type="button" class="btn btn-primary w3-margin-top" data-toggle="modal" data-target=".SkillSubCategory"> <i class="fa fa-edit fa-fw" id="emp-icon">
-                                 </i>Skill Sub-Category</button>
+                                <!-- button to edit sub-category -->
+                                <button type="button" class="new-btn btn-primary w3-margin-top" data-toggle="modal"
+									data-target=".SkillSubCategory" style="float:right;"> <i class="btn-icon fa fa-edit fa-fw" id="emp-icon"></i>
+									Skill Sub-Category
+								</button>
+                                
                                  <div class="modal fade SkillSubCategory" tabindex="-1" role="dialog" aria-labelledby="SkillSubCategoryLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
@@ -773,12 +805,12 @@
                                                     </div>
                                                     <div class="form-row">
                                                         <div class="form-group col-md-6">
-                                                            <label for="inputTrainingTitle">Training Title*</label>
-                                                            <input type="text" class="form-control" id="inputTrainingTitle"  name="inputTrainingTitle" placeholder="Training Title" value="" required>
+                                                            <label for="inputTrainingTitle">Training Title</label>
+                                                            <input type="text" class="form-control" id="inputTrainingTitle"  name="inputTrainingTitle" placeholder="Training Title" value="">
                                                         </div>
                                                         <div class="form-group col-md-6">
-                                                            <label for="inputExamName">Exam Name*</label>
-                                                            <input type="text" class="form-control" id="inputExamName"  name="inputExamName" placeholder="Exam Name" value="" required>
+                                                            <label for="inputExamName">Exam Name</label>
+                                                            <input type="text" class="form-control" id="inputExamName"  name="inputExamName" placeholder="Exam Name" value="" >
                                                         </div>
                                                     </div>
                                                     
@@ -835,8 +867,11 @@
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                 <button type="button" class="btn btn-primary w3-margin-top" data-toggle="modal" data-target=".Proficiency"> <i class="fa fa-edit fa-fw" id="emp-icon">
-                                 </i>Proficiency</button>
+                                <button type="button" class="new-btn btn-primary w3-margin-top" data-toggle="modal"
+									data-target=".Proficiency" style="float:right;"> <i class="btn-icon fa fa-edit fa-fw" id="emp-icon"></i>
+									Skill Proficiency
+								</button>
+                                
                                  <div class="modal fade Proficiency" tabindex="-1" role="dialog" aria-labelledby="ProficiencyLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
@@ -892,8 +927,8 @@
                                                         
                                                         {% if isadmin %} 
                                                             <div class="form-group col-md-6">
-                                                                <label for="proficiencyLevelList">Proficiency Level*</label>
-                                                                <select class="custom-select" id="proficiencyLevelList" name="proficiencyLevelList" required>
+                                                                <label for="proficiencyLevelList">Proficiency Level</label>
+                                                                <select class="custom-select" id="proficiencyLevelList" name="proficiencyLevelList">
                                                                     {% for status in profLevelList%}
                                                                         <option value="{{status|raw}}">{{status}}</option>
                                                                     {% endfor%}
@@ -966,18 +1001,29 @@
                     </div>
                     
                     <!-- Employee Skills List : BODY-->
-                    {%if skillProfList.count()%}
+                    {%if skillProfList|length %}
+                        {% set previousCatagory = '' %}
+                        {% set previousSubCatagory = '' %}
                         {% for skillProf in skillProfList%}
+                            {% set currentCatagory = skillProf.getSkillDetails().getSkillsCategoryDetails().getSkillCategory() %}
+                            {% set currentSubCatagory = skillProf.getSkillDetails().getSkillSubCategory() %}
                             <div class="w3-container">
-                                <h4 style="color:#0aa6d1;">
-                                    <!--<i class="fa fa-cogs" id="emp-icon"></i>-->
-                                    <b>{{ skillProf.getSkillDetails().getSkillsCategoryDetails().getSkillCategory() }}</b>
-                                </h4>
-                                <h5 style="color:black; font-weight:500;">
-                                    <b>{{ skillProf.getSkillDetails().getSkillSubCategory() }}</b> 
-                                </h5>
+                                {% if currentCatagory != previousCatagory %}
+                                <hr>
+                                    <h4 style="color:#0aa6d1;">
+                                        <!--<i class="fa fa-cogs" id="emp-icon"></i>-->
+                                        <b>{{ skillProf.getSkillDetails().getSkillsCategoryDetails().getSkillCategory() }}</b>
+                                    </h4>
+                                {% endif %}
+                                
+                                {% if currentSubCatagory != previousSubCatagory %}
+                                    <h5 style="color:black; font-weight:500;">
+                                        <b>{{ skillProf.getSkillDetails().getSkillSubCategory() }}</b> 
+                                    </h5>
+                                {% endif %}
+                                
                                 <!-- Only will output status if there is exam/certification -->
-                                {%if skillProf.getSkillDetails().getExamName() != "" %}
+                                {%if skillProf.getSkillDetails().getExamName() != "No Exam" %}
                                     <h5 style="color:grey;">
                                         &#8226; {{ skillProf.getSkillDetails().getExamName() }}   [ {{ skillProf.getStatus() }} ]
                                         {#<span style="padding-left:930px;"> {{ skillProf.getStatus() }}</span>#}
@@ -990,7 +1036,19 @@
                                     <!--<i class="fa fa-bars" id="emp-icon"></i>-->
                                     {#skillProf.getSkillLevel()#}
                                 </h5>
-                                <hr>
+                                
+                                {#Category#}
+                                {% if currentCatagory != previousCatagory %}
+                                    {% set previousCatagory = currentCatagory%}
+                                {% else %}
+                                 <!-- <hr>-->
+                                {% endif %}
+                                
+                                {#SUB CATEGORY#}
+                                {% if currentSubCatagory != previousSubCatagory%}
+                                    {% set previousSubCatagory = currentSubCatagory%}
+                                {% endif %}
+
                             </div>
                         {% endfor%}
                     {% else %}
