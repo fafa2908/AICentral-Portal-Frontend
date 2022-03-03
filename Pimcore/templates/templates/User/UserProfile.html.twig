@@ -2,21 +2,6 @@
 
 {# Block 2: Extend Library #}
 {% block extend_library %}
-    {#<!--  This file has been downloaded from bootdey.com @bootdey on twitter -->#}
-    {#<!--  All snippets are MIT license http://bootdey.com/license -->#}
-    {#<meta name="viewport" content="width=device-width, initial-scale=1">#}
-    
-    {#<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">#}
-    {#<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">#}
-    {#<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">#}
-    {#<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">#}
-    {#<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">#}
-    {#<!-- stylesheet for side nav bar and user profile page-->#}
-    {#<link rel="stylesheet" href="css/side-nav.css">#}
-    {#<link rel="stylesheet" href="css/user-profile-style.css">#}
-    {#<!-- link to external bootstrap script -->#}
-    {#<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>#}
-    {#<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>#}
 	<!-- datepicker -->
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -28,6 +13,9 @@
 {# Block 3: extend_style #} 
 {% block extend_style%}
  <style>
+    .container {
+        margin-top:3%;
+    }
     .new-btn {
         padding: 8px 10px;
         border: 0px solid #000;
@@ -588,7 +576,98 @@
 									</div>
 								</div>
 								
-								<!-- Create User -->
+								<!-- Manage Position -->
+								<div class="col-sm-3">
+									<button type="button" class="new-btn btn btn-primary w3-margin-top" data-toggle="modal"
+										data-target=".ManagePosition"> <i class="btn-icon fa fa-edit fa-fw" id="emp-icon"></i>
+										Manage Position
+									</button>
+									<div class="modal fade ManagePosition" tabindex="-1" role="dialog"
+										aria-labelledby="ManagePosition" aria-hidden="true">
+										<div class="modal-dialog modal-lg">
+											<div class="modal-content">
+												<!-- ManagePosition Header -->
+												<div class="modal-header">
+													<h5 class="modal-title" id="exampleModalLabel">Manage Position</h5>
+													<button type="button" class="close" data-dismiss="modal"
+														aria-label="Close">
+														<span aria-hidden="true">&times;</span>
+													</button>
+												</div>
+												<!-- ManagePosition FORM -->
+												<div class="modal-body">
+												    <form method="post" action="./forms/managePosition">
+    													<!-- Available Position List -->
+    													<div class="form-group">
+        														<label class="my-1 mr-2" for="positionList"> Available Position List</label>
+        														<select class="custom-select my-1 mr-sm-2" id="positionList" name="positionList" onclick="positionFormResponsive(this)">
+        														    <option selected>--Create Position--</option>
+        														    {% for position in EmployeePosition %}
+        														        <option value="{{position.getPositionRank()}}">{{position.getPositionName()}}</option>
+        														    {% endfor %}
+        														</select>
+        													</div>
+    
+    													<!-- Position Name - required-->
+    													<div class="form-group row">
+    														<label for="inputPositionName"
+    															class="col-sm-2 col-form-label">Position Name*</label>
+    														<div class="col-sm-10">
+    															<input type="Name" class="form-control" id="inputPositionName" name="inputPositionName" placeholder="Position Name" required>
+    															<small id="staffIDhelp" class="form-text text-muted">
+    																Position Name for all employee.
+    															</small>
+    														</div>
+    													</div>
+    													
+    													{% set positionRanking = ['Head','Manager','Assistant Manager','Permanent','TM Elit','Intern']%}
+    													
+    													<!-- Position Rank - required-->
+    													<div class="form-group row">
+    														<label for="inputPositionRank"
+    															class="col-sm-2 col-form-label">Position Rank*</label>
+    														<div class="col-sm-10">
+    															<select class="custom-select my-1 mr-sm-2" id="inputPositionRank" name="inputPositionRank">
+        														    <option selected>--Select Position Rank--</option>
+																    {% for position in positionRanking %}
+																        <option value="{{loop.index}}">{{loop.index}} - {{position}}</option>
+        															{% endfor %}
+        														</select>
+    															<small id="staffIDhelp" class="form-text text-muted">
+    																Ranking: Smaller number, Higher ranking
+    															</small>
+    														</div>
+    													</div>
+    													
+    													<hr>
+    													<button class="btn btn-primary" type="submit" name="buttonAction" value="create">Create</button>
+    													<button class="btn btn-danger" type="submit" name="buttonAction" value="delete">Delete</button>
+													</form>
+													
+													<script>
+													    function positionFormResponsive(selectObject){
+													       // console.log(selectObject.options[selectObject.selectedIndex].text)
+													        var current = selectObject.value;
+													        if(current === '--Create Position--' ){
+													            document.getElementById("inputPositionName").value = ""
+                                                                document.getElementById("inputPositionRank").selectedIndex = -1;
+													        }
+													        else{
+													            document.getElementById("inputPositionName").value = selectObject.options[selectObject.selectedIndex].text;
+                                                                document.getElementById("inputPositionRank").selectedIndex = current;
+													        }
+													        
+													    }
+													</script>
+												</div>
+
+											</div>
+										</div>
+									</div>
+								</div>
+                            </div>
+                            <div class='row'>
+						        <!-- Create User -->
 								<div class="col-sm-3">
 									<a href="/CreateUser">
 										<button type="button" class="new-btn btn btn-primary w3-margin-top" data-toggle="modal"
@@ -681,72 +760,72 @@
 								</div>
                             </div>
                             <div class='row'>
-						        <!-- Delete User -->
-								<div class="col-sm-3">
-									<button type="button" id="btn-del" class="new-btn btn btn-danger w3-margin-top" data-toggle="modal"
-										data-target=".DeleteUser"> <i class="btn-del-icon fa fa-ban fa-fw" id="emp-icon"></i> 
-										Delete User
-									</button>
-									<div class="modal fade DeleteUser" tabindex="-1" role="dialog"
-										aria-labelledby="DeleteUser" aria-hidden="true">
-										<div class="modal-dialog modal-lg">
-											<div class="modal-content">
-												<!-- Delete User Header -->
-												<div class="modal-header">
-													<h5 class="modal-title" id="exampleModalLabel">Delete User</h5>
-													<button type="button" class="close" data-dismiss="modal"
-														aria-label="Close">
-														<span aria-hidden="true">&times;</span>
-													</button>
-												</div>
-												<!-- DeleteUser FORM -->
-												<div class="modal-body">
-												    <form method="post" action="./forms/deleteUser">
-    													<!-- Available User List -->
-    													<div class="form-group">
-    														<label class="my-1 mr-2" for="employeeList"> Available User List</label>
-    														<select class="custom-select my-1 mr-sm-2" id="employeeList" name="employeeList">
-    														    <option selected>--Select User--</option>
-    															{% for employee in inactiveList %}
-    															<option value={{employee.getStaff_ID()}}>{{employee.getKey()}} - {{employee.getName()}}
-    															</option>
-    															{% endfor %}
-    														</select>
-    													</div>
+        {#                        <!-- Delete User -->#}
+								{#<div class="col-sm-3">#}
+								{#	<button type="button" id="btn-del" class="new-btn btn btn-danger w3-margin-top" data-toggle="modal"#}
+								{#		data-target=".DeleteUser"> <i class="btn-del-icon fa fa-ban fa-fw" id="emp-icon"></i> #}
+								{#		Delete User#}
+								{#	</button>#}
+								{#	<div class="modal fade DeleteUser" tabindex="-1" role="dialog"#}
+								{#		aria-labelledby="DeleteUser" aria-hidden="true">#}
+								{#		<div class="modal-dialog modal-lg">#}
+								{#			<div class="modal-content">#}
+								{#				<!-- Delete User Header -->#}
+								{#				<div class="modal-header">#}
+								{#					<h5 class="modal-title" id="exampleModalLabel">Delete User</h5>#}
+								{#					<button type="button" class="close" data-dismiss="modal"#}
+								{#						aria-label="Close">#}
+								{#						<span aria-hidden="true">&times;</span>#}
+								{#					</button>#}
+								{#				</div>#}
+								{#				<!-- DeleteUser FORM -->#}
+								{#				<div class="modal-body">#}
+								{#				    <form method="post" action="./forms/deleteUser">#}
+    				{#									<!-- Available User List -->#}
+    				{#									<div class="form-group">#}
+    				{#										<label class="my-1 mr-2" for="employeeList"> Available User List</label>#}
+    				{#										<select class="custom-select my-1 mr-sm-2" id="employeeList" name="employeeList">#}
+    				{#										    <option selected>--Select User--</option>#}
+    				{#											{% for employee in inactiveList %}#}
+    				{#											<option value={{employee.getStaff_ID()}}>{{employee.getKey()}} - {{employee.getName()}}#}
+    				{#											</option>#}
+    				{#											{% endfor %}#}
+    				{#										</select>#}
+    				{#									</div>#}
     													
-    													<hr>
-    													<button class="btn btn-danger" type="submit" name="buttonAction"
-    														value="delete">Delete User</button>
+    				{#									<hr>#}
+    				{#									<button class="btn btn-danger" type="submit" name="buttonAction"#}
+    				{#										value="delete">Delete User</button>#}
 
-    													<hr>
-														<h3>Inactive Users</h3>
-    													<table class="table">
-    														<thead>
-    															<tr>
-    																<th scope="col">#</th>
-    																<th scope="col">Name</th>
-    																<th scope="col">Staff ID</th>
-    																<th scope="col">Contact</th>
-    															</tr>
-    														</thead>
-    														<tbody>
-    														    {% for user in inactiveList %}
-        															<tr>
-        																<th scope="row">{{ loop.index }}</th>
-        																<td>{{user.getName()}}</td>
-        																<td>{{user.getStaff_Id()}}</td>
-        																<td>{{user.getPhone()}}</td>
-        															</tr>
-    														    {% endfor %}
-    														</tbody>
-    													</table>
-													</form>
-												</div>
+    				{#									<hr>#}
+								{#						<h3>Inactive Users</h3>#}
+    				{#									<table class="table">#}
+    				{#										<thead>#}
+    				{#											<tr>#}
+    				{#												<th scope="col">#</th>#}
+    				{#												<th scope="col">Name</th>#}
+    				{#												<th scope="col">Staff ID</th>#}
+    				{#												<th scope="col">Contact</th>#}
+    				{#											</tr>#}
+    				{#										</thead>#}
+    				{#										<tbody>#}
+    				{#										    {% for user in inactiveList %}#}
+        {#															<tr>#}
+        {#																<th scope="row">{{ loop.index }}</th>#}
+        {#																<td>{{user.getName()}}</td>#}
+        {#																<td>{{user.getStaff_Id()}}</td>#}
+        {#																<td>{{user.getPhone()}}</td>#}
+        {#															</tr>#}
+    				{#										    {% endfor %}#}
+    				{#										</tbody>#}
+    				{#									</table>#}
+								{#					</form>#}
+								{#				</div>#}
 
-											</div>
-										</div>
-									</div>
-								</div>
+								{#			</div>#}
+								{#		</div>#}
+								{#	</div>#}
+								{#</div>#}
                             </div>
                         </div>
 					</div>
