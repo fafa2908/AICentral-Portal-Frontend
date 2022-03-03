@@ -22,14 +22,16 @@
         height: 36px;
         text-align: center;
         vertical-align: middle;
-        font-size:20px;
-    }
+        font-size:20px;}
+    #left-col { width:20%;margin-left:50px;}
+    #right-col { width:75%;}
+    .section-title {color:rgb(100,100,100);}
+    .div-title {color:#0aa6d1; font-weight:700;}
 
     #emp-icon {
         display: inline;
         text-align: left;
-        padding-right: 11px;
-    }
+        padding-right: 11px; }
     
     .new-btn {
         padding: 8px 10px;
@@ -43,10 +45,31 @@
         color: white; }
     .new-btn:hover .btn-icon{
         color: white; }
-    .btn-icon {
-        color: #00aede;
-        font-size: 25px; }
-
+    .btn-icon { color: #00aede; font-size: 25px; }
+    
+    @media screen and (max-width: 1550px){
+        #left-col { width:28%;}
+        #right-col { width:62%; margin-left:3em;}
+        .new-btn {padding:5px 6px; font-size:0.8em;}
+        .section-title {font-size: 1.4em;}
+    } 
+    @media screen and (max-width: 1550px){
+        #left-col { width:33%;}
+        #right-col { width:54%;}
+        .section-title {font-size: 1.3em;}
+        .div-title {font-size: 1.9em;}
+    } 
+    @media screen and (max-width:1300px){
+        .div-title {font-size: 1.6em;}
+    }
+    @media screen and (max-width: 950px){
+        #left-col { width:90%;}
+        #right-col { width:90%; margin-left:2em;}
+        .section-title {font-size: 1.4em;}
+    }
+    @media screen and (max-width: 800px){
+        #right-col {margin-left:3em;}
+    }
     </style>
 {%endblock%}
 
@@ -55,26 +78,49 @@
 
 
 <!-- Page Container -->
-<div class="w3-content w3-margin-top" style="max-width:3400px; padding:0.01em 5px 0.01em 50px">
+<div class="w3-content w3-margin-top" style="max-width:3400px; padding:0.01em 5px 0.01em 50px;">
 
     <!-- The Grid -->
     <div class="w3-row-padding">
         <!--______________________________________LEFT COLUMN!!___________________________________-->
         <!-- Left Column -->
-        <div class="w3-third" style="width:20%;margin-left:50px;"> <!-- this one just to let the container float left with 100% -->
+        <div class="w3-third" id="left-col"> <!-- this one just to let the container float left with 100% -->
             <div class="w3-white w3-text-grey w3-card-4"> <!-- w3-card-4 is for the box-shadow size and colour-->
                 <div class="w3-display-container">
                     <img src="{{employee.getProfile_Image().thumbnail('EmployeeImageResize')}}" style="width:100%" alt="Avatar">
                     <div class="w3-display-bottomleft w3-container w3-text-black"></div>
                 </div>
                 <div class="w3-container">
-                    <h2 style="font-size: 20px; text-align: center;">{{employee.getName()}}</h2>
+                    <h2 style="font-size: 20px; text-align: center; margin-top:10px;">{{employee.getName()}}</h2>
                     <p><i class="fa fa-id-card fa-fw" style="color:#0aa6d1;" id="emp-icon"></i>{{employee.getStaff_ID()}}</p>
                     <p><i class="fa fa-briefcase " style="color:#0aa6d1;" id="emp-icon"></i>{{employee.getPosition().getPositionName()}}</p>
                     <p><i class="fa fa-phone fa-fw" style="color:#0aa6d1;" id="emp-icon"></i>{{employee.getPhone()}}</p>
                     <p><i class="fa fa-envelope fa-fw" style="color:#0aa6d1;" id="emp-icon"></i>{{employee.getEmail()}}</p>
-                    <p><i class="fa fa-birthday-cake fa-fw" style="color:#0aa6d1;" id="emp-icon"></i>{{employee.getBirthday().format('d-m-Y')}}</p>
-
+                    <p><i class="fa fa-birthday-cake fa-fw" style="color:#0aa6d1;" id="emp-icon"></i>{{employee.getBirthday().format('d-m-Y')}}</p><br/><hr>
+                    <p>{% if employee.getGithub() == "" %}
+					         <i class="fa fa-github-square fa-fw" style="color:rgb(110,110,110);" id="emp-icon"></i>
+					         <span style="color:rgb(110,110,110);">Github</span>
+					    {% else %}
+						    <i class="fa fa-github-square fa-fw" style="color:#0aa6d1;" id="emp-icon"></i>
+						        <a href="{{employee.getGithub()}}" target="_blank" style="font-weight:500;"> Github </a>
+						{% endif %}
+					</p>
+				    <p>{% if employee.getLinkedin() == "" %}
+    				         <i class="fa fa-linkedin-square fa-fw" style="color:rgb(110,110,110);" id="emp-icon"></i>
+    				         <span style="color:rgb(110,110,110);">LinkedIn</span>
+					    {% else %}
+						    <i class="fa fa-linkedin-square fa-fw" style="color:#0aa6d1;" id="emp-icon"></i>
+						        <a href="{{employee.getLinkedIn()}}" target="_blank" style="font-weight:500;"> LinkedIn </a>
+						{% endif %}
+					</p>
+				    <p>{% if employee.getFacebook() == "" %}
+    				         <i class="fa fa-linkedin-square fa-fw" style="color:rgb(110,110,110);" id="emp-icon"></i>
+    				         <span style="color:rgb(110,110,110);">Facebook</span>
+					    {% else %}
+						    <i class="fa fa-linkedin-square fa-fw" style="color:#0aa6d1;" id="emp-icon"></i>
+						        <a href="{{employee.getFacebook()}}" target="_blank" style="font-weight:500;"> Facebook </a>
+						{% endif %}
+					</p>
                 </div>
                 
             </div>
@@ -84,14 +130,14 @@
         
         
         <!-- Right Column -->
-            <div class="w3-twothird" style="width:75%">
+            <div class="w3-twothird" id="right-col">
                 
                 <!-- Work Experience -->
                 <div class="w3-container w3-card w3-white w3-margin-bottom" style="padding-bottom:50px;">
 
                     <div class="row">
                         <div class="col-md-6">
-                            <h2 class="w3-padding-16" style="color:#0aa6d1; font-weight:700;">
+                            <h2 class="w3-padding-16 div-title">
                                 <i class="fa fa-briefcase fa-fw w3-xxlarge" style="color:#0aa6d1;" id="emp-icon"></i>Experience
                             </h2>
                         </div>
@@ -367,7 +413,7 @@
                     {%if workExpList.count()%}
                         {% for workExp in workExpList%}
                             <div class="w3-container">
-                                <h4 style="color:rgb(100,100,100);">
+                                <h4 class="section-title">
                                         <!--<i class="fa fa-briefcase" id="emp-icon"></i>-->
                                         <b>{{workExp.getTitle()}}</b>
                                 </h4>
@@ -399,7 +445,7 @@
 
                 
                 <!-- Education -->
-                <div class="w3-container w3-card w3-white">
+                <div class="w3-container w3-card w3-white" style="padding-bottom:50px;">
                     <div class="row">
                         <div class="col-md-6">
                             <h2 class="w3-padding-16" style="color:#0aa6d1; font-weight:700;">
@@ -649,7 +695,7 @@
                     {%if enrollList.count()%}
                         {% for enroll in enrollList%}
                             <div class="w3-container">
-                                <h4 style="color:rgb(100,100,100);">
+                                <h4 class="section-title">
                                     <b>{{enroll.getEduEnroll().getInstitution()}}: {{enroll.getEduEnroll().getEducationLevel()}}</b>
                                 </h4>
                                 
@@ -681,11 +727,14 @@
                 
                 <!-- Employee Skills List (Skill Proficiency) -->
                 <hr>
-                <div class="w3-container w3-card w3-white w3-margin-bottom">
+                <div class="w3-container w3-card w3-white" style="padding-bottom:50px;">
                     <div class="row">
                         <div class="col-md-3">
-                              <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-cogs fa-fw w3-xxlarge" style="color:#0aa6d1;" id="emp-icon"></i>Skill sets</h2>
+                            <h2 class="w3-padding-16" style="color:#0aa6d1; font-weight:700;">
+                                  <i class="fa fa-cogs fa-fw w3-xxlarge" style="color:#0aa6d1; font-weight:700;" id="emp-icon"></i>Skill sets
+                            </h2>
                         </div>
+                        
                         
                         {% if (is_granted('IS_AUTHENTICATED_FULLY') and currentUser.getName() == employee.getStaff_ID()) or isadmin %} 
                         {# AUNTHENTICATED USER ONLY #}
@@ -1010,14 +1059,14 @@
                             <div class="w3-container">
                                 {% if currentCatagory != previousCatagory %}
                                 <hr>
-                                    <h4 style="color:#0aa6d1;">
+                                    <h4 class="section-title">
                                         <!--<i class="fa fa-cogs" id="emp-icon"></i>-->
                                         <b>{{ skillProf.getSkillDetails().getSkillsCategoryDetails().getSkillCategory() }}</b>
                                     </h4>
                                 {% endif %}
                                 
                                 {% if currentSubCatagory != previousSubCatagory %}
-                                    <h5 style="color:black; font-weight:500;">
+                                    <h5 style="color:rgb(120,120,120); font-weight:500;">
                                         <b>{{ skillProf.getSkillDetails().getSkillSubCategory() }}</b> 
                                     </h5>
                                 {% endif %}
