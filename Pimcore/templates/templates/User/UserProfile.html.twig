@@ -16,6 +16,19 @@
     .container {
         margin-top:3%;
     }
+    #socmed-link {
+        margin-left:auto;margin-right:auto; 
+        padding-right:6em; padding-left:6em;}
+    @media screen and (max-width:1000px){
+        #socmed-link {padding-right:0.3em; padding-left:0.3em;}
+        .new-btn {padding:5px 5px;}
+    }
+    @media screen and (max-width:850px){
+        #socmed-link {padding-right:0.2em; padding-left:0.2em;}
+    }
+    @media screen and (max-width:599px){
+        #socmed-link {padding-right:10em; padding-left:10em;}
+    }
     .new-btn {
         padding: 8px 10px;
         border: 0px solid #000;
@@ -50,7 +63,7 @@
 		<div class="main-body">
 			  <div class="row gutters-sm">
 			     <!-- LEFT SIDE CONTAINER  -->
-				<div class="col-md-4 mb-3">
+				<div class="col-md-4 mb-3" id="left-col">
 				  <!-- PROFILE -->
 					<div class="card">
 						<div class="card-body">
@@ -70,34 +83,32 @@
 					<!-- Links -->
 					<div class="card mt-3">
 						<ul class="list-group list-group-flush">
-							<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+							<li class="list-group-item d-flex align-items-center flex-wrap" id="socmed-link">
 								<i class="fa fa-github-square mb-0" style="width: auto; height: auto;"></i>
-								<h6 class="mb-0">Github</h6>
-								<span class="text-secondary">
-									<a href="{{employee.getGithub()}}">My Github URL</a>
+								<span style="margin-left:1.2em;">
+								    <h6 class="mb-0"><a href="{{employee.getGithub()}}" target="_blank">Github</a></h6>
 								</span>
 							</li>
-							<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+							<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap" id="socmed-link">
 								<i class="fa fa-linkedin-square mb-0" style="width: auto; height: auto;"></i>
-								<h6 class="mb-0">Linkedin</h6>
-								<span class="text-secondary">
-									<a href="{{employee.getLinkedin()}}">My Linkedin URL</a>
+								<span style="margin-left:1.2em;">
+								    <h6 class="mb-0"><a href="{{employee.getLinkedin()}}" target="_blank">LinkedIn</a></h6>
 								</span>
 							</li>
-							<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+							<li class="list-group-item d-flex align-items-center flex-wrap" id="socmed-link">
 								<i class="fa fa-facebook-square mb-0" style="width: auto; height: auto;"></i>
-								<h6 class="mb-0">Facebook</h6>
-								<span class="text-secondary">
-									<a href="{{employee.getFacebook()}}">My Facebook URL</a>
+								<span style="margin-left:1.2em;">
+								    {% if %}
+								    <h6 class="mb-0"><a href="{{employee.getFacebook()}}" target="_blank">Facebook</a></h6>
 								</span>
 							</li>
 						</ul>
 					</div>
 				</div>
 				<!-- RIGHT SIDE CONTAINER  -->
-				<div class="col-md-8">
+				<div class="col-md-8" id="right-col">
 					<!-- USER DETAILS -->
-					<div class="card mb-3">
+					<div class="card mb-3" id="right-col">
 						<div class="card-header">
 							<h4>User Information</h4>
 						</div>
@@ -342,7 +353,8 @@
 															<label for="inputFacebook"
 																class="col-sm-2 col-form-label">Facebook Link</label>
 															<div class="col-sm-10">
-																<input type="Name" class="form-control" id="inputFacebook" name="inputFacebook" placeholder="Facebook Link" value="{{employee.getFacebook()}}">
+																<input type="Name" class="form-control" id="inputFacebook" name="inputFacebook" placeholder="Facebook Link" 
+																value="{{employee.getFacebook()}}">
 															</div>
 														</div>
 														<hr>
@@ -420,7 +432,7 @@
 					
 					<!-- ADMIN FUNCTIONS  -->
 					{% if isAdmin %}
-					    <div class="card mb-3">
+					    <div class="card mb-3" id="right-col">
 						<div class="card-header">
 							<h4>Admin Interface</h4>
 						</div>
