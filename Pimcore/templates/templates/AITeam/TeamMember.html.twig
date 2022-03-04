@@ -3,6 +3,13 @@
 {# BLOCK 3: Style #}
 {%block extend_style %}
     <style>
+        .card-container {
+            margin-left:3em;
+            margin-right:auto;
+        }
+        @media screen and (max-width:650px){
+            .card-container {margin-left:0px; margin-right:2em;}
+        }
         .card {
     	  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     	  max-width: 300px;
@@ -74,12 +81,12 @@
 {# BLOCK 4: Content #}
 {%block content %}
 
-    <h2 class="w3-center w3-animate-top" style="color: black;margin:auto;margin-top:25px;">
+    <h2 class="w3-center w3-animate-top" style="color: black;margin:auto;margin-top:2.8em;">
         {{ pimcore_input("page_title", {'font-size':50}) }}
     </h2>
     
-    <hr style="margin:auto;width:20%;border-width:4px; border-color:#00aede; margin-bottom:50px;"> 
-    <div>
+    <hr style="margin:auto;width:20%;border-width:4px; border-color:#00aede; margin-bottom:50px; margin-top:0.5em;"> 
+    <div style="margin-top:5.5em;" class="card-container">
         {%for employee in activeEmployeeList%}
             <div style="margin-left:250px;">
                 <div class="card">
