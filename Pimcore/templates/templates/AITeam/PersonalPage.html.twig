@@ -114,10 +114,10 @@
 						{% endif %}
 					</p>
 				    <p>{% if employee.getFacebook() == "" %}
-    				         <i class="fa fa-linkedin-square fa-fw" style="color:rgb(110,110,110);" id="emp-icon"></i>
+    				         <i class="fa fa-facebook-square fa-fw" style="color:rgb(110,110,110);" id="emp-icon"></i>
     				         <span style="color:rgb(110,110,110);">Facebook</span>
 					    {% else %}
-						    <i class="fa fa-linkedin-square fa-fw" style="color:#0aa6d1;" id="emp-icon"></i>
+						    <i class="fa fa-facebook-square fa-fw" style="color:#0aa6d1;" id="emp-icon"></i>
 						        <a href="{{employee.getFacebook()}}" target="_blank" style="font-weight:500;"> Facebook </a>
 						{% endif %}
 					</p>
@@ -717,6 +717,7 @@
                         {% endfor%}
                     {% else %}
                         <div style="color:rgb(120,120,120); font-weight:500; font-size:1.1em;">
+                             <i class="fa fa-exclamation-circle"  style="color:#0aa6d1;" id="emp-icon" ></i>
                             No Education Records
                         </div>
                         <hr>
@@ -727,388 +728,389 @@
                 
                 <!-- Employee Skills List (Skill Proficiency) -->
                 <hr>
-                <div class="w3-container w3-card w3-white" style="padding-bottom:50px;">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <h2 class="w3-padding-16" style="color:#0aa6d1; font-weight:700;">
-                                  <i class="fa fa-cogs fa-fw w3-xxlarge" style="color:#0aa6d1; font-weight:700;" id="emp-icon"></i>Skill sets
-                            </h2>
-                        </div>
+                
+        {#         <div class="w3-container w3-card w3-white" style="padding-bottom:50px;">#}
+        {#            <div class="row">#}
+        {#                <div class="col-md-3">#}
+        {#                    <h2 class="w3-padding-16" style="color:#0aa6d1; font-weight:700;">#}
+        {#                          <i class="fa fa-cogs fa-fw w3-xxlarge" style="color:#0aa6d1; font-weight:700;" id="emp-icon"></i>Skill sets#}
+        {#                    </h2>#}
+        {#                </div>#}
                         
                         
-                        {% if (is_granted('IS_AUTHENTICATED_FULLY') and currentUser.getName() == employee.getStaff_ID()) or isadmin %} 
+        {#                {% if (is_granted('IS_AUTHENTICATED_FULLY') and currentUser.getName() == employee.getStaff_ID()) or isadmin %} #}
                         {# AUNTHENTICATED USER ONLY #}
-                            <div class="col-md-3">
-                                <button type="button" class="new-btn btn-primary w3-margin-top" data-toggle="modal"
-									data-target=".SkillCategory" style="float:right;"> <i class="btn-icon fa fa-edit fa-fw" id="emp-icon"></i>
-									Skill Category
-								</button>
+        {#                    <div class="col-md-3">#}
+        {#                        <button type="button" class="new-btn btn-primary w3-margin-top" data-toggle="modal"#}
+								{#	data-target=".SkillCategory" style="float:right;"> <i class="btn-icon fa fa-edit fa-fw" id="emp-icon"></i>#}
+								{#	Skill Category#}
+								{#</button>#}
                                 
-                                  <div class="modal fade SkillCategory" tabindex="-1" role="dialog" aria-labelledby="SkillCategoryLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg">
-                                        <div class="modal-content">
-                                            <!-- Skill Category Header -->
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Skill Category</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
+        {#                          <div class="modal fade SkillCategory" tabindex="-1" role="dialog" aria-labelledby="SkillCategoryLabel" aria-hidden="true">#}
+        {#                            <div class="modal-dialog modal-lg">#}
+        {#                                <div class="modal-content">#}
+        {#                                    <!-- Skill Category Header -->#}
+        {#                                    <div class="modal-header">#}
+        {#                                        <h5 class="modal-title" id="exampleModalLabel">Skill Category</h5>#}
+        {#                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">#}
+        {#                                        <span aria-hidden="true">&times;</span>#}
+        {#                                        </button>#}
+        {#                                    </div>#}
                                             
-                                            <!-- Skill Category FORM -->
-                                            <div class="modal-body">
-                                                <form method="post" action="./forms/SkillCategory/{{employee.geto_Id()}}">
-                                                    <!-- Available Skill Category List -->
-                                                    <div class="form-group">
-                                                        <label class="my-1 mr-2" for="SkillCategoryObjectList"> Available Skill Category</label>
-                                                        <select class="custom-select my-1 mr-sm-2" id="SkillCategoryObjectList" name="SkillCategoryObjectList" onclick="skillCategoryFormResponsive(this)">
-                                                            <option selected>Create New Skill Catagory</option>
-                                                            {% for skill in skillAllList  %}
-                                                                <option value={{skill.geto_Id()}}>{{skill.getKey()}}</option>
-                                                            {% endfor %}
-                                                        </select>
-                                                    </div>
+        {#                                    <!-- Skill Category FORM -->#}
+        {#                                    <div class="modal-body">#}
+        {#                                        <form method="post" action="./forms/SkillCategory/{{employee.geto_Id()}}">#}
+        {#                                            <!-- Available Skill Category List -->#}
+        {#                                            <div class="form-group">#}
+        {#                                                <label class="my-1 mr-2" for="SkillCategoryObjectList"> Available Skill Category</label>#}
+        {#                                                <select class="custom-select my-1 mr-sm-2" id="SkillCategoryObjectList" name="SkillCategoryObjectList" onclick="skillCategoryFormResponsive(this)">#}
+        {#                                                    <option selected>Create New Skill Catagory</option>#}
+        {#                                                    {% for skill in skillAllList  %}#}
+        {#                                                        <option value={{skill.geto_Id()}}>{{skill.getKey()}}</option>#}
+        {#                                                    {% endfor %}#}
+        {#                                                </select>#}
+        {#                                            </div>#}
                                                     
-                                                    <div class="form-group">
-                                                        <label for="inputSkillCategory">Skill Category*</label>
-                                                        <input type="text" class="form-control" id="inputSkillCategory"  name="inputSkillCategory" placeholder='Skill Category Name (Word seperated by dash "-" )' value="" required>
-                                                    </div>
+        {#                                            <div class="form-group">#}
+        {#                                                <label for="inputSkillCategory">Skill Category*</label>#}
+        {#                                                <input type="text" class="form-control" id="inputSkillCategory"  name="inputSkillCategory" placeholder='Skill Category Name (Word seperated by dash "-" )' value="" required>#}
+        {#                                            </div>#}
                                                                                                         
-                                                    {% set skillCategoryAll = [] %}
-                                                    {% for skill in skillAllList  %}
-                                                        {% set skillCategoryAll = skillCategoryAll|merge([{ 
-                                                            id : skill.geto_Id(),
-                                                            title: skill.getKey(),
-                                                            SkillCategory: skill.getSkillCategory(),
-                                                            }]) %}
-                                                    {% endfor %}
+        {#                                            {% set skillCategoryAll = [] %}#}
+        {#                                            {% for skill in skillAllList  %}#}
+        {#                                                {% set skillCategoryAll = skillCategoryAll|merge([{ #}
+        {#                                                    id : skill.geto_Id(),#}
+        {#                                                    title: skill.getKey(),#}
+        {#                                                    SkillCategory: skill.getSkillCategory(),#}
+        {#                                                    }]) %}#}
+        {#                                            {% endfor %}#}
                                                     
-                                                    <script>
-                                                        function skillCategoryFormResponsive(selectObject){
-                                                            var current = selectObject.value;
-                                                            var skillCategoryAll = {{skillCategoryAll|json_encode|raw }}; 
-                                                            var skillCategory = skillCategoryAll.find(o => o.id == current);
-                                                            if (skillCategory){
-                                                                document.getElementById("inputSkillCategory").value = skillCategory.SkillCategory;
-                                                            }
-                                                            else{
-                                                                document.getElementById("inputSkillCategory").value = "";
-                                                            }
-                                                        }
-                                                    </script>
+        {#                                            <script>#}
+        {#                                                function skillCategoryFormResponsive(selectObject){#}
+        {#                                                    var current = selectObject.value;#}
+        {#                                                    var skillCategoryAll = {{skillCategoryAll|json_encode|raw }}; #}
+        {#                                                    var skillCategory = skillCategoryAll.find(o => o.id == current);#}
+        {#                                                    if (skillCategory){#}
+        {#                                                        document.getElementById("inputSkillCategory").value = skillCategory.SkillCategory;#}
+        {#                                                    }#}
+        {#                                                    else{#}
+        {#                                                        document.getElementById("inputSkillCategory").value = "";#}
+        {#                                                    }#}
+        {#                                                }#}
+        {#                                            </script>#}
                                                     
-                                                    <hr>
-                                                    <button class="btn btn-danger" style='margin:5px' type="submit" name="buttonAction" value="Delete">Delete Category</button>
-                                                    <button class="btn btn-primary" style='margin:5px' type="submit" name="buttonAction" value="Save">Save Category</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <!-- button to edit sub-category -->
-                                <button type="button" class="new-btn btn-primary w3-margin-top" data-toggle="modal"
-									data-target=".SkillSubCategory" style="float:right;"> <i class="btn-icon fa fa-edit fa-fw" id="emp-icon"></i>
-									Skill Sub-Category
-								</button>
+        {#                                            <hr>#}
+        {#                                            <button class="btn btn-danger" style='margin:5px' type="submit" name="buttonAction" value="Delete">Delete Category</button>#}
+        {#                                            <button class="btn btn-primary" style='margin:5px' type="submit" name="buttonAction" value="Save">Save Category</button>#}
+        {#                                        </form>#}
+        {#                                    </div>#}
+        {#                                </div>#}
+        {#                            </div>#}
+        {#                        </div>#}
+        {#                    </div>#}
+        {#                    <div class="col-md-3">#}
+        {#                        <!-- button to edit sub-category -->#}
+        {#                        <button type="button" class="new-btn btn-primary w3-margin-top" data-toggle="modal"#}
+								{#	data-target=".SkillSubCategory" style="float:right;"> <i class="btn-icon fa fa-edit fa-fw" id="emp-icon"></i>#}
+								{#	Skill Sub-Category#}
+								{#</button>#}
                                 
-                                 <div class="modal fade SkillSubCategory" tabindex="-1" role="dialog" aria-labelledby="SkillSubCategoryLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg">
-                                        <div class="modal-content">
-                                            <!-- Skill Header -->
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Skill Sub-Category</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
+        {#                         <div class="modal fade SkillSubCategory" tabindex="-1" role="dialog" aria-labelledby="SkillSubCategoryLabel" aria-hidden="true">#}
+        {#                            <div class="modal-dialog modal-lg">#}
+        {#                                <div class="modal-content">#}
+        {#                                    <!-- Skill Header -->#}
+        {#                                    <div class="modal-header">#}
+        {#                                        <h5 class="modal-title" id="exampleModalLabel">Skill Sub-Category</h5>#}
+        {#                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">#}
+        {#                                        <span aria-hidden="true">&times;</span>#}
+        {#                                        </button>#}
+        {#                                    </div>#}
                                             
-                                            <!-- Skill FORM -->
-                                            <div class="modal-body">
-                                                <form method="post" action="./forms/SkillSubCategory/{{employee.geto_Id()}}">
-                                                    <!-- Available Skill Sub-Category List -->
-                                                    <div class="form-group">
-                                                        <label class="my-1 mr-2" for="skillObjectList"> Available Skill Sub-Category</label>
-                                                        <select class="custom-select my-1 mr-sm-2" id="skillObjectList" name="skillObjectList" onclick="skillCataFormResponsive(this)">
-                                                            <option selected>Create New Skill</option>
-                                                            {% for skill in skillTrainingAllList  %}
-                                                                <option value={{skill.geto_Id()}}>{{skill.getKey()}}</option>
-                                                            {% endfor %}
-                                                        </select>
-                                                    </div>
+        {#                                    <!-- Skill FORM -->#}
+        {#                                    <div class="modal-body">#}
+        {#                                        <form method="post" action="./forms/SkillSubCategory/{{employee.geto_Id()}}">#}
+        {#                                            <!-- Available Skill Sub-Category List -->#}
+        {#                                            <div class="form-group">#}
+        {#                                                <label class="my-1 mr-2" for="skillObjectList"> Available Skill Sub-Category</label>#}
+        {#                                                <select class="custom-select my-1 mr-sm-2" id="skillObjectList" name="skillObjectList" onclick="skillCataFormResponsive(this)">#}
+        {#                                                    <option selected>Create New Skill</option>#}
+        {#                                                    {% for skill in skillTrainingAllList  %}#}
+        {#                                                        <option value={{skill.geto_Id()}}>{{skill.getKey()}}</option>#}
+        {#                                                    {% endfor %}#}
+        {#                                                </select>#}
+        {#                                            </div>#}
                                                     
-                                                    <div class="form-row">
-                                                        <div class="form-group col-md-6">
-                                                            <label class="my-1 mr-2" for="SkillCateObjectList">Skill Category</label>
-                                                            <select class="custom-select my-1 mr-sm-2" id="SkillCateObjectList" name="SkillCateObjectList" required>
-                                                                {% for skill in skillAllList  %}
-                                                                    <option value={{skill.geto_Id()}}>{{skill.getKey()}}</option>
-                                                                {% endfor %}
-                                                            </select>
-                                                        </div>
-                                                        <div class="form-group col-md-6">
-                                                            <label for="inputSubCategory">Skill Sub-Category*</label>
-                                                            <input type="text" class="form-control" id="inputSubCategory"  name="inputSubCategory" placeholder="Skill Sub-Category Name" value="" required>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-row">
-                                                        <div class="form-group col-md-6">
-                                                            <label for="inputTrainingTitle">Training Title</label>
-                                                            <input type="text" class="form-control" id="inputTrainingTitle"  name="inputTrainingTitle" placeholder="Training Title" value="">
-                                                        </div>
-                                                        <div class="form-group col-md-6">
-                                                            <label for="inputExamName">Exam Name</label>
-                                                            <input type="text" class="form-control" id="inputExamName"  name="inputExamName" placeholder="Exam Name" value="" >
-                                                        </div>
-                                                    </div>
+        {#                                            <div class="form-row">#}
+        {#                                                <div class="form-group col-md-6">#}
+        {#                                                    <label class="my-1 mr-2" for="SkillCateObjectList">Skill Category</label>#}
+        {#                                                    <select class="custom-select my-1 mr-sm-2" id="SkillCateObjectList" name="SkillCateObjectList" required>#}
+        {#                                                        {% for skill in skillAllList  %}#}
+        {#                                                            <option value={{skill.geto_Id()}}>{{skill.getKey()}}</option>#}
+        {#                                                        {% endfor %}#}
+        {#                                                    </select>#}
+        {#                                                </div>#}
+        {#                                                <div class="form-group col-md-6">#}
+        {#                                                    <label for="inputSubCategory">Skill Sub-Category*</label>#}
+        {#                                                    <input type="text" class="form-control" id="inputSubCategory"  name="inputSubCategory" placeholder="Skill Sub-Category Name" value="" required>#}
+        {#                                                </div>#}
+        {#                                            </div>#}
+        {#                                            <div class="form-row">#}
+        {#                                                <div class="form-group col-md-6">#}
+        {#                                                    <label for="inputTrainingTitle">Training Title</label>#}
+        {#                                                    <input type="text" class="form-control" id="inputTrainingTitle"  name="inputTrainingTitle" placeholder="Training Title" value="">#}
+        {#                                                </div>#}
+        {#                                                <div class="form-group col-md-6">#}
+        {#                                                    <label for="inputExamName">Exam Name</label>#}
+        {#                                                    <input type="text" class="form-control" id="inputExamName"  name="inputExamName" placeholder="Exam Name" value="" >#}
+        {#                                                </div>#}
+        {#                                            </div>#}
                                                     
-                                                    {% set skillTrainingAll = [] %}
-                                                    {% for skill in skillTrainingAllList  %}
-                                                        {% set skillTrainingAll = skillTrainingAll|merge([{ 
-                                                            id : skill.geto_Id(),
-                                                            title: skill.getKey(),
-                                                            SkillCategory: skill.getSkillSubCategory(),
-                                                            TrainingTitle: skill.getTrainingTitle(),
-                                                            ExamName: skill.getExamName(),
-                                                            SkillsCategoryDetails: skill.getSkillsCategoryDetails(),
-                                                            }]) %}
-                                                    {% endfor %}
+        {#                                            {% set skillTrainingAll = [] %}#}
+        {#                                            {% for skill in skillTrainingAllList  %}#}
+        {#                                                {% set skillTrainingAll = skillTrainingAll|merge([{ #}
+        {#                                                    id : skill.geto_Id(),#}
+        {#                                                    title: skill.getKey(),#}
+        {#                                                    SkillCategory: skill.getSkillSubCategory(),#}
+        {#                                                    TrainingTitle: skill.getTrainingTitle(),#}
+        {#                                                    ExamName: skill.getExamName(),#}
+        {#                                                    SkillsCategoryDetails: skill.getSkillsCategoryDetails(),#}
+        {#                                                    }]) %}#}
+        {#                                            {% endfor %}#}
                                                     
-                                                    <script>
-                                                        function skillCataFormResponsive(selectObject){
-                                                            var current = selectObject.value;
-                                                            var skillTrainingAll = {{skillTrainingAll|json_encode|raw }}; 
-                                                            var skillCategoryAll = {{skillCategoryAll|json_encode|raw }}; 
-                                                            var currentskill = skillTrainingAll.find(o => o.id == current);
+        {#                                            <script>#}
+        {#                                                function skillCataFormResponsive(selectObject){#}
+        {#                                                    var current = selectObject.value;#}
+        {#                                                    var skillTrainingAll = {{skillTrainingAll|json_encode|raw }}; #}
+        {#                                                    var skillCategoryAll = {{skillCategoryAll|json_encode|raw }}; #}
+        {#                                                    var currentskill = skillTrainingAll.find(o => o.id == current);#}
                                                             
-                                                            if (currentskill){
-                                                                var skillID = currentskill.SkillsCategoryDetails.____pimcore_cache_item__.split("_")[1];
-                                                                var index = skillCategoryAll.findIndex(function(skill, i){
-                                                                    return skill.id == skillID
-                                                                });
-                                                            }
-                                                            else{
-                                                                var index = -1;
-                                                            }
-                                                            if (currentskill){
-                                                                document.getElementById("inputSubCategory").value = currentskill.SkillCategory;
-                                                                document.getElementById("inputTrainingTitle").value = currentskill.TrainingTitle;
-                                                                document.getElementById("inputExamName").value = currentskill.ExamName;
-                                                                document.getElementById("SkillCateObjectList").selectedIndex = index;
-                                                            }
-                                                            else{
-                                                                document.getElementById("inputSubCategory").value = "";
-                                                                document.getElementById("inputTrainingTitle").value = "";
-                                                                document.getElementById("inputExamName").value = "";
-                                                                document.getElementById("SkillCateObjectList").selectedIndex = -1;
-                                                            }
-                                                        }
-                                                    </script>
+        {#                                                    if (currentskill){#}
+        {#                                                        var skillID = currentskill.SkillsCategoryDetails.____pimcore_cache_item__.split("_")[1];#}
+        {#                                                        var index = skillCategoryAll.findIndex(function(skill, i){#}
+        {#                                                            return skill.id == skillID#}
+        {#                                                        });#}
+        {#                                                    }#}
+        {#                                                    else{#}
+        {#                                                        var index = -1;#}
+        {#                                                    }#}
+        {#                                                    if (currentskill){#}
+        {#                                                        document.getElementById("inputSubCategory").value = currentskill.SkillCategory;#}
+        {#                                                        document.getElementById("inputTrainingTitle").value = currentskill.TrainingTitle;#}
+        {#                                                        document.getElementById("inputExamName").value = currentskill.ExamName;#}
+        {#                                                        document.getElementById("SkillCateObjectList").selectedIndex = index;#}
+        {#                                                    }#}
+        {#                                                    else{#}
+        {#                                                        document.getElementById("inputSubCategory").value = "";#}
+        {#                                                        document.getElementById("inputTrainingTitle").value = "";#}
+        {#                                                        document.getElementById("inputExamName").value = "";#}
+        {#                                                        document.getElementById("SkillCateObjectList").selectedIndex = -1;#}
+        {#                                                    }#}
+        {#                                                }#}
+        {#                                            </script>#}
                                                     
-                                                    <hr>
-                                                    <button class="btn btn-danger" style='margin:5px'type="submit" name="buttonAction" value="Delete">Delete Sub-Category</button>
-                                                    <button class="btn btn-primary" style='margin:5px' type="submit" name="buttonAction" value="Save">Save Sub-Category</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <button type="button" class="new-btn btn-primary w3-margin-top" data-toggle="modal"
-									data-target=".Proficiency" style="float:right;"> <i class="btn-icon fa fa-edit fa-fw" id="emp-icon"></i>
-									Skill Proficiency
-								</button>
+        {#                                            <hr>#}
+        {#                                            <button class="btn btn-danger" style='margin:5px'type="submit" name="buttonAction" value="Delete">Delete Sub-Category</button>#}
+        {#                                            <button class="btn btn-primary" style='margin:5px' type="submit" name="buttonAction" value="Save">Save Sub-Category</button>#}
+        {#                                        </form>#}
+        {#                                    </div>#}
+        {#                                </div>#}
+        {#                            </div>#}
+        {#                        </div>#}
+        {#                    </div>#}
+        {#                    <div class="col-md-3">#}
+        {#                        <button type="button" class="new-btn btn-primary w3-margin-top" data-toggle="modal"#}
+								{#	data-target=".Proficiency" style="float:right;"> <i class="btn-icon fa fa-edit fa-fw" id="emp-icon"></i>#}
+								{#	Skill Proficiency#}
+								{#</button>#}
                                 
-                                 <div class="modal fade Proficiency" tabindex="-1" role="dialog" aria-labelledby="ProficiencyLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg">
-                                        <div class="modal-content">
-                                            <!-- Proficiency Header -->
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Proficiency</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
+        {#                         <div class="modal fade Proficiency" tabindex="-1" role="dialog" aria-labelledby="ProficiencyLabel" aria-hidden="true">#}
+        {#                            <div class="modal-dialog modal-lg">#}
+        {#                                <div class="modal-content">#}
+        {#                                    <!-- Proficiency Header -->#}
+        {#                                    <div class="modal-header">#}
+        {#                                        <h5 class="modal-title" id="exampleModalLabel">Proficiency</h5>#}
+        {#                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">#}
+        {#                                        <span aria-hidden="true">&times;</span>#}
+        {#                                        </button>#}
+        {#                                    </div>#}
                                             
-                                            <!-- Proficiency FORM -->
-                                            <div class="modal-body">
-                                                <form method="post" action="./forms/SkillProficiency/{{employee.geto_Id()}}">
-                                                    <!-- Available Skill Proficiency List -->
-                                                    <div class="form-group">
-                                                        <label class="my-1 mr-2" for="proficiencyObjectList"> Available Skill Proficiency</label>
-                                                        <select class="custom-select my-1 mr-sm-2" id="proficiencyObjectList" name="proficiencyObjectList" onclick="proficiencyCataFormResponsive(this)">
-                                                            <option selected>Create New Proficiency</option>
-                                                            {% for skill in skillProfList  %}
-                                                                <option value={{skill.geto_Id()}}>{{skill.getKey()}}</option>
-                                                            {% endfor %}
-                                                        </select>
-                                                    </div>
+        {#                                    <!-- Proficiency FORM -->#}
+        {#                                    <div class="modal-body">#}
+        {#                                        <form method="post" action="./forms/SkillProficiency/{{employee.geto_Id()}}">#}
+        {#                                            <!-- Available Skill Proficiency List -->#}
+        {#                                            <div class="form-group">#}
+        {#                                                <label class="my-1 mr-2" for="proficiencyObjectList"> Available Skill Proficiency</label>#}
+        {#                                                <select class="custom-select my-1 mr-sm-2" id="proficiencyObjectList" name="proficiencyObjectList" onclick="proficiencyCataFormResponsive(this)">#}
+        {#                                                    <option selected>Create New Proficiency</option>#}
+        {#                                                    {% for skill in skillProfList  %}#}
+        {#                                                        <option value={{skill.geto_Id()}}>{{skill.getKey()}}</option>#}
+        {#                                                    {% endfor %}#}
+        {#                                                </select>#}
+        {#                                            </div>#}
                                                     
-                                                    {% set profStatusList = ["Planned","Pending Exam","Complete"]%}
-                                                    {% set profLevelList = ["Level 0","Level 1","Level 2","Level 3"]%}
+        {#                                            {% set profStatusList = ["Planned","Pending Exam","Complete"]%}#}
+        {#                                            {% set profLevelList = ["Level 0","Level 1","Level 2","Level 3"]%}#}
                                                     
-                                                    <div class="form-row">
-                                                        <div class="form-group col-md-6">
-                                                            <label class="my-1 mr-2" for="skillObject"> Skill* </label>
-                                                            <select class="custom-select my-1 mr-sm-2" id="skillObject" name="skillObject" required>
-                                                                {% for skill in skillTrainingAllList  %}
-                                                                    <option value={{skill.geto_Id()}}>{{skill.getKey()}}</option>
-                                                                {% endfor %}
-                                                            </select>
-                                                        </div>
-                                                        <div class="form-group col-md-6">
-                                                            <label for="proficiencyStatusList">Proficiency Status*</label>
-                                                            <select class="custom-select" id="proficiencyStatusList" name="proficiencyStatusList" required>
-                                                                {% for status in profStatusList%}
-                                                                    <option value="{{status|raw}}">{{status}}</option>
-                                                                {% endfor%}
-                                                            </select>
-                                                        </div>
+        {#                                            <div class="form-row">#}
+        {#                                                <div class="form-group col-md-6">#}
+        {#                                                    <label class="my-1 mr-2" for="skillObject"> Skill* </label>#}
+        {#                                                    <select class="custom-select my-1 mr-sm-2" id="skillObject" name="skillObject" required>#}
+        {#                                                        {% for skill in skillTrainingAllList  %}#}
+        {#                                                            <option value={{skill.geto_Id()}}>{{skill.getKey()}}</option>#}
+        {#                                                        {% endfor %}#}
+        {#                                                    </select>#}
+        {#                                                </div>#}
+        {#                                                <div class="form-group col-md-6">#}
+        {#                                                    <label for="proficiencyStatusList">Proficiency Status*</label>#}
+        {#                                                    <select class="custom-select" id="proficiencyStatusList" name="proficiencyStatusList" required>#}
+        {#                                                        {% for status in profStatusList%}#}
+        {#                                                            <option value="{{status|raw}}">{{status}}</option>#}
+        {#                                                        {% endfor%}#}
+        {#                                                    </select>#}
+        {#                                                </div>#}
                                                         
-                                                    </div>
-                                                    <div class="form-row">
-                                                        <div class="form-group col-md-6">
-                                                            <label for="proficiencyDate"> Proficiency Date*</label>
-                                                            <input id="proficiencyDate"  name="proficiencyDate" required/>
-                                                        </div>
+        {#                                            </div>#}
+        {#                                            <div class="form-row">#}
+        {#                                                <div class="form-group col-md-6">#}
+        {#                                                    <label for="proficiencyDate"> Proficiency Date*</label>#}
+        {#                                                    <input id="proficiencyDate"  name="proficiencyDate" required/>#}
+        {#                                                </div>#}
                                                         
-                                                        {% if isadmin %} 
-                                                            <div class="form-group col-md-6">
-                                                                <label for="proficiencyLevelList">Proficiency Level</label>
-                                                                <select class="custom-select" id="proficiencyLevelList" name="proficiencyLevelList">
-                                                                    {% for status in profLevelList%}
-                                                                        <option value="{{status|raw}}">{{status}}</option>
-                                                                    {% endfor%}
-                                                                </select>
-                                                            </div>
-                                                        {% endif %}
-                                                    </div>
+        {#                                                {% if isadmin %} #}
+        {#                                                    <div class="form-group col-md-6">#}
+        {#                                                        <label for="proficiencyLevelList">Proficiency Level</label>#}
+        {#                                                        <select class="custom-select" id="proficiencyLevelList" name="proficiencyLevelList">#}
+        {#                                                            {% for status in profLevelList%}#}
+        {#                                                                <option value="{{status|raw}}">{{status}}</option>#}
+        {#                                                            {% endfor%}#}
+        {#                                                        </select>#}
+        {#                                                    </div>#}
+        {#                                                {% endif %}#}
+        {#                                            </div>#}
                                                     
-                                                    {% set skillProfAll = [] %}
-                                                    {% for skill in skillProfList  %}
-                                                        {% set skillProfAll = skillProfAll|merge([{ 
-                                                            id : skill.geto_Id(),
-                                                            title: skill.getKey(),
-                                                            Status: skill.getStatus(),
-                                                            SkillLevel: skill.getSkillLevel(),
-                                                            SkillYear: skill.getSkillYear().format("d-m-Y"),
-                                                            SkillDetails: skill.getSkillDetails(),
-                                                            }]) %}
-                                                    {% endfor %}
+        {#                                            {% set skillProfAll = [] %}#}
+        {#                                            {% for skill in skillProfList  %}#}
+        {#                                                {% set skillProfAll = skillProfAll|merge([{ #}
+        {#                                                    id : skill.geto_Id(),#}
+        {#                                                    title: skill.getKey(),#}
+        {#                                                    Status: skill.getStatus(),#}
+        {#                                                    SkillLevel: skill.getSkillLevel(),#}
+        {#                                                    SkillYear: skill.getSkillYear().format("d-m-Y"),#}
+        {#                                                    SkillDetails: skill.getSkillDetails(),#}
+        {#                                                    }]) %}#}
+        {#                                            {% endfor %}#}
                                                     
-                                                    <script>
-                                                        $('#proficiencyDate').datepicker({
-                                                            uiLibrary: 'bootstrap4',
-                                                            format: 'dd-mm-yyyy',
-                                                        });
+        {#                                            <script>#}
+        {#                                                $('#proficiencyDate').datepicker({#}
+        {#                                                    uiLibrary: 'bootstrap4',#}
+        {#                                                    format: 'dd-mm-yyyy',#}
+        {#                                                });#}
                                                     
-                                                        function proficiencyCataFormResponsive(selectObject){
-                                                            var current = selectObject.value;
-                                                            var skillTrainingAll = {{skillTrainingAll|json_encode|raw }}; 
-                                                            var skillProfAll = {{skillProfAll|json_encode|raw }}; 
-                                                            var profStatusList = {{profStatusList|json_encode|raw }}; 
-                                                            var profLevelList = {{profLevelList|json_encode|raw }}; 
-                                                            var currentskill = skillProfAll.find(o => o.id == current);
+        {#                                                function proficiencyCataFormResponsive(selectObject){#}
+        {#                                                    var current = selectObject.value;#}
+        {#                                                    var skillTrainingAll = {{skillTrainingAll|json_encode|raw }}; #}
+        {#                                                    var skillProfAll = {{skillProfAll|json_encode|raw }}; #}
+        {#                                                    var profStatusList = {{profStatusList|json_encode|raw }}; #}
+        {#                                                    var profLevelList = {{profLevelList|json_encode|raw }}; #}
+        {#                                                    var currentskill = skillProfAll.find(o => o.id == current);#}
 
-                                                            if (currentskill){
-                                                                var skillID = currentskill.SkillDetails.____pimcore_cache_item__.split("_")[1];
-                                                                console.log(skillID)
-                                                                var index = skillTrainingAll.findIndex(function(skill, i){
-                                                                    return skill.id == skillID
-                                                                });
-                                                            }
-                                                            else{
-                                                                var index = -1;
-                                                            }
-                                                            if (currentskill){
-                                                                document.getElementById("skillObject").selectedIndex = index;
-                                                                document.getElementById("proficiencyStatusList").selectedIndex = profStatusList.indexOf(currentskill.Status);
-                                                                document.getElementById("proficiencyDate").value = currentskill.SkillYear;
-                                                                document.getElementById("proficiencyLevelList").selectedIndex = profLevelList.indexOf(currentskill.SkillLevel);
-                                                            }
-                                                            else{
-                                                                document.getElementById("skillObject").selectedIndex = -1;
-                                                                document.getElementById("proficiencyStatusList").selectedIndex = -1;
-                                                                document.getElementById("proficiencyDate").value = "";
-                                                                document.getElementById("proficiencyLevelList").selectedIndex = -1;
-                                                            }
-                                                        }
-                                                    </script>
+        {#                                                    if (currentskill){#}
+        {#                                                        var skillID = currentskill.SkillDetails.____pimcore_cache_item__.split("_")[1];#}
+        {#                                                        console.log(skillID)#}
+        {#                                                        var index = skillTrainingAll.findIndex(function(skill, i){#}
+        {#                                                            return skill.id == skillID#}
+        {#                                                        });#}
+        {#                                                    }#}
+        {#                                                    else{#}
+        {#                                                        var index = -1;#}
+        {#                                                    }#}
+        {#                                                    if (currentskill){#}
+        {#                                                        document.getElementById("skillObject").selectedIndex = index;#}
+        {#                                                        document.getElementById("proficiencyStatusList").selectedIndex = profStatusList.indexOf(currentskill.Status);#}
+        {#                                                        document.getElementById("proficiencyDate").value = currentskill.SkillYear;#}
+        {#                                                        document.getElementById("proficiencyLevelList").selectedIndex = profLevelList.indexOf(currentskill.SkillLevel);#}
+        {#                                                    }#}
+        {#                                                    else{#}
+        {#                                                        document.getElementById("skillObject").selectedIndex = -1;#}
+        {#                                                        document.getElementById("proficiencyStatusList").selectedIndex = -1;#}
+        {#                                                        document.getElementById("proficiencyDate").value = "";#}
+        {#                                                        document.getElementById("proficiencyLevelList").selectedIndex = -1;#}
+        {#                                                    }#}
+        {#                                                }#}
+        {#                                            </script>#}
                                                     
-                                                    <hr>
-                                                    <button class="btn btn-danger" style='margin:5px'type="submit" name="buttonAction" value="Delete">Delete Proficiency</button>
-                                                    <button class="btn btn-primary" style='margin:5px' type="submit" name="buttonAction" value="Save">Save Proficiency</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        {% endif %}
-                    </div>
+        {#                                            <hr>#}
+        {#                                            <button class="btn btn-danger" style='margin:5px'type="submit" name="buttonAction" value="Delete">Delete Proficiency</button>#}
+        {#                                            <button class="btn btn-primary" style='margin:5px' type="submit" name="buttonAction" value="Save">Save Proficiency</button>#}
+        {#                                        </form>#}
+        {#                                    </div>#}
+        {#                                </div>#}
+        {#                            </div>#}
+        {#                        </div>#}
+        {#                    </div>#}
+        {#                {% endif %}#}
+        {#            </div>#}
                     
-                    <!-- Employee Skills List : BODY-->
-                    {%if skillProfList|length %}
-                        {% set previousCatagory = '' %}
-                        {% set previousSubCatagory = '' %}
-                        {% for skillProf in skillProfList%}
-                            {% set currentCatagory = skillProf.getSkillDetails().getSkillsCategoryDetails().getSkillCategory() %}
-                            {% set currentSubCatagory = skillProf.getSkillDetails().getSkillSubCategory() %}
-                            <div class="w3-container">
-                                {% if currentCatagory != previousCatagory %}
-                                <hr>
-                                    <h4 class="section-title">
-                                        <!--<i class="fa fa-cogs" id="emp-icon"></i>-->
-                                        <b>{{ skillProf.getSkillDetails().getSkillsCategoryDetails().getSkillCategory() }}</b>
-                                    </h4>
-                                {% endif %}
+        {#            <!-- Employee Skills List : BODY-->#}
+        {#            {%if skillProfList|length %}#}
+        {#                {% set previousCatagory = '' %}#}
+        {#                {% set previousSubCatagory = '' %}#}
+        {#                {% for skillProf in skillProfList%}#}
+        {#                    {% set currentCatagory = skillProf.getSkillDetails().getSkillsCategoryDetails().getSkillCategory() %}#}
+        {#                    {% set currentSubCatagory = skillProf.getSkillDetails().getSkillSubCategory() %}#}
+        {#                    <div class="w3-container">#}
+        {#                        {% if currentCatagory != previousCatagory %}#}
+        {#                        <hr>#}
+        {#                            <h4 class="section-title">#}
+        {#                                <!--<i class="fa fa-cogs" id="emp-icon"></i>-->#}
+        {#                                <b>{{ skillProf.getSkillDetails().getSkillsCategoryDetails().getSkillCategory() }}</b>#}
+        {#                            </h4>#}
+        {#                        {% endif %}#}
                                 
-                                {% if currentSubCatagory != previousSubCatagory %}
-                                    <h5 style="color:rgb(120,120,120); font-weight:500;">
-                                        <b>{{ skillProf.getSkillDetails().getSkillSubCategory() }}</b> 
-                                    </h5>
-                                {% endif %}
+        {#                        {% if currentSubCatagory != previousSubCatagory %}#}
+        {#                            <h5 style="color:rgb(120,120,120); font-weight:500;">#}
+        {#                                <b>{{ skillProf.getSkillDetails().getSkillSubCategory() }}</b> #}
+        {#                            </h5>#}
+        {#                        {% endif %}#}
                                 
-                                <!-- Only will output status if there is exam/certification -->
-                                {%if skillProf.getSkillDetails().getExamName() != "No Exam" %}
-                                    <h5 style="color:grey;">
-                                        &#8226; {{ skillProf.getSkillDetails().getExamName() }}   [ {{ skillProf.getStatus() }} ]
+        {#                        <!-- Only will output status if there is exam/certification -->#}
+        {#                        {%if skillProf.getSkillDetails().getExamName() != "No Exam" %}#}
+        {#                            <h5 style="color:grey;">#}
+        {#                                &#8226; {{ skillProf.getSkillDetails().getExamName() }}   [ {{ skillProf.getStatus() }} ]#}
                                         {#<span style="padding-left:930px;"> {{ skillProf.getStatus() }}</span>#}
-                                    </h5>
-                                {% endif %}
-                                <!--<h5 style="color:grey;">
-                                    <b>{#skillProf.getStatus()#}</b>
-                                </h5>-->
-                                <h5 style="color:black;">
-                                    <!--<i class="fa fa-bars" id="emp-icon"></i>-->
+        {#                            </h5>#}
+        {#                        {% endif %}#}
+        {#                        <!--<h5 style="color:grey;">#}
+        {#                            <b>{#skillProf.getStatus()#}</b>
+        {#                        </h5>-->#}
+        {#                        <h5 style="color:black;">#}
+        {#                            <!--<i class="fa fa-bars" id="emp-icon"></i>-->#}
                                     {#skillProf.getSkillLevel()#}
-                                </h5>
+        {#                        </h5>#}
                                 
                                 {#Category#}
-                                {% if currentCatagory != previousCatagory %}
-                                    {% set previousCatagory = currentCatagory%}
-                                {% else %}
-                                 <!-- <hr>-->
-                                {% endif %}
+        {#                        {% if currentCatagory != previousCatagory %}#}
+        {#                            {% set previousCatagory = currentCatagory%}#}
+        {#                        {% else %}#}
+        {#                         <!-- <hr>-->#}
+        {#                        {% endif %}#}
                                 
                                 {#SUB CATEGORY#}
-                                {% if currentSubCatagory != previousSubCatagory%}
-                                    {% set previousSubCatagory = currentSubCatagory%}
-                                {% endif %}
+        {#                        {% if currentSubCatagory != previousSubCatagory%}#}
+        {#                            {% set previousSubCatagory = currentSubCatagory%}#}
+        {#                        {% endif %}#}
 
-                            </div>
-                        {% endfor%}
-                    {% else %}
-                        <div>
-                            <i class="fa fa-exclamation-circle"  style="color:#0aa6d1;" id="emp-icon" ></i>
-                            No Skills Records
-                        </div>
-                        <hr>
-                    {%endif%}
-                </div>
-                
+        {#                    </div>#}
+        {#                {% endfor%}#}
+        {#            {% else %}#}
+        {#                <div>#}
+        {#                    <i class="fa fa-exclamation-circle"  style="color:#0aa6d1;" id="emp-icon" ></i>#}
+        {#                    No Skills Records#}
+        {#                </div>#}
+        {#                <hr>#}
+        {#            {%endif%}#}
+        {#        </div>#}
+   
             </div>
         
         <!-- End Left Column -->
